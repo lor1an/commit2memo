@@ -69,6 +69,19 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 	
-	
+	<bean id="xstream" class="com.springxml.tutorial.C2MXStreamMarshaller">
+		<property name="classesToUnmarshall">
+			<list>
+				<value>com.springxml.mwdictionary.EntryList</value>
+			</list>
+		</property>
+		<property name="converters">
+			<list>
+				<bean class="com.springxml.mwdictionary.converter.DefinitionConverter" />
+				<bean class="com.springxml.mwdictionary.converter.DefTextConverter" />
+				<bean class="com.springxml.mwdictionary.converter.SoundConverter" />
+			</list>
+		</property>
+	</bean>
 	
 </beans>
