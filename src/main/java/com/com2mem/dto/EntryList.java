@@ -15,5 +15,15 @@ public class EntryList {
     public String toString() {
         return "EntryList [entryList=" + entryList + "]";
     }
+
+    public List<Entry> getEntryList() {
+        return entryList;
+    }
+
+    public void setEntryList(List<Entry> entryList) {
+        this.entryList = entryList;
+    }
+    
+    
     
 }

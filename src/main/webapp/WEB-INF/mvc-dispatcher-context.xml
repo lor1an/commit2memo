@@ -84,4 +84,8 @@
 		</property>
 	</bean>
 	
+	<bean id="dictionaryService" class="com.com2mem.service.impl.DictionaryServiceImpl"/>
+	
+	<context:property-placeholder location="classpath:api_keys.properties"/>
+	
 </beans>

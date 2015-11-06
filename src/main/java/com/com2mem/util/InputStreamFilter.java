@@ -12,7 +12,6 @@ public class InputStreamFilter {
 
     public static InputStream filter(InputStream stream, Charset charset,
             String regex, String replacement) throws IOException {
-
-        return toInputStream(IOUtils.toString(stream, charset).replaceAll(regex, replacement));
+        return toInputStream(IOUtils.toString(stream, charset).replaceAll(regex, replacement),charset);
     }
 }

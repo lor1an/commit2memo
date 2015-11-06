@@ -54,6 +54,8 @@
 
 		<!-- Google guava -->
 		<guava.version>18.0</guava.version>
+		
+		<thymeleaf.version>2.1.2.RELEASE</thymeleaf.version>
 
 	</properties>
 
@@ -200,8 +202,25 @@
 			<artifactId>xstream</artifactId>
 			<version>1.4.8</version>
 		</dependency>
-
-
+		
+		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf-spring4</artifactId>
+			<version>${thymeleaf.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf</artifactId>
+			<version>${thymeleaf.version}</version>
+		</dependency>
+		
+		<dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${jackson-databind.version}</version>
+    </dependency>
+    
 	</dependencies>
 	<build>
 		<finalName>commit2memo</finalName>
