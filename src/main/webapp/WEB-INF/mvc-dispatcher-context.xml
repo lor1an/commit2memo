@@ -3,8 +3,7 @@
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:security="http://www.springframework.org/schema/security"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	xsi:schemaLocation="
                 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
                 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
@@ -15,36 +14,24 @@
 
 	<mvc:annotation-driven />
 	<context:annotation-config />
-	<context:component-scan base-package="com.com2mem.*"/>
+	<context:component-scan base-package="com.com2mem.*" />
 	<jpa:repositories base-package="com.com2mem.dao" />
 	<tx:annotation-driven />
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<!-- <property name="driverClassName">
-			<value>org.hsqldb.jdbcDriver</value>
+		<property name="driverClassName">
+			<value>org.postgresql.Driver</value>
 		</property>
 		<property name="url">
-			<value>jdbc:hsqldb:mem://localhost/testdb</value>
+			<value>jdbc:postgresql://localhost:5432/postgres</value>
 		</property>
 		<property name="username">
-			<value>sa</value>
+			<value>postgres</value>
 		</property>
 		<property name="password">
-			<value></value>
-		</property> -->
-		   <property name="driverClassName">
-            <value>org.postgresql.Driver</value>
-        </property>
-        <property name="url">
-            <value>jdbc:postgresql://localhost:5432/postgres</value>
-        </property>
-        <property name="username">
-            <value>postgres</value>
-        </property>
-        <property name="password">
-            <value>nimda</value>
-        </property>
+			<value>nimda</value>
+		</property>
 	</bean>
 
 	<bean id="entityManagerFactory"
@@ -64,11 +51,11 @@
 			</props>
 		</property>
 	</bean>
-	
+
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
-	
+
 	<bean id="xstream" class="com.com2mem.marshaller.C2MXStreamMarshaller">
 		<property name="classesToUnmarshall">
 			<list>
@@ -83,9 +70,9 @@
 			</list>
 		</property>
 	</bean>
-	
-	<bean id="dictionaryService" class="com.com2mem.service.impl.DictionaryServiceImpl"/>
-	
-	<context:property-placeholder location="classpath:api_keys.properties"/>
-	
+
+	<bean id="dictionaryService" class="com.com2mem.service.impl.DictionaryServiceImpl" />
+
+	<context:property-placeholder location="classpath:api_keys.properties" />
+
 </beans>
