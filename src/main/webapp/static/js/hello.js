@@ -14,7 +14,7 @@ angular
 					$httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 
 				}).controller('home', function($scope, $http) {
-			$http.get('/resource/').success(function(data) {
+			$http.get('/commit2memo/resource').success(function(data) {
 				$scope.greeting = data;
 			})
 		})

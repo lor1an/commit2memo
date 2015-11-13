@@ -18,5 +18,11 @@ public class WelcomeController {
         return "index";
     }
     
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(ModelMap model) {
+        System.out.println("hi");
+        return "login";
+    }
+    
 
 }

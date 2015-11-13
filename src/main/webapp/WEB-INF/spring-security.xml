@@ -10,7 +10,11 @@
 		<intercept-url pattern="/" access="ROLE_USER" />
 		<intercept-url pattern="/index.html" access="ROLE_USER" />
 		<intercept-url pattern="/home.html" access="ROLE_USER" />
-		<intercept-url pattern="/login.html" access="ROLE_USER" />
+		<form-login 
+		    login-page="/login"
+		    default-target-url="/"
+		     />
+		    
 	</http>
 	
 	<authentication-manager>
