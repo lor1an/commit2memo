@@ -14,7 +14,7 @@ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 public class DefinitionConverter implements Converter {
 
     @Override
-    public boolean canConvert( Class clazz) {
+    public boolean canConvert(Class clazz) {
         return clazz.equals(Definition.class);
     }
 

@@ -1,4 +1,4 @@
-package com.com2mem.dao;
+package com.com2mem.repository;
 
 import java.util.List;
 
@@ -8,8 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.com2mem.model.Usr;
 
-@Repository("userDao")
+@Repository("userRepository")
 @Transactional
-public interface UsrDao extends CrudRepository<Usr, Long> {
+public interface UsrRepository extends CrudRepository<Usr, Long> {
+	
     public List<Usr> findByLogin(String login);
+    
 }
