@@ -18,8 +18,10 @@ public class Usr {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long usrId;
 	private String login;
+	private String username;
 	private String password;
 	private String email;
+	private String address;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usr")
 	private List<Deck> decks;
 
@@ -73,8 +75,24 @@ public class Usr {
 	public void setDecks(List<Deck> decks) {
 		this.decks = decks;
 	}
+	
+	public String getUsername() {
+        return username;
+    }
 
-	@Override
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @Override
 	public String toString() {
 		return "User [usrId=" + usrId + ", login=" + login + ", password="
 				+ password + ", email=" + email + "]";

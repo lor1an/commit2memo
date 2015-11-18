@@ -17,12 +17,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Usr addUser(final Usr user) {
-        // if(userRepository.findByLogin(login) == null){
         return userRepository.save(user);
-        /*
-         * }else{ throw new IllegalArgumentException("Login is taken"); }
-         */
-
     }
 
     @Override
@@ -38,8 +33,33 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void editUser(final Usr user) {
+    public void updateUser(Usr user) {
         userRepository.save(user);
+    }
+
+    @Override
+    public List<Usr> getAllUsers() {
+        return (List<Usr>) userRepository.findAll();
+    }
+
+    @Override
+    public boolean isUserExist(Usr user) {
+        return getUserById(user.getUsrId()) != null;
+    }
+
+    @Override
+    public void saveUser(Usr user) {
+        userRepository.save(user);
+    }
+
+    @Override
+    public void deleteUserById(Long id) {
+        userRepository.delete(id);
+    }
+
+    @Override
+    public void deleteAllUsers() {
+        userRepository.deleteAll();
     }
 
 }

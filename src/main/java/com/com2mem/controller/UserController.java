@@ -16,17 +16,17 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/users", method = RequestMethod.POST)
+    @RequestMapping(value = "/usrs", method = RequestMethod.POST)
     public Usr addUser(@RequestBody Usr user) {
         return userService.addUser(user);
     }
 
-    @RequestMapping(value = "/users", method = RequestMethod.PUT)
+/*    @RequestMapping(value = "/usrs", method = RequestMethod.PUT)
     public void updateUser(@RequestBody Usr user) {
         userService.editUser(user);
-    }
+    }*/
     
-    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/usrs/{id}", method = RequestMethod.GET)
     public Usr updateUser(@PathVariable Long id) {
        return userService.getUserById(id);
     }

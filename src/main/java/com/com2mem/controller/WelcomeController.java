@@ -14,8 +14,8 @@ public class WelcomeController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String welcome(ModelMap model) {
-        System.out.println("hi");
-        return "index";
+        System.out.println("hello");
+        return "UserManagement";
     }
     
     @RequestMapping(value = "/login", method = RequestMethod.GET)
