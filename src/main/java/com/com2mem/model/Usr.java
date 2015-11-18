@@ -27,11 +27,12 @@ public class Usr {
 
 	}
 
-	public Usr(String login, String email) {
-		super();
-		this.login = login;
-		this.email = email;
-	}
+    public Usr(final String login,final  String password,final  String email) {
+        super();
+        this.login = login;
+        this.password = password;
+        this.email = email;
+    }
 
 	public Long getUsrId() {
 		return usrId;
