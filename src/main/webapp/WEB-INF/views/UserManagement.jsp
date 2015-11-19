@@ -27,7 +27,7 @@
 }
 </style>
 <link href="static/css/angular-bootstrap.css" rel="stylesheet">
-<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
+<link href="static/css/app.css" rel="stylesheet"></link>
 </head>
 <body ng-app="myApp" class="ng-cloak">
 	<div class="generic-container" ng-controller="UserController as ctrl">
@@ -114,7 +114,7 @@
 					</thead>
 					<tbody>
 						<tr ng-repeat="u in ctrl.users">
-							<td><span ng-bind="u.id"></span></td>
+							<td><span ng-bind="u.usrId"></span></td>
 							<td><span ng-bind="u.username"></span></td>
 							<td><span ng-bind="u.address"></span></td>
 							<td><span ng-bind="u.email"></span></td>
@@ -133,8 +133,8 @@
 
 	<script src="static/js/angular-bootstrap.js" type="text/javascript"></script>
 	<script src="static/js/hello.js"></script>
-	<script src="/static/js/app.js"></script>
-	<script src="/static/js/service/user_service.js"></script>
-	<script src="/static/js/controller/user_controller.js"></script>
+	<script src="static/js/app.js"></script>
+	<script src="static/js/user_service.js"></script>
+	<script src="static/js/user_controller.js"></script>
 </body>
 </html>

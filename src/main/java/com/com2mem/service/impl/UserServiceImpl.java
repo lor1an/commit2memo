@@ -44,7 +44,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean isUserExist(Usr user) {
-        return getUserById(user.getUsrId()) != null;
+        if (user.getUsrId() != null) {
+            return getUserById(user.getUsrId()) != null;
+        }
+        return false;
     }
 
     @Override

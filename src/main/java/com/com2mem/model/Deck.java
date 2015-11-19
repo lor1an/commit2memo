@@ -20,7 +20,7 @@ public class Deck {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long deckId;
 	private String name;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "deck")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "deck")
 	private List<Card> cards;
 	@ManyToOne
 	@JoinColumn(name = "usrId")

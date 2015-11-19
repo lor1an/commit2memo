@@ -22,7 +22,7 @@ public class Usr {
 	private String password;
 	private String email;
 	private String address;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usr")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "usr")
 	private List<Deck> decks;
 
 	public Usr() {
