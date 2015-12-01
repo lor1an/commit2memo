@@ -108,26 +108,37 @@ body {
 				</ul>
 			</div>
 			<div class="row">
-				<div class="col-sm-6 " style="">
+				<div class="col-sm-6 ">
 					<div class="thumbnail">
 						<div class="caption">
 							<h3>Card:</h3>
-							<div>
+							<div class="btn-group btn-group-justified" role="group">
 								<!-- <a href="#" class="btn btn-primary" role="button">Button</a> <a
 									href="#" class="btn btn-default" role="button">Button</a> -->
-								<button type="button" class="btn btn-default">
-								<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> 
-								Prev</button>
-								<button type="button" class="btn btn-success">
-								<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 
-								Remember</button>
-								<button type="button" class="btn btn-danger">
-								<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> 
-								Repeat</button>
-								<button type="button" class="btn btn-default">
-								<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> 
-								Next</button>
-
+								<div class="btn-group" role="group">
+									<button type="button" class="btn btn-default">
+										<span class="glyphicon glyphicon-chevron-left"
+											aria-hidden="true"></span> Prev card
+									</button>
+								</div>
+								<div class="btn-group" role="group">
+									<button type="button" class="btn btn-success">
+										<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+										Remember
+									</button>
+								</div>
+								<div class="btn-group" role="group">
+									<button type="button" class="btn btn-danger">
+										<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+										Repeat Later
+									</button>
+								</div>
+								<div class="btn-group" role="group">
+									<button type="button" class="btn btn-default">
+										<span class="glyphicon glyphicon-chevron-right"
+											aria-hidden="true"></span> Next card
+									</button>
+								</div>
 							</div>
 						</div>
 					</div>

@@ -6,23 +6,16 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
-	<http auto-config="true">
-		<intercept-url pattern="/" access="ROLE_USER" />
-		<intercept-url pattern="/index.html" access="ROLE_USER" />
-		<intercept-url pattern="/home.html" access="ROLE_USER" />
-		<form-login 
-		    login-page="/login"
-		    default-target-url="/"
-		     />
-		    
+<http auto-config="true">
+		<intercept-url pattern="/**" access="ROLE_USER" />
 	</http>
-	
+
 	<authentication-manager>
-	  <authentication-provider>
-	    <user-service>
-		<user name="admin" password="nimda" authorities="ROLE_USER" />
-	    </user-service>
-	  </authentication-provider>
+		<authentication-provider>
+			<user-service>
+				<user name="admin" password="nimda" authorities="ROLE_USER" />
+			</user-service>
+		</authentication-provider>
 	</authentication-manager>
 
 

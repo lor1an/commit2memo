@@ -2,7 +2,7 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<title>Kibana dashboard</title>
+<title>Main page</title>
 <meta name="generator" content="Bootply" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -66,7 +66,8 @@
 					voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
 					ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
 					non numquam eius modi tempora incidunt ut labore et dolore magnam
-					aliquam quaerat voluptatem. Ut enim ad minima veniam, quis noquasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+					aliquam quaerat voluptatem. Ut enim ad minima veniam, quis noquasi
+					architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
 					voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
 					quia cor magni dolores eos qui ratione voluptatem sequi nesciunt.
 					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
@@ -81,7 +82,8 @@
 					ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
 					non numquam eius modi tempora incidunt ut labore et dolore magnam
 					aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-					exercitationem ullam corporis suscipit laboriosam, nisi utquasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+					exercitationem ullam corporis suscipit laboriosam, nisi utquasi
+					architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
 					voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
 					quia cor magni dolores eos qui ratione voluptatem sequi nesciunt.
 					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
@@ -96,7 +98,8 @@
 					ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
 					non numquam eius modi tempora incidunt ut labore et dolore magnam
 					aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-					exercitationem ullam corporis suscipit laboriosam, nisi utquasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+					exercitationem ullam corporis suscipit laboriosam, nisi utquasi
+					architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
 					voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
 					quia cor magni dolores eos qui ratione voluptatem sequi nesciunt.
 					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
@@ -111,7 +114,8 @@
 					ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
 					non numquam eius modi tempora incidunt ut labore et dolore magnam
 					aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-					exercitationem ullam corporis suscipit laboriosam, nisi utquasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+					exercitationem ullam corporis suscipit laboriosam, nisi utquasi
+					architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
 					voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
 					quia cor magni dolores eos qui ratione voluptatem sequi nesciunt.
 					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
@@ -126,7 +130,8 @@
 					ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
 					non numquam eius modi tempora incidunt ut labore et dolore magnam
 					aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-					exercitationem ullam corporis suscipit laboriosam, nisi utquasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+					exercitationem ullam corporis suscipit laboriosam, nisi utquasi
+					architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
 					voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
 					quia cor magni dolores eos qui ratione voluptatem sequi nesciunt.
 					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
@@ -141,7 +146,8 @@
 					ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
 					non numquam eius modi tempora incidunt ut labore et dolore magnam
 					aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-					exercitationem ullam corporis suscipit laboriosam, nisi utquasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+					exercitationem ullam corporis suscipit laboriosam, nisi utquasi
+					architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
 					voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
 					quia cor magni dolores eos qui ratione voluptatem sequi nesciunt.
 					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
@@ -165,7 +171,7 @@
 				<h2 id="sec2">Average elapsed time</h2>
 				<p>Can be used to analyze page popularity, by the average time,
 					that users spend on a particular page.</p>
-					<p>Rem aperiam, eaque ipsa quae ab illo inventore veritatis et
+				<p>Rem aperiam, eaque ipsa quae ab illo inventore veritatis et
 					quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
 					voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
 					quia cor magni dolores eos qui ratione voluptatem sequi nesciunt.
@@ -190,20 +196,51 @@
 				<p>Shows what page elements are clicked most frequently. Can
 					help to find redundant UI controls, that are not popular among
 					users, or are not used at all.</p>
-					<p>Rem aperiam, eaque ipsa quae ab illo inventore veritatis et
+				<p>Rem aperiam, eaque ipsa quae ab illo inventore veritatis et
 					quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
 					voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
 					quia cor magni dolores eos qui ratione voluptatem sequi nesciunt.
 					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
 					consectetur, adipisci velit, sed quia non numquam eius modi tempora
 					incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut
-					enim ad minima veniam, quis nostrum exercitat					explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur
+					enim ad minima veniam, quis nostrum exercitat explicabo. Nemo enim
+					ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+					sed quia cor magni dolores eos qui ratione voluptatem sequi
+					nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
+					sit amet, consectetur, adipisci velit, sed quia non numquam eius
+					modi tempora incidunt ut labore et dolore magnam aliquam quaerat
+					voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem
+					ullam corporis suscipit laboriosam, nisi utquasi architecto beatae
+					vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+					voluptas sit aspernatur aut odit aut fugit, sed quia cor magni
+					dolores eos qui ratione voluptatem sequi nesciunt. Neque porro
+					quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+					adipisci velit, sed quia non numquam eius modi tempora incidunt ut
+					labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad
+					minima veniam, quis nostrum exercitationem ullam corporis suscipit
+					laboriosam, nisi ut. Rem aperiam, eaque ipsa quae ab illo inventore
+					veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+					Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
+					aut fugit, sed quia cor magni dolores eos qui ratione voluptatem
+					sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia
+					dolor sit amet, consectetur, adipisci velit, sed quia non numquam
+					eius modi tempora incidunt ut labore et dolore magnam aliquam
+					quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
+					exercitationem ullam corporis suscipit laboriosam, nisi utquasi
+					architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+					voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
+					quia cor magni dolores eos qui ratione voluptatem sequi nesciunt.
+					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
+					consectetur, adipisci velit, sed quia non numquam eius modi tempora
+					incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut
+					explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur
 					aut odit aut fugit, sed quia cor magni dolores eos qui ratione
 					voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
 					ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
 					non numquam eius modi tempora incidunt ut labore et dolore magnam
 					aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-					exercitationem ullam corporis suscipit laboriosam, nisi utquasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+					exercitationem ullam corporis suscipit laboriosam, nisi utquasi
+					architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
 					voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
 					quia cor magni dolores eos qui ratione voluptatem sequi nesciunt.
 					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
@@ -218,19 +255,21 @@
 					ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
 					non numquam eius modi tempora incidunt ut labore et dolore magnam
 					aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-					exercitationem ullam corporis suscipit laboriosam, nisi utquasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+					exercitationem ullam corporis suscipit laboriosam, nisi utquasi
+					architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
 					voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
 					quia cor magni dolores eos qui ratione voluptatem sequi nesciunt.
 					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
 					consectetur, adipisci velit, sed quia non numquam eius modi tempora
 					incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut
-										explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur
+					explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur
 					aut odit aut fugit, sed quia cor magni dolores eos qui ratione
 					voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
 					ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
 					non numquam eius modi tempora incidunt ut labore et dolore magnam
 					aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-					exercitationem ullam corporis suscipit laboriosam, nisi utquasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+					exercitationem ullam corporis suscipit laboriosam, nisi utquasi
+					architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
 					voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
 					quia cor magni dolores eos qui ratione voluptatem sequi nesciunt.
 					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
@@ -245,19 +284,21 @@
 					ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
 					non numquam eius modi tempora incidunt ut labore et dolore magnam
 					aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-					exercitationem ullam corporis suscipit laboriosam, nisi utquasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+					exercitationem ullam corporis suscipit laboriosam, nisi utquasi
+					architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
 					voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
 					quia cor magni dolores eos qui ratione voluptatem sequi nesciunt.
 					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
 					consectetur, adipisci velit, sed quia non numquam eius modi tempora
 					incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut
-										explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur
+					explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur
 					aut odit aut fugit, sed quia cor magni dolores eos qui ratione
 					voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
 					ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
 					non numquam eius modi tempora incidunt ut labore et dolore magnam
 					aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-					exercitationem ullam corporis suscipit laboriosam, nisi utquasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+					exercitationem ullam corporis suscipit laboriosam, nisi utquasi
+					architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
 					voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
 					quia cor magni dolores eos qui ratione voluptatem sequi nesciunt.
 					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
@@ -272,19 +313,21 @@
 					ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
 					non numquam eius modi tempora incidunt ut labore et dolore magnam
 					aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-					exercitationem ullam corporis suscipit laboriosam, nisi utquasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+					exercitationem ullam corporis suscipit laboriosam, nisi utquasi
+					architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
 					voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
 					quia cor magni dolores eos qui ratione voluptatem sequi nesciunt.
 					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
 					consectetur, adipisci velit, sed quia non numquam eius modi tempora
 					incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut
-										explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur
+					explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur
 					aut odit aut fugit, sed quia cor magni dolores eos qui ratione
 					voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
 					ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
 					non numquam eius modi tempora incidunt ut labore et dolore magnam
 					aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-					exercitationem ullam corporis suscipit laboriosam, nisi utquasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+					exercitationem ullam corporis suscipit laboriosam, nisi utquasi
+					architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
 					voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
 					quia cor magni dolores eos qui ratione voluptatem sequi nesciunt.
 					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
@@ -299,49 +342,23 @@
 					ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
 					non numquam eius modi tempora incidunt ut labore et dolore magnam
 					aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-					exercitationem ullam corporis suscipit laboriosam, nisi utquasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+					exercitationem ullam corporis suscipit laboriosam, nisi utquasi
+					architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
 					voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
 					quia cor magni dolores eos qui ratione voluptatem sequi nesciunt.
 					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
 					consectetur, adipisci velit, sed quia non numquam eius modi tempora
 					incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut
-										explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur
-					aut odit aut fugit, sed quia cor magni dolores eos qui ratione
-					voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
-					ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
-					non numquam eius modi tempora incidunt ut labore et dolore magnam
-					aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-					exercitationem ullam corporis suscipit laboriosam, nisi utquasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
-					voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
-					quia cor magni dolores eos qui ratione voluptatem sequi nesciunt.
-					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-					consectetur, adipisci velit, sed quia non numquam eius modi tempora
-					incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut
-					enim ad minima veniam, quis nostrum exercitationem ullam corporis
-					suscipit laboriosam, nisi ut. Rem aperiam, eaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur
-					aut odit aut fugit, sed quia cor magni dolores eos qui ratione
-					voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
-					ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
-					non numquam eius modi tempora incidunt ut labore et dolore magnam
-					aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-					exercitationem ullam corporis suscipit laboriosam, nisi utquasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
-					voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
-					quia cor magni dolores eos qui ratione voluptatem sequi nesciunt.
-					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-					consectetur, adipisci velit, sed quia non numquam eius modi tempora
-					incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut
-					ionem ullam corporis
-					suscipit laboriosam, nisi ut. Rem aperiam, eaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur
-					aut odit aut fugit, sed quia cor magni dolores eos qui ratione
-					voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
-					ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
-					non numquam eius modi tempora incidunt ut labore et dolore magnam
-					aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-					exercitationem ullam corporis suscipit laboriosam, nisi ut!</p>
+					ionem ullam corporis suscipit laboriosam, nisi ut. Rem aperiam,
+					eaque ipsa quae ab illo inventore veritatis et quasi architecto
+					beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+					voluptas sit aspernatur aut odit aut fugit, sed quia cor magni
+					dolores eos qui ratione voluptatem sequi nesciunt. Neque porro
+					quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+					adipisci velit, sed quia non numquam eius modi tempora incidunt ut
+					labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad
+					minima veniam, quis nostrum exercitationem ullam corporis suscipit
+					laboriosam, nisi ut!</p>
 				<div class="row"></div>
 
 				<hr>

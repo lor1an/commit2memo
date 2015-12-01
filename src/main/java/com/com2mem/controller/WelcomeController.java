@@ -26,5 +26,11 @@ public class WelcomeController {
     }
     
     
+    @RequestMapping(value = "/trainings", method = RequestMethod.GET)
+    public String trainings(ModelMap model) {
+        return "trainings";
+    }
+    
+    
 
 }
