@@ -29,6 +29,15 @@ body {
 	padding-top: 50px;
 }
 
+div:empty {
+   display: none;
+}
+
+
+audio[src=""]{
+	display: none;
+}
+
 #masthead {
 	min-height: 250px;
 }
@@ -75,11 +84,15 @@ body {
 	border: 0 #eee solid;
 	border-right-width: 5px;
 }
+
+.entryWord{
+	font-weight: 600;
+}
 </style>
 </head>
 
 <body ng-app="myApp" class="ng-cloak">
-
+	<div>John</div>
 	<nav class="navbar navbar-default navbar-fixed-top" role="banner">
 		<div class="container">
 			<div class="navbar-header">
@@ -164,13 +177,11 @@ body {
 			}
 			var inc = incr();
 			var transform = {"tag":"div","class":"word","children":[
-			              											{"tag":"div","class":"entryWord","html":"\${entryWord}"},
-			              {"tag":"div","class":"sound","html":"\${sound.wav}"},
+						  {"tag":"div","class":"entryWord","html":"\${entryWord} - <div >Jo\${pronunciation}hn</div>"},			                                                        
+			              {"tag":"audio controls","src":"\${sound.wav}", "type":"audio/mpeg", "html":"\${sound.wav}"},
 			              {"tag":"div","class":"pronunciation","html":"\${pronunciation}"},
 			              {"tag":"div","class":"funcLabel","html":"\${funcLabel}"},
 			              {"tag":"div","class":"def", "id": "def" + inc}
-			              
-			              
 			  ]};
 			
 			var transform2 = {"tag":"div","class":"sndf","id": "sndf" + inc, "children":[
@@ -209,6 +220,7 @@ body {
 				console.log("error");
 			}); 
 
+			$( "div:contains('John')" ).css( "display", "none" );
 		});
 	</script>
 </body>
