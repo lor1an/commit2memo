@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<title>Bootply snippet - Bootstrap Bootstrap 3 Affix Sidebar</title>
+<title>Commit 2 memo</title>
 <meta name="generator" content="Bootply" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -76,6 +76,55 @@ body {
 	border: 0 #eee solid;
 	border-right-width: 5px;
 }
+
+.flip {
+	-webkit-perspective: 800;
+	width: 400px;
+	height: 200px;
+	position: relative;
+	margin: 50px auto;
+}
+
+.flip .card.flipped {
+	-webkit-transform: rotatex(-180deg);
+}
+
+.flip .card {
+	width: 100%;
+	height: 100%;
+	-webkit-transform-style: preserve-3d;
+	-webkit-transition: 0.5s;
+}
+
+.flip .card .face {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	-webkit-backface-visibility: hidden;
+	z-index: 2;
+	font-family: Georgia;
+	text-align: left;
+}
+
+.flip .card .front {
+	position: absolute;
+	z-index: 1;
+	background: white;
+	color: black;
+	cursor: pointer;
+	border: solid;
+	font-size: 3em;
+	text-align: center;
+	line-height: 200px;
+}
+
+.flip .card .back {
+	-webkit-transform: rotatex(-180deg);
+	background: white;
+	color: black;
+	cursor: pointer;
+	border: solid;
+}
 </style>
 </head>
 
@@ -84,7 +133,7 @@ body {
 	<nav class="navbar navbar-default navbar-fixed-top" role="banner">
 		<div class="container">
 			<div class="navbar-header">
-				<a href="/" class="navbar-brand">2memo</a>
+				<a href="/" class="navbar-brand">C2memo</a>
 			</div>
 			<nav class="collapse navbar-collapse" role="navigation">
 				<ul class="nav navbar-nav">
@@ -110,115 +159,60 @@ body {
 			<div class="row">
 				<div class="col-sm-6 ">
 					<div class="thumbnail">
-						<div class="caption">
-							<h3>Card:</h3>
-							<div class="btn-group btn-group-justified" role="group">
-								<!-- <a href="#" class="btn btn-primary" role="button">Button</a> <a
+						<div class="flip">
+							<div id="a" class="card">
+								<div class="face front">food</div>
+								<div class="face back">
+									<div>
+										<span> /food/ </span>
+									</div>
+									<audio controls=""
+										src="http://media.merriam-webster.com/soundc11/f/food0001.wav"
+										type="audio/mpeg"></audio>
+									<div>
+										<span style="font-style: italic;">noun</span>
+									</div>
+									<div class="senseNumber">
+										<span style="font-weight: bold;">(1 a)</span> :material
+										consisting essentially of protein, carbohydrate, and fat used
+										in the body of an organism to sustain growth, repair, and
+										vital processes and to furnish energy
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="btn-group btn-group-justified" role="group">
+							<!-- <a href="#" class="btn btn-primary" role="button">Button</a> <a
 									href="#" class="btn btn-default" role="button">Button</a> -->
-								<div class="btn-group" role="group">
-									<button type="button" class="btn btn-default">
-										<span class="glyphicon glyphicon-chevron-left"
-											aria-hidden="true"></span> Prev card
-									</button>
-								</div>
-								<div class="btn-group" role="group">
-									<button type="button" class="btn btn-success">
-										<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-										Remember
-									</button>
-								</div>
-								<div class="btn-group" role="group">
-									<button type="button" class="btn btn-danger">
-										<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
-										Repeat Later
-									</button>
-								</div>
-								<div class="btn-group" role="group">
-									<button type="button" class="btn btn-default">
-										<span class="glyphicon glyphicon-chevron-right"
-											aria-hidden="true"></span> Next card
-									</button>
-								</div>
+							<div class="btn-group" role="group">
+								<button type="button" class="btn btn-default">
+									<span class="glyphicon glyphicon-chevron-left"
+										aria-hidden="true"></span> Prev card
+								</button>
+							</div>
+							<div class="btn-group" role="group">
+								<button type="button" class="btn btn-success">
+									<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+									Remember
+								</button>
+							</div>
+							<div class="btn-group" role="group">
+								<button type="button" class="btn btn-danger">
+									<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+									Repeat Later
+								</button>
+							</div>
+							<div class="btn-group" role="group">
+								<button type="button" class="btn btn-default">
+									<span class="glyphicon glyphicon-chevron-right"
+										aria-hidden="true"></span> Next card
+								</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
-
-
-
-
-
-
-		<!-- 
-		<div class="col-md-9 col-md-offset-4"
-			ng-controller="UserController as ctrl" style="box-shadow: 0 0;">
-			<div class="panel panel-default">
-				<div class="formcontainer">
-					<form ng-submit="ctrl.submit()" name="myForm"
-						class="form-horizontal">
-						<input type="hidden" ng-model="ctrl.user.id" />
-						<div class="row">
-							<div class="form-group col-md-12">
-								<label class="col-md-2 control-lable" for="file">Name</label>
-								<div class="col-md-7">
-									<input type="text" ng-model="ctrl.user.username" name="uname"
-										class="username form-control input-sm"
-										placeholder="Enter your name" required ng-minlength="3" />
-									<div class="has-error" ng-show="myForm.$dirty">
-										<span ng-show="myForm.uname.$error.required">This is a
-											required field</span> <span ng-show="myForm.uname.$error.minlength">Minimum
-											length required is 3</span> <span ng-show="myForm.uname.$invalid">This
-											field is invalid </span>
-									</div>
-								</div>
-							</div>
-						</div>
-
-
-						<div class="row">
-							<div class="form-group col-md-12">
-								<label class="col-md-2 control-lable" for="file">Address</label>
-								<div class="col-md-7">
-									<input type="text" ng-model="ctrl.user.address"
-										class="form-control input-sm"
-										placeholder="Enter your Address. [This field is validation free]" />
-								</div>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="form-group col-md-12">
-								<label class="col-md-2 control-lable" for="file">Email</label>
-								<div class="col-md-7">
-									<input type="email" ng-model="ctrl.user.email" name="email"
-										class="email form-control input-sm"
-										placeholder="Enter your Email" required />
-									<div class="has-error" ng-show="myForm.$dirty">
-										<span ng-show="myForm.email.$error.required">This is a
-											required field</span> <span ng-show="myForm.email.$invalid">This
-											field is invalid </span>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="form-actions floatRight">
-								<input type="submit"
-									value="{{!ctrl.user.id ? 'Add' : 'Update'}}"
-									class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">
-								<button type="button" ng-click="ctrl.reset()"
-									class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset
-									Form</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div> -->
 	</div>
 	<script src="static/js/angular-bootstrap.js" type="text/javascript"></script>
 	<script src="static/js/hello.js"></script>
@@ -226,70 +220,14 @@ body {
 	<script src="static/js/user_service.js"></script>
 	<script src="static/js/user_controller.js"></script>
 
+	<script type="text/javascript">
+        $('.flip').click(function() {
+            $(this).find('.card').toggleClass('flipped');
+            return false;
+        });
+    </script>
 
 
-
-	<style>
-.ad {
-	position: absolute;
-	bottom: 70px;
-	right: 48px;
-	z-index: 992;
-	background-color: #f3f3f3;
-	position: fixed;
-	width: 155px;
-	padding: 1px;
-}
-
-.ad-btn-hide {
-	position: absolute;
-	top: -10px;
-	left: -12px;
-	background: #fefefe;
-	background: rgba(240, 240, 240, 0.9);
-	border: 0;
-	border-radius: 26px;
-	cursor: pointer;
-	padding: 2px;
-	height: 25px;
-	width: 25px;
-	font-size: 14px;
-	vertical-align: top;
-	outline: 0;
-}
-
-.carbon-img {
-	float: left;
-	padding: 10px;
-}
-
-.carbon-text {
-	color: #888;
-	display: inline-block;
-	font-family: Verdana;
-	font-size: 11px;
-	font-weight: 400;
-	height: 60px;
-	margin-left: 9px;
-	width: 142px;
-	padding-top: 10px;
-}
-
-.carbon-text:hover {
-	color: #666;
-}
-
-.carbon-poweredby {
-	color: #6A6A6A;
-	float: left;
-	font-family: Verdana;
-	font-size: 11px;
-	font-weight: 400;
-	margin-left: 10px;
-	margin-top: 13px;
-	text-align: center;
-}
-</style>
 
 </body>
 </html>

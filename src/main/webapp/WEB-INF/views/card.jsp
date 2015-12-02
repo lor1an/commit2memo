@@ -30,11 +30,10 @@ body {
 }
 
 div:empty {
-   display: none;
+	display: none;
 }
 
-
-audio[src=""]{
+audio[src=""] {
 	display: none;
 }
 
@@ -85,13 +84,29 @@ audio[src=""]{
 	border-right-width: 5px;
 }
 
-.entryWord{
+.word {
+	border: solid;
+}
+
+.list {
+	overflow-y: scroll;
+}
+
+.senseNumber {
+	border: 1px solid #ccc;
+}
+
+.input-group-addon {
+	border: none;
+}
+
+.senseNumber:hover {
+	background: #DCDCDC; /* make this whatever you want */
 }
 </style>
 </head>
 
 <body ng-app="myApp" class="ng-cloak">
-	<div>John</div>
 	<nav class="navbar navbar-default navbar-fixed-top" role="banner">
 		<div class="container">
 			<div class="navbar-header">
@@ -110,8 +125,8 @@ audio[src=""]{
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3" id="leftCol">
-				<ul class="nav nav-stacked row-fluid" style="position: fixed; top: 80px;"
-					id="sidebar">
+				<ul class="nav nav-stacked row-fluid"
+					style="position: fixed; top: 80px;" id="sidebar">
 					<li><a href="trainings">Trainings</a></li>
 					<li><a href="decks">Decks</a></li>
 					<li><a href="card">Add card</a></li>
@@ -131,10 +146,10 @@ audio[src=""]{
 
 						</div>
 
-						<div id="list"></div>
+						<div id="list" class='list'></div>
 
 
-						<div class="caption">
+						<!-- <div class="caption">
 							<div>
 								<div class="btn-group btn-group-justified" role="group">
 									<div class="btn-group" role="group">
@@ -145,7 +160,7 @@ audio[src=""]{
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
@@ -167,235 +182,92 @@ audio[src=""]{
 	<div id="chart"></div>
 
 	<script>
-	
-		$('.search').click(function() {
-			var i = 0;
-			function incr(){
-				i +=1;
-				return i;
-			}
-			var inc = incr();
-			var transform = {"tag":"div","class":"word","children":[
-						  {"tag":"div","class":"entryWord","html":"<span style='font-weight: bold;' >\${entryWord}</span ><span >	/\${pronunciation}/</span>"},			                                                        
-			              {"tag":"audio controls","src":"\${sound.wav}", "type":"audio/mpeg", "html":"\${sound.wav}"},
-			              {"tag":"div","class":"pronunciation","html":"\${pronunciation}"},
-			              {"tag":"div","class":"funcLabel","html":"\${funcLabel}"},
-			              {"tag":"div","class":"def", "id": "def" + inc}
-			  ]};
-			
-			var transform2 = {"tag":"div","class":"sndf","id": "sndf" + inc, "children":[
-			              											{"tag":"div","class":"senseNumber","html":"\${senseNumber}"},
-			              {"tag":"div","class":"value","html":"\${value}"},
-			              {"tag":"div","class":"synonymous","html":"\${synonymous}"},
-			              {"tag":"div","class":"usageNote","html":"\${usageNote}"},
-			              {"tag":"div","class":"verbalIllustration","html":"\${verbalIllustration}"}
-			              
-			              
-			  ]};
-			
-			var word = $('#search_field').val();
-		 	var url = "http://localhost:10080/commit2memo/entryList/";
-		 	var json1 = [{
-		 	 	"entryWord": "food",
-		 	 	"sound": {
-		 	 		"wav": "http://media.merriam-webster.com/soundc11/f/food0001.wav"
-		 	 	},
-		 	 	"pronunciation": "ˈfüd",
-		 	 	"funcLabel": "noun",
-		 	 	"def": {
-		 	 		"sndf": [{
-		 	 			"senseNumber": "1 a",
-		 	 			"value": ":material consisting essentially of protein, carbohydrate, and fat used in the body of an organism to sustain growth, repair, and vital processes and to furnish energy",
-		 	 			"synonymous": null,
-		 	 			"usageNote": null,
-		 	 			"verbalIllustration": null
-		 	 		}, {
-		 	 			"senseNumber": "1 a",
-		 	 			"value": ":such food together with supplementary substances (as minerals, vitamins, and condiments)",
-		 	 			"synonymous": null,
-		 	 			"usageNote": null,
-		 	 			"verbalIllustration": null
-		 	 		}, {
-		 	 			"senseNumber": "b",
-		 	 			"value": ":inorganic substances absorbed by plants in gaseous form or in water solution",
-		 	 			"synonymous": null,
-		 	 			"usageNote": null,
-		 	 			"verbalIllustration": null
-		 	 		}, {
-		 	 			"senseNumber": "2",
-		 	 			"value": ":nutriment in solid form",
-		 	 			"synonymous": null,
-		 	 			"usageNote": null,
-		 	 			"verbalIllustration": null
-		 	 		}, {
-		 	 			"senseNumber": "3",
-		 	 			"value": ":something that nourishes, sustains, or supplies ",
-		 	 			"synonymous": null,
-		 	 			"usageNote": null,
-		 	 			"verbalIllustration": "(f. e.:food for thought)"
-		 	 		}]
-		 	 	}
-		 	 }, {
-		 	 	"entryWord": "food chain",
-		 	 	"sound": null,
-		 	 	"pronunciation": null,
-		 	 	"funcLabel": "noun",
-		 	 	"def": {
-		 	 		"sndf": [{
-		 	 			"senseNumber": "1",
-		 	 			"value": ":an arrangement of the organisms of an ecological community according to the order of predation in which each uses the next usually lower member as a food source",
-		 	 			"synonymous": null,
-		 	 			"usageNote": null,
-		 	 			"verbalIllustration": null
-		 	 		}, {
-		 	 			"senseNumber": "2",
-		 	 			"value": ":a hierarchy based on power or importance ",
-		 	 			"synonymous": null,
-		 	 			"usageNote": null,
-		 	 			"verbalIllustration": "(f. e.:at the top of the corporate food chain)"
-		 	 		}]
-		 	 	}
-		 	 }, {
-		 	 	"entryWord": "food court",
-		 	 	"sound": null,
-		 	 	"pronunciation": null,
-		 	 	"funcLabel": "noun",
-		 	 	"def": {
-		 	 		"sndf": [{
-		 	 			"senseNumber": null,
-		 	 			"value": ":an area within a building (as a shopping mall) set apart for food concessions",
-		 	 			"synonymous": null,
-		 	 			"usageNote": null,
-		 	 			"verbalIllustration": null
-		 	 		}]
-		 	 	}
-		 	 }, {
-		 	 	"entryWord": "food poisoning",
-		 	 	"sound": null,
-		 	 	"pronunciation": null,
-		 	 	"funcLabel": "noun",
-		 	 	"def": {
-		 	 		"sndf": [{
-		 	 			"senseNumber": null,
-		 	 			"value": ":an acute gastrointestinal disorder caused by bacteria or their toxic products or by chemical residues in food",
-		 	 			"synonymous": null,
-		 	 			"usageNote": null,
-		 	 			"verbalIllustration": null
-		 	 		}]
-		 	 	}
-		 	 }, {
-		 	 	"entryWord": "food processor",
-		 	 	"sound": null,
-		 	 	"pronunciation": null,
-		 	 	"funcLabel": "noun",
-		 	 	"def": {
-		 	 		"sndf": [{
-		 	 			"senseNumber": null,
-		 	 			"value": ":an electric kitchen appliance with a set of interchangeable blades revolving inside a container",
-		 	 			"synonymous": null,
-		 	 			"usageNote": null,
-		 	 			"verbalIllustration": null
-		 	 		}]
-		 	 	}
-		 	 }, {
-		 	 	"entryWord": "food pyramid",
-		 	 	"sound": null,
-		 	 	"pronunciation": null,
-		 	 	"funcLabel": "noun",
-		 	 	"def": {
-		 	 		"sndf": [{
-		 	 			"senseNumber": null,
-		 	 			"value": ":an ecological hierarchy of food relationships in which a chief predator is at the top, each level preys on the next lower level, and usually green plants are at the bottom",
-		 	 			"synonymous": null,
-		 	 			"usageNote": null,
-		 	 			"verbalIllustration": null
-		 	 		}]
-		 	 	}
-		 	 }, {
-		 	 	"entryWord": "food stamp",
-		 	 	"sound": null,
-		 	 	"pronunciation": null,
-		 	 	"funcLabel": "noun",
-		 	 	"def": {
-		 	 		"sndf": [{
-		 	 			"senseNumber": null,
-		 	 			"value": ":a government-issued coupon that is sold or given to low-income persons and is redeemable for food",
-		 	 			"synonymous": null,
-		 	 			"usageNote": null,
-		 	 			"verbalIllustration": null
-		 	 		}]
-		 	 	}
-		 	 }, {
-		 	 	"entryWord": "food vacuole",
-		 	 	"sound": null,
-		 	 	"pronunciation": null,
-		 	 	"funcLabel": "noun",
-		 	 	"def": {
-		 	 		"sndf": [{
-		 	 			"senseNumber": null,
-		 	 			"value": ":a membrane-bound vacuole (as in an amoeba) in which ingested food is digested ",
-		 	 			"synonymous": null,
-		 	 			"usageNote": null,
-		 	 			"verbalIllustration": null
-		 	 		}]
-		 	 	}
-		 	 }, {
-		 	 	"entryWord": "food web",
-		 	 	"sound": null,
-		 	 	"pronunciation": null,
-		 	 	"funcLabel": "noun",
-		 	 	"def": {
-		 	 		"sndf": [{
-		 	 			"senseNumber": null,
-		 	 			"value": ":the totality of interacting food chains in an ecological community",
-		 	 			"synonymous": null,
-		 	 			"usageNote": null,
-		 	 			"verbalIllustration": null
-		 	 		}]
-		 	 	}
-		 	 }, {
-		 	 	"entryWord": "angel food cake",
-		 	 	"sound": null,
-		 	 	"pronunciation": null,
-		 	 	"funcLabel": "noun",
-		 	 	"def": {
-		 	 		"sndf": [{
-		 	 			"senseNumber": null,
-		 	 			"value": ":a usually white sponge cake made of flour, sugar, and whites of eggs",
-		 	 			"synonymous": null,
-		 	 			"usageNote": null,
-		 	 			"verbalIllustration": null
-		 	 		}]
-		 	 	}
-		 	 }];
- 			$.get(url + word, function(data) {
+        $('.search')
+                .click(
+                        function() {
+                            var button = "<div><div class='btn-group btn-group-justified' role='group'><div class='btn-group' role='group'><button type='button' class='btn btn-success'><span class='glyphicon glyphicon-plus' aria-hidden='true'></span>Add card</button></div></div>	</div>";
+                            var checkbox = "<span class='input-group-addon'><input type='checkbox' aria-label='...'></span>";
+                            var i = 0;
+                            function incr() {
+                                i += 1;
+                                return i;
+                            }
+                            var inc = incr();
+                            var transform = {
+                                "tag" : "div",
+                                "id" : "word" + inc,
+                                "class" : "word",
+                                "children" : [ {
+                                    "tag" : "div",
+                                    "class" : "entryWord",
+                                    "html" : "<span style='font-weight: bold;' >\${entryWord}</span><span>  /\${pronunciation}/ </span>"
+                                }, {
+                                    "tag" : "div",
+                                    "html" : "<audio controls src='\${sound.wav}' type='audio/mpeg'></audio>"
+                                }, {
+                                    "tag" : "div",
+                                    "class" : "def",
+                                    "id" : "def" + inc,
+                                    "html" : "<span style='font-style: italic;' >	\${funcLabel}</span>"
+                                } ]
+                            };
 
-				var json = data.entryList;
-				console.log(JSON.stringify(json));
-				for(var j =0; j < json.length; j++){
-					$('#list').json2html(json[j], transform, {"replace": true});
-					transform.children[4].id = "def" + incr(); 
-				}
-				i = 0;
-			  	for(var j =0; j < json.length; j++){
-					var inc = incr();
-					var k_inc = 0;
-					for(var k =0; k < json[j].def.sndf.length; k++){
-						transform2.id = "sndf"+inc.toString()	 + k_inc;
-					 	$('#def' + inc).json2html(json[j].def.sndf[k], transform2); 
-						k_inc++;
-					}
-				}
-			  	$( "span:contains('//')" ).css( "display", "none" );
-				
-			}).fail(function() {
-				console.log("error");
-			}); 
-			
-			  
+                            var transform2 = {
+                                "tag" : "div",
+                                "class" : "sndf",
+                                "id" : "sndf" + inc,
+                                "children" : [ {
+                                    "tag" : "div",
+                                    "class" : "senseNumber input-group",
+                                    "html" : "<span style='font-weight: bold;' >(\${senseNumber})</span> \${value} \${verbalIllustration}"
+                                }, {
+                                    "tag" : "div",
+                                    "class" : "synonymous",
+                                    "html" : "\${synonymous}"
+                                }, {
+                                    "tag" : "div",
+                                    "class" : "usageNote",
+                                    "html" : "\${usageNote}"
+                                } ]
+                            };
 
-			
-		});
-	</script>
+                            var word = $('#search_field').val();
+                            var url = "http://localhost:10080/commit2memo/entryList/";
+                            $.get(url + word, function(data) {
+
+                                var json = data.entryList;
+
+                                if (!$('#list').is(':empty')) {
+                                    $('#list').empty();
+                                }
+
+                                for (var j = 0; j < json.length; j++) {
+                                    $('#list').json2html(json[j], transform);
+                                    var inc = incr();
+                                    transform.children[2].id = "def" + inc;
+                                    var cur_word_id = "word" + inc
+                                    transform.id = cur_word_id;
+                                }
+                                i = 0;
+                                for (var j = 0; j < json.length; j++) {
+                                    var inc = incr();
+                                    var k_inc = 0;
+                                    for (var k = 0; k < json[j].def.sndf.length; k++) {
+                                        transform2.id = "sndf" + inc.toString() + k_inc;
+                                        $('#def' + inc).json2html(json[j].def.sndf[k], transform2);
+                                        k_inc++;
+                                    }
+                                }
+                                $("span:contains('//')").css("display", "none");
+                                $("span:contains('()')").css("display", "none");
+                                $('.word').append(button);
+                                $('.senseNumber').append(checkbox);
+
+                            }).fail(function() {
+                                console.log("error");
+                            });
+
+                        });
+    </script>
 </body>
 </html>
