@@ -86,7 +86,6 @@ audio[src=""]{
 }
 
 .entryWord{
-	font-weight: 600;
 }
 </style>
 </head>
@@ -177,7 +176,7 @@ audio[src=""]{
 			}
 			var inc = incr();
 			var transform = {"tag":"div","class":"word","children":[
-						  {"tag":"div","class":"entryWord","html":"\${entryWord} - <div >Jo\${pronunciation}hn</div>"},			                                                        
+						  {"tag":"div","class":"entryWord","html":"<span style='font-weight: bold;' >\${entryWord}</span ><span >	/\${pronunciation}/</span>"},			                                                        
 			              {"tag":"audio controls","src":"\${sound.wav}", "type":"audio/mpeg", "html":"\${sound.wav}"},
 			              {"tag":"div","class":"pronunciation","html":"\${pronunciation}"},
 			              {"tag":"div","class":"funcLabel","html":"\${funcLabel}"},
@@ -196,13 +195,185 @@ audio[src=""]{
 			
 			var word = $('#search_field').val();
 		 	var url = "http://localhost:10080/commit2memo/entryList/";
-		 	
-			$.get(url + word, function(data) {
+		 	var json1 = [{
+		 	 	"entryWord": "food",
+		 	 	"sound": {
+		 	 		"wav": "http://media.merriam-webster.com/soundc11/f/food0001.wav"
+		 	 	},
+		 	 	"pronunciation": "ˈfüd",
+		 	 	"funcLabel": "noun",
+		 	 	"def": {
+		 	 		"sndf": [{
+		 	 			"senseNumber": "1 a",
+		 	 			"value": ":material consisting essentially of protein, carbohydrate, and fat used in the body of an organism to sustain growth, repair, and vital processes and to furnish energy",
+		 	 			"synonymous": null,
+		 	 			"usageNote": null,
+		 	 			"verbalIllustration": null
+		 	 		}, {
+		 	 			"senseNumber": "1 a",
+		 	 			"value": ":such food together with supplementary substances (as minerals, vitamins, and condiments)",
+		 	 			"synonymous": null,
+		 	 			"usageNote": null,
+		 	 			"verbalIllustration": null
+		 	 		}, {
+		 	 			"senseNumber": "b",
+		 	 			"value": ":inorganic substances absorbed by plants in gaseous form or in water solution",
+		 	 			"synonymous": null,
+		 	 			"usageNote": null,
+		 	 			"verbalIllustration": null
+		 	 		}, {
+		 	 			"senseNumber": "2",
+		 	 			"value": ":nutriment in solid form",
+		 	 			"synonymous": null,
+		 	 			"usageNote": null,
+		 	 			"verbalIllustration": null
+		 	 		}, {
+		 	 			"senseNumber": "3",
+		 	 			"value": ":something that nourishes, sustains, or supplies ",
+		 	 			"synonymous": null,
+		 	 			"usageNote": null,
+		 	 			"verbalIllustration": "(f. e.:food for thought)"
+		 	 		}]
+		 	 	}
+		 	 }, {
+		 	 	"entryWord": "food chain",
+		 	 	"sound": null,
+		 	 	"pronunciation": null,
+		 	 	"funcLabel": "noun",
+		 	 	"def": {
+		 	 		"sndf": [{
+		 	 			"senseNumber": "1",
+		 	 			"value": ":an arrangement of the organisms of an ecological community according to the order of predation in which each uses the next usually lower member as a food source",
+		 	 			"synonymous": null,
+		 	 			"usageNote": null,
+		 	 			"verbalIllustration": null
+		 	 		}, {
+		 	 			"senseNumber": "2",
+		 	 			"value": ":a hierarchy based on power or importance ",
+		 	 			"synonymous": null,
+		 	 			"usageNote": null,
+		 	 			"verbalIllustration": "(f. e.:at the top of the corporate food chain)"
+		 	 		}]
+		 	 	}
+		 	 }, {
+		 	 	"entryWord": "food court",
+		 	 	"sound": null,
+		 	 	"pronunciation": null,
+		 	 	"funcLabel": "noun",
+		 	 	"def": {
+		 	 		"sndf": [{
+		 	 			"senseNumber": null,
+		 	 			"value": ":an area within a building (as a shopping mall) set apart for food concessions",
+		 	 			"synonymous": null,
+		 	 			"usageNote": null,
+		 	 			"verbalIllustration": null
+		 	 		}]
+		 	 	}
+		 	 }, {
+		 	 	"entryWord": "food poisoning",
+		 	 	"sound": null,
+		 	 	"pronunciation": null,
+		 	 	"funcLabel": "noun",
+		 	 	"def": {
+		 	 		"sndf": [{
+		 	 			"senseNumber": null,
+		 	 			"value": ":an acute gastrointestinal disorder caused by bacteria or their toxic products or by chemical residues in food",
+		 	 			"synonymous": null,
+		 	 			"usageNote": null,
+		 	 			"verbalIllustration": null
+		 	 		}]
+		 	 	}
+		 	 }, {
+		 	 	"entryWord": "food processor",
+		 	 	"sound": null,
+		 	 	"pronunciation": null,
+		 	 	"funcLabel": "noun",
+		 	 	"def": {
+		 	 		"sndf": [{
+		 	 			"senseNumber": null,
+		 	 			"value": ":an electric kitchen appliance with a set of interchangeable blades revolving inside a container",
+		 	 			"synonymous": null,
+		 	 			"usageNote": null,
+		 	 			"verbalIllustration": null
+		 	 		}]
+		 	 	}
+		 	 }, {
+		 	 	"entryWord": "food pyramid",
+		 	 	"sound": null,
+		 	 	"pronunciation": null,
+		 	 	"funcLabel": "noun",
+		 	 	"def": {
+		 	 		"sndf": [{
+		 	 			"senseNumber": null,
+		 	 			"value": ":an ecological hierarchy of food relationships in which a chief predator is at the top, each level preys on the next lower level, and usually green plants are at the bottom",
+		 	 			"synonymous": null,
+		 	 			"usageNote": null,
+		 	 			"verbalIllustration": null
+		 	 		}]
+		 	 	}
+		 	 }, {
+		 	 	"entryWord": "food stamp",
+		 	 	"sound": null,
+		 	 	"pronunciation": null,
+		 	 	"funcLabel": "noun",
+		 	 	"def": {
+		 	 		"sndf": [{
+		 	 			"senseNumber": null,
+		 	 			"value": ":a government-issued coupon that is sold or given to low-income persons and is redeemable for food",
+		 	 			"synonymous": null,
+		 	 			"usageNote": null,
+		 	 			"verbalIllustration": null
+		 	 		}]
+		 	 	}
+		 	 }, {
+		 	 	"entryWord": "food vacuole",
+		 	 	"sound": null,
+		 	 	"pronunciation": null,
+		 	 	"funcLabel": "noun",
+		 	 	"def": {
+		 	 		"sndf": [{
+		 	 			"senseNumber": null,
+		 	 			"value": ":a membrane-bound vacuole (as in an amoeba) in which ingested food is digested ",
+		 	 			"synonymous": null,
+		 	 			"usageNote": null,
+		 	 			"verbalIllustration": null
+		 	 		}]
+		 	 	}
+		 	 }, {
+		 	 	"entryWord": "food web",
+		 	 	"sound": null,
+		 	 	"pronunciation": null,
+		 	 	"funcLabel": "noun",
+		 	 	"def": {
+		 	 		"sndf": [{
+		 	 			"senseNumber": null,
+		 	 			"value": ":the totality of interacting food chains in an ecological community",
+		 	 			"synonymous": null,
+		 	 			"usageNote": null,
+		 	 			"verbalIllustration": null
+		 	 		}]
+		 	 	}
+		 	 }, {
+		 	 	"entryWord": "angel food cake",
+		 	 	"sound": null,
+		 	 	"pronunciation": null,
+		 	 	"funcLabel": "noun",
+		 	 	"def": {
+		 	 		"sndf": [{
+		 	 			"senseNumber": null,
+		 	 			"value": ":a usually white sponge cake made of flour, sugar, and whites of eggs",
+		 	 			"synonymous": null,
+		 	 			"usageNote": null,
+		 	 			"verbalIllustration": null
+		 	 		}]
+		 	 	}
+		 	 }];
+ 			$.get(url + word, function(data) {
 
 				var json = data.entryList;
-				
+				console.log(JSON.stringify(json));
 				for(var j =0; j < json.length; j++){
-					$('#list').json2html(json[j], transform);
+					$('#list').json2html(json[j], transform, {"replace": true});
 					transform.children[4].id = "def" + incr(); 
 				}
 				i = 0;
@@ -214,13 +385,16 @@ audio[src=""]{
 					 	$('#def' + inc).json2html(json[j].def.sndf[k], transform2); 
 						k_inc++;
 					}
-				}  
-
+				}
+			  	$( "span:contains('//')" ).css( "display", "none" );
+				
 			}).fail(function() {
 				console.log("error");
 			}); 
+			
+			  
 
-			$( "div:contains('John')" ).css( "display", "none" );
+			
 		});
 	</script>
 </body>
