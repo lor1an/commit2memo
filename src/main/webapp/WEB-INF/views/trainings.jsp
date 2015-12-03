@@ -5,7 +5,8 @@
 <meta charset="utf-8">
 <title>commit2memo</title>
 <link rel="icon" type="image/x-icon" href="static/img/favicon.ico" />
-<link rel="shortcut icon" type="image/x-icon" href="static/img/favicon.ico" />
+<link rel="shortcut icon" type="image/x-icon"
+	href="static/img/favicon.ico" />
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="static/css/styles.css">
@@ -142,11 +143,11 @@
 	<script src="static/js/user_controller.js"></script>
 
 	<script type="text/javascript">
-		$('.flip').click(function() {
-			$(this).find('.card').toggleClass('flipped');
-			return false;
-		});
-	</script>
+        $('.flip').click(function() {
+            $(this).find('.card').toggleClass('flipped');
+            return false;
+        });
+    </script>
 
 
 
