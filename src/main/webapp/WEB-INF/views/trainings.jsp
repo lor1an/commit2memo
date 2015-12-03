@@ -4,7 +4,8 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <title>commit2memo</title>
-
+<link rel="icon" type="image/x-icon" href="static/img/favicon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="static/img/favicon.ico" />
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="static/css/styles.css">
