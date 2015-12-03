@@ -1,0 +1,25 @@
+body {
+	padding-top: 50px;
+}
+
+.sidebar {
+	position: fixed;
+	width: 205px;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #428BCA;
+}
+
+.navbar-brand {
+	font-family: fantasy;
+}
+
+.worker {
+	position: fixed;
+	right: 1px;
+	bottom: 5px;
+	margin-left: 44px;
+	top: 50px;
+	left: 274px;
+}

@@ -31,6 +31,11 @@ public class WelcomeController {
         return "trainings";
     }
     
+    @RequestMapping(value = "/decks", method = RequestMethod.GET)
+    public String decks(ModelMap model) {
+        return "decks";
+    }
+    
     
 
 }

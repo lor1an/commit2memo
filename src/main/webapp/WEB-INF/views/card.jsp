@@ -1,95 +1,21 @@
 
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<title>Commit 2 memo</title>
-<meta name="generator" content="Bootply" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description"
-	content="Uses a fixed left sidebar, that attaches after scrolling past a large top header. Scrollspy menu." />
+<title>commit2memo</title>
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-
-
+<link rel="stylesheet"
+	href="static/css/styles.css">
 <style type="text/css">
-/*
-A Bootstrap 3.1 affix sidebar template
-from http://bootply.com
-
-This CSS code should follow the 'bootstrap.css'
-in your HTML file.
-
-license: MIT
-author: bootply.com
-*/
-body {
-	padding-top: 50px;
-}
-
-div:empty {
-	display: none;
-}
-
-audio[src=""] {
-	display: none;
-}
-
-#masthead {
-	min-height: 250px;
-}
-
-#masthead h1 {
-	font-size: 30px;
-	line-height: 1;
-	padding-top: 20px;
-}
-
-#masthead .well {
-	margin-top: 8%;
-}
-
-@media screen and (min-width: 768px) {
-	#masthead h1 {
-		font-size: 50px;
-	}
-}
-
-.navbar-bright {
-	background-color: #111155;
-	color: #fff;
-}
-
-.affix-top, .affix {
-	position: static;
-}
-
-@media ( min-width : 979px) {
-	#sidebar.affix-top {
-		position: static;
-		margin-top: 30px;
-		width: 228px;
-	}
-	#sidebar.affix {
-		position: fixed;
-		top: 70px;
-		width: 228px;
-	}
-}
-
-#sidebar li.active {
-	border: 0 #eee solid;
-	border-right-width: 5px;
-}
-
 .word {
 	border: solid;
 }
 
 .list {
 	overflow-y: scroll;
+	height: 550px;
 }
 
 .senseNumber {
@@ -101,16 +27,23 @@ audio[src=""] {
 }
 
 .senseNumber:hover {
-	background: #DCDCDC; /* make this whatever you want */
+	background: #DCDCDC;
+}
+
+div:empty {
+	display: none;
+}
+
+audio[src=""] {
+	display: none;
 }
 </style>
 </head>
-
-<body ng-app="myApp" class="ng-cloak">
+<body>
 	<nav class="navbar navbar-default navbar-fixed-top" role="banner">
 		<div class="container">
 			<div class="navbar-header">
-				<a href="/" class="navbar-brand">2memo</a>
+				<a href="/" class="navbar-brand">commit2memo</a>
 			</div>
 			<nav class="collapse navbar-collapse" role="navigation">
 				<ul class="nav navbar-nav">
@@ -121,51 +54,29 @@ audio[src=""] {
 			</nav>
 		</div>
 	</nav>
-
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3" id="leftCol">
-				<ul class="nav nav-stacked row-fluid"
-					style="position: fixed; top: 80px;" id="sidebar">
-					<li><a href="trainings">Trainings</a></li>
-					<li><a href="decks">Decks</a></li>
-					<li><a href="card">Add card</a></li>
-					<li><a href="cards">All cards</a></li>
+			<div id="leftCol" class="col-md-3 sidebar">
+				<ul class="nav nav-pills nav-stacked">
+					<li role="presentation"><a href="trainings">Trainings</a></li>
+					<li role="presentation"><a href="decks">Decks</a></li>
+					<li role="presentation" class="active"><a href="card">Add
+							card</a></li>
+					<li role="presentation"><a href="cards">All cards</a></li>
 				</ul>
 			</div>
-			<div class="row">
-
-
-				<div class="col-sm-6 " style="">
-					<div class="thumbnail">
-						<div class="input-group">
-							<input type="text" id="search_field" class="form-control"
-								placeholder="Search for..." /> <span class="input-group-btn">
-								<button class="btn btn-primary search" type="button">Search</button>
-							</span>
-
-						</div>
-
-						<div id="list" class='list'></div>
-
-
-						<!-- <div class="caption">
-							<div>
-								<div class="btn-group btn-group-justified" role="group">
-									<div class="btn-group" role="group">
-										<button type="button" class="btn btn-success">
-											<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-											Add card
-										</button>
-									</div>
-								</div>
-							</div>
-						</div> -->
+			<div class="col-sm-6 worker">
+				<div class="thumbnail">
+					<div class="input-group">
+						<input type="text" id="search_field" class="form-control"
+							placeholder="Search for..." /> <span class="input-group-btn">
+							<button class="btn btn-primary search" type="button">Search</button>
+						</span>
 					</div>
+					<div id="list" class='list'></div>
 				</div>
 			</div>
 		</div>
-
 	</div>
 
 
@@ -178,96 +89,112 @@ audio[src=""] {
 	<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script src="static/js/jquery.json2html.js"></script>
 	<script src="static/js/json2html.js"></script>
-
-	<div id="chart"></div>
-
 	<script>
-        $('.search')
-                .click(
-                        function() {
-                            var button = "<div><div class='btn-group btn-group-justified' role='group'><div class='btn-group' role='group'><button type='button' class='btn btn-success'><span class='glyphicon glyphicon-plus' aria-hidden='true'></span>Add card</button></div></div>	</div>";
-                            var checkbox = "<span class='input-group-addon'><input type='checkbox' aria-label='...'></span>";
-                            var i = 0;
-                            function incr() {
-                                i += 1;
-                                return i;
-                            }
-                            var inc = incr();
-                            var transform = {
-                                "tag" : "div",
-                                "id" : "word" + inc,
-                                "class" : "word",
-                                "children" : [ {
-                                    "tag" : "div",
-                                    "class" : "entryWord",
-                                    "html" : "<span style='font-weight: bold;' >\${entryWord}</span><span>  /\${pronunciation}/ </span>"
-                                }, {
-                                    "tag" : "div",
-                                    "html" : "<audio controls src='\${sound.wav}' type='audio/mpeg'></audio>"
-                                }, {
-                                    "tag" : "div",
-                                    "class" : "def",
-                                    "id" : "def" + inc,
-                                    "html" : "<span style='font-style: italic;' >	\${funcLabel}</span>"
-                                } ]
-                            };
+		$('.search')
+				.click(
+						function() {
+							var button = "<div><div class='btn-group btn-group-justified' role='group'><div class='btn-group' role='group'><button type='button' class='btn btn-success'><span class='glyphicon glyphicon-plus' aria-hidden='true'></span>Add card</button></div></div>	</div>";
+							var checkbox = "<span class='input-group-addon'><input type='checkbox' aria-label='...'></span>";
+							var i = 0;
+							function incr() {
+								i += 1;
+								return i;
+							}
+							var inc = incr();
+							var transform = {
+								"tag" : "div",
+								"id" : "word" + inc,
+								"class" : "word",
+								"children" : [
+										{
+											"tag" : "div",
+											"class" : "entryWord",
+											"html" : "<span style='font-weight: bold;' >\${entryWord}</span><span>  /\${pronunciation}/ </span>"
+										},
+										{
+											"tag" : "div",
+											"html" : "<audio controls src='\${sound.wav}' type='audio/mpeg'></audio>"
+										},
+										{
+											"tag" : "div",
+											"class" : "def",
+											"id" : "def" + inc,
+											"html" : "<span style='font-style: italic;' >	\${funcLabel}</span>"
+										} ]
+							};
 
-                            var transform2 = {
-                                "tag" : "div",
-                                "class" : "sndf",
-                                "id" : "sndf" + inc,
-                                "children" : [ {
-                                    "tag" : "div",
-                                    "class" : "senseNumber input-group",
-                                    "html" : "<span style='font-weight: bold;' >(\${senseNumber})</span> \${value} \${verbalIllustration}"
-                                }, {
-                                    "tag" : "div",
-                                    "class" : "synonymous",
-                                    "html" : "\${synonymous}"
-                                }, {
-                                    "tag" : "div",
-                                    "class" : "usageNote",
-                                    "html" : "\${usageNote}"
-                                } ]
-                            };
+							var transform2 = {
+								"tag" : "div",
+								"class" : "sndf",
+								"id" : "sndf" + inc,
+								"children" : [
+										{
+											"tag" : "div",
+											"class" : "senseNumber input-group",
+											"html" : "<span style='font-weight: bold;' >(\${senseNumber})</span> \${value} \${verbalIllustration}"
+										}, {
+											"tag" : "div",
+											"class" : "synonymous",
+											"html" : "\${synonymous}"
+										}, {
+											"tag" : "div",
+											"class" : "usageNote",
+											"html" : "\${usageNote}"
+										} ]
+							};
 
-                            var word = $('#search_field').val();
-                            var url = "http://localhost:10080/commit2memo/entryList/";
-                            $.get(url + word, function(data) {
+							var word = $('#search_field').val();
+							var url = "http://localhost:10080/commit2memo/entryList/";
+							$
+									.get(
+											url + word,
+											function(data) {
 
-                                var json = data.entryList;
+												var json = data.entryList;
 
-                                if (!$('#list').is(':empty')) {
-                                    $('#list').empty();
-                                }
+												if (!$('#list').is(':empty')) {
+													$('#list').empty();
+												}
 
-                                for (var j = 0; j < json.length; j++) {
-                                    $('#list').json2html(json[j], transform);
-                                    var inc = incr();
-                                    transform.children[2].id = "def" + inc;
-                                    var cur_word_id = "word" + inc
-                                    transform.id = cur_word_id;
-                                }
-                                i = 0;
-                                for (var j = 0; j < json.length; j++) {
-                                    var inc = incr();
-                                    var k_inc = 0;
-                                    for (var k = 0; k < json[j].def.sndf.length; k++) {
-                                        transform2.id = "sndf" + inc.toString() + k_inc;
-                                        $('#def' + inc).json2html(json[j].def.sndf[k], transform2);
-                                        k_inc++;
-                                    }
-                                }
-                                $("span:contains('//')").css("display", "none");
-                                $("span:contains('()')").css("display", "none");
-                                $('.word').append(button);
-                                $('.senseNumber').append(checkbox);
+												for (var j = 0; j < json.length; j++) {
+													$('#list').json2html(
+															json[j], transform);
+													var inc = incr();
+													transform.children[2].id = "def"
+															+ inc;
+													var cur_word_id = "word"
+															+ inc
+													transform.id = cur_word_id;
+												}
+												i = 0;
+												for (var j = 0; j < json.length; j++) {
+													var inc = incr();
+													var k_inc = 0;
+													for (var k = 0; k < json[j].def.sndf.length; k++) {
+														transform2.id = "sndf"
+																+ inc
+																		.toString()
+																+ k_inc;
+														$('#def' + inc)
+																.json2html(
+																		json[j].def.sndf[k],
+																		transform2);
+														k_inc++;
+													}
+												}
+												$("span:contains('//')").css(
+														"display", "none");
+												$("span:contains('()')").css(
+														"display", "none");
+												$('.word').append(button);
+												$('.senseNumber').append(
+														checkbox);
 
-                            }).fail(function() {
-                                console.log("error");
-                            });
+											}).fail(function() {
+										console.log("error");
+									});
 
-                        });
-    </script>
+						});
+	</script>
 </body>
 </html>
