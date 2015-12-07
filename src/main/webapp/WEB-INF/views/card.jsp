@@ -185,12 +185,12 @@ audio[src=""] {
         $('.logout').click(function(e) {
             e.preventDefault();
             var token = $("meta[name='_csrf']").attr("content");
-             var header = $("meta[name='_csrf_header']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
            $.ajax({
                url : 'http://localhost:10080/commit2memo/j_spring_security_logout',
                type : 'POST',
                beforeSend:function(xhr){
-                    xhr.setRequestHeader(header, token);
+                    //xhr.setRequestHeader(header, token);
                },
                success : function(data) { 
                    window.location ="http://localhost:10080/commit2memo/login";

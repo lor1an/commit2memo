@@ -45,7 +45,12 @@ public class WelcomeController {
         return model;
 
     }
-
+    
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String register(ModelMap model) {
+        return "register";
+    }
+    
     @RequestMapping(value = "/card", method = RequestMethod.GET)
     public String card(ModelMap model) {
         return "card";

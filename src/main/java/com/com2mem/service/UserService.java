@@ -2,23 +2,23 @@ package com.com2mem.service;
 
 import java.util.List;
 
-import com.com2mem.model.Usr;
+import com.com2mem.model.User;
 
 public interface UserService {
 
-    Usr addUser(final Usr user);
+    User addUser(final User user);
 
-    Usr getUserByLogin(final String login);
+    User getUserByUsername(final String login);
 
-    Usr getUserById(final Long usrId);
+    User getUserById(final Long usrId);
 
-    void updateUser(final Usr user);
+    void updateUser(final User user);
     
-    List<Usr> getAllUsers();
+    List<User> getAllUsers();
     
-    boolean isUserExist(Usr user);
+    boolean isUserExist(User user);
     
-    void saveUser(Usr user);
+    void saveUser(User user);
     
     void deleteUserById(Long id);
     

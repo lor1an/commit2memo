@@ -23,8 +23,8 @@ public class Deck {
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "deck")
 	private List<Card> cards;
 	@ManyToOne
-	@JoinColumn(name = "usrId")
-	private Usr usr;
+	@JoinColumn(name = "userId")
+	private User user;
 
 	public Long getDeckId() {
 		return deckId;

@@ -7,20 +7,25 @@
 
 	<http auto-config="true">
 		<intercept-url pattern="/" access="ROLE_USER" />
+		<intercept-url pattern="/card" access="ROLE_USER" />
 		<form-login login-page="/login" default-target-url="/card"
 			authentication-failure-url="/login?error" username-parameter="username"
-			password-parameter="password" />
+			password-parameter="password" authentication-success-handler-ref="ajaxAuthenticationSuccessHandler" />
 		<logout logout-success-url="/login?logout" />
-		<csrf />
+		<!-- <csrf />  -->
+
 	</http>
 
 	<authentication-manager>
-		<authentication-provider>
-			<user-service>
-				<user name="admin" password="nimda" authorities="ROLE_USER" />
-			</user-service>
+		<authentication-provider user-service-ref="userDetailsService">
+			<password-encoder ref="encoder" />
 		</authentication-provider>
 	</authentication-manager>
+
+	<beans:bean id="encoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+		<beans:constructor-arg name="strength" value="11" />
+	</beans:bean>
 
 
 </beans:beans>

@@ -60,7 +60,7 @@
 			</div>
 			<nav class="collapse navbar-collapse" role="navigation">
 				<ul class="nav navbar-nav">
-					<li><a href="register">Sign up</a></li>
+					<li><a href="login">Sign in</a></li>
 					<li><a href="about">About</a></li>
 				</ul>
 			</nav>
@@ -72,71 +72,90 @@
 				<ul class="nav nav-pills nav-stacked">
 				</ul>
 			</div>
-			<!-- <div class="col-sm-6 worker">
-				<form class="form-signin">
-					<h2 class="form-signin-heading">Sign in:</h2>
-					<label for="inputUsername" class="sr-only">Username</label> <input
-						type="text" id="inputUsername" class="form-control"
-						placeholder="Username" required="true" autofocus="true"> <label
-						for="inputPassword" class="sr-only">Password</label> <input
-						type="password" id="inputPassword" class="form-control"
-						placeholder="Password" required="true">
-					<button class="btn btn-lg btn-primary btn-block login"
-						type="submit">Sign in</button>
-				</form>
-			</div> -->
 
-			<div id="loginbox" style="margin-top: 50px;"
+			<div id="signupbox" style="margin-top: 50px"
 				class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 				<div class="panel panel-info">
 					<div class="panel-heading">
-						<div class="panel-title">Sign In</div>
+						<div class="panel-title">Sign Up</div>
+						<div
+							style="float: right; font-size: 85%; position: relative; top: -10px">
+						</div>
 					</div>
-					<div style="padding-top: 30px" class="panel-body">
+					<div class="panel-body">
+						<form id="signupform" class="form-horizontal" role="form">
 
-						<div style="display: none" id="login-alert"
-							class="alert alert-danger col-sm-12"></div>
-
-						<form id="loginform" class="form-horizontal" role="form">
-
-							<div style="margin-bottom: 25px" class="input-group">
-								<span class="input-group-addon"><i
-									class="glyphicon glyphicon-user"></i></span> <input
-									id="inputUsername" type="text" class="form-control"
-									name="username" value="" placeholder="username or email">
+							<div id="signupalert" style="display: none"
+								class="alert alert-danger">
+								<p>Error:</p>
+								<span></span>
 							</div>
 
-							<div style="margin-bottom: 25px" class="input-group">
-								<span class="input-group-addon"><i
-									class="glyphicon glyphicon-lock"></i></span> <input
-									id="inputPassword" type="password" class="form-control"
-									name="password" placeholder="password">
+
+
+							<div class="form-group">
+								<label for="email" class="col-md-3 control-label">Email</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" name="email"
+										placeholder="Email Address">
+								</div>
 							</div>
 
-							<div style="margin-top: 10px" class="form-group">
+							<div class="form-group">
+								<label for="username" class="col-md-3 control-label">Username</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" id="inputUsername"
+										name="username" placeholder="Username">
+								</div>
+							</div>
 
-								<div class="col-sm-12 controls">
-									<a id="btn-login" href="#" class="btn btn-success login">Login
-									</a>
+							<div class="form-group">
+								<label for="password" class="col-md-3 control-label">Password</label>
+								<div class="col-md-9">
+									<input type="password" class="form-control" id="inputPassword"
+										name="password" placeholder="Password">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="col-md-offset-3 col-md-9">
+									<button id="btn-signup" type="button"
+										class="btn btn-info register">Sign Up</button>
 								</div>
 							</div>
 
 						</form>
-
-
-
 					</div>
 				</div>
 			</div>
 		</div>
-
 	</div>
 
 	<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script>
+        $('.register').click(function(e) {
+            e.preventDefault();
+            var inUser = $('#inputUsername').val();
+            var inPass = $('#inputPassword').val();
+            $.ajax({
+                url : 'http://localhost:10080/commit2memo/user/',
+                type : 'POST',
+                contentType : "application/json",
+                data : JSON.stringify({
+                    "username" : inUser,
+                    "password" : inPass
+                }),
+                success : function(data) {
+                    window.location = "http://localhost:10080/commit2memo/login";
+                },
+                error : function(data) {
+                    console.log(data);
+                }
+            });
+        });
+
         $('.login').click(function(e) {
             e.preventDefault();
-            console.log();
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
             console.log(token);
@@ -152,7 +171,7 @@
                 },
                 beforeSend : function(xhr) {
                     xhr.setRequestHeader("X-Ajax-call", "true");
-                   // xhr.setRequestHeader(header, token);
+                    xhr.setRequestHeader(header, token);
                 },
                 success : function(data) {
                     window.location = "http://localhost:10080/commit2memo/card";
