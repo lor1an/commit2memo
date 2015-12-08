@@ -1,7 +1,8 @@
 package com.com2mem.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,13 +22,13 @@ public class UserRole {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId", nullable = false)
     private User user;
-    @Column(name = "role", nullable = false, length = 45)
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     public UserRole() {
     }
 
-    public UserRole(User user, String role) {
+    public UserRole(User user, Role role) {
         this.user = user;
         this.role = role;
     }
@@ -49,11 +50,11 @@ public class UserRole {
         this.user = user;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return this.role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 

@@ -46,7 +46,7 @@ public class C2MUserDetailsService implements UserDetailsService {
         Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
 
         for (UserRole userRole : userRoles) {
-            setAuths.add(new SimpleGrantedAuthority(userRole.getRole()));
+            setAuths.add(new SimpleGrantedAuthority(userRole.getRole().name()));
         }
 
         List<GrantedAuthority> Result = new ArrayList<GrantedAuthority>(
