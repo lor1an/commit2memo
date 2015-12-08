@@ -1,4 +1,3 @@
-
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -12,54 +11,6 @@
 <link rel="stylesheet" href="static/css/styles.css">
 
 <style type="text/css">
-.flip {
-	-webkit-perspective: 800;
-	width: 400px;
-	height: 200px;
-	position: relative;
-	margin: 50px auto;
-}
-
-.flip .card.flipped {
-	-webkit-transform: rotatex(-180deg);
-}
-
-.flip .card {
-	width: 100%;
-	height: 100%;
-	-webkit-transform-style: preserve-3d;
-	-webkit-transition: 0.5s;
-}
-
-.flip .card .face {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	-webkit-backface-visibility: hidden;
-	z-index: 2;
-	font-family: Georgia;
-	text-align: left;
-}
-
-.flip .card .front {
-	position: absolute;
-	z-index: 1;
-	background: white;
-	color: black;
-	cursor: pointer;
-	border: solid;
-	font-size: 3em;
-	text-align: center;
-	line-height: 200px;
-}
-
-.flip .card .back {
-	-webkit-transform: rotatex(-180deg);
-	background: white;
-	color: black;
-	cursor: pointer;
-	border: solid;
-}
 </style>
 </head>
 <body>
@@ -72,7 +23,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="profile">My profile</a></li>
 					<li><a href="about">About</a></li>
-					<li><a href="logout">Logout</a></li>
+					<li><a href class="logout">Logout</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -136,20 +87,12 @@
 			</div>
 		</div>
 	</div>
-	<script src="static/js/angular-bootstrap.js" type="text/javascript"></script>
-	<script src="static/js/hello.js"></script>
-	<script src="static/js/app.js"></script>
-	<script src="static/js/user_service.js"></script>
-	<script src="static/js/user_controller.js"></script>
-
+	<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript">
-        $('.flip').click(function() {
-            $(this).find('.card').toggleClass('flipped');
-            return false;
-        });
-    </script>
-
-
-
+		$('.flip').click(function() {
+			$(this).find('.card').toggleClass('flipped');
+			return false;
+		});
+	</script>
 </body>
 </html>

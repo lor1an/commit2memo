@@ -12,8 +12,6 @@
 			authentication-failure-url="/login?error" username-parameter="username"
 			password-parameter="password" authentication-success-handler-ref="ajaxAuthenticationSuccessHandler" />
 		<logout logout-success-url="/login?logout" />
-		<!-- <csrf />  -->
-
 	</http>
 
 	<authentication-manager>

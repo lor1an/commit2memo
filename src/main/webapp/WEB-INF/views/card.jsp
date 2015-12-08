@@ -3,8 +3,6 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="_csrf" content="${_csrf.token}" />
-<meta name="_csrf_header" content="${_csrf.headerName}" />
 <title>commit2memo</title>
 <link rel="icon" type="image/x-icon" href="static/img/favicon.ico" />
 <link rel="shortcut icon" type="image/x-icon"
@@ -12,36 +10,6 @@
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="static/css/styles.css">
-<style type="text/css">
-.word {
-	border: solid;
-}
-
-.list {
-	overflow-y: scroll;
-	height: 550px;
-}
-
-.senseNumber {
-	border: 1px solid #ccc;
-}
-
-.input-group-addon {
-	border: none;
-}
-
-.senseNumber:hover {
-	background: #DCDCDC;
-}
-
-div:empty {
-	display: none;
-}
-
-audio[src=""] {
-	display: none;
-}
-</style>
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top" role="banner">
@@ -53,7 +21,7 @@ audio[src=""] {
 				<ul class="nav navbar-nav">
 					<li><a href="profile">My profile</a></li>
 					<li><a href="about">About</a></li>
-					<li class="logout"><a>Logout</a></li>
+					<li><a href class="logout">Logout</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -82,18 +50,10 @@ audio[src=""] {
 			</div>
 		</div>
 	</div>
-
-
-	<script src="static/js/angular-bootstrap.js" type="text/javascript"></script>
-	<script src="static/js/hello.js"></script>
-	<script src="static/js/app.js"></script>
-	<script src="static/js/user_service.js"></script>
-	<script src="static/js/user_controller.js"></script>
-	<script src="//underscorejs.org/underscore-min.js"></script>
 	<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script src="static/js/jquery.json2html.js"></script>
 	<script src="static/js/json2html.js"></script>
-
+	<script src="static/js/auth.js"></script>
 	<script>
         $('.search')
                 .click(
@@ -181,24 +141,6 @@ audio[src=""] {
                             });
 
                         });
-
-        $('.logout').click(function(e) {
-            e.preventDefault();
-            var token = $("meta[name='_csrf']").attr("content");
-            var header = $("meta[name='_csrf_header']").attr("content");
-           $.ajax({
-               url : 'http://localhost:10080/commit2memo/j_spring_security_logout',
-               type : 'POST',
-               beforeSend:function(xhr){
-                    //xhr.setRequestHeader(header, token);
-               },
-               success : function(data) { 
-                   window.location ="http://localhost:10080/commit2memo/login";
-               }, 
-               error : function(data) {
-                   console.log(data);
-               }});
-        });
     </script>
 </body>
 </html>
