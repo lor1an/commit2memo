@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.oxm.XmlMappingException;
 import org.springframework.oxm.xstream.XStreamMarshaller;
 
+import com.com2mem.dto.Entry;
 import com.com2mem.dto.EntryList;
 import com.com2mem.service.DictionaryService;
 import com.com2mem.util.InputStreamFilter;
@@ -34,6 +35,10 @@ public class DictionaryServiceImpl implements DictionaryService {
         EntryList entryList = (EntryList) xstream
                 .unmarshalInputStream(InputStreamFilter.filterTags(
                         url.openStream(), replacementTags));
+        
+        for (Entry e : entryList.getEntryList()) {
+			System.out.println(e.getId());
+		}
         return entryList;
     }
 }

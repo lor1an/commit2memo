@@ -45,8 +45,10 @@ public class DefinitionConverter implements Converter {
             }
             reader.moveUp();
         }
-        dt.setSenseNumber(sn);
-        sndts.add(dt);
+        if(dt != null){
+        	dt.setSenseNumber(sn);
+            sndts.add(dt);
+        }
         def.setSndf(sndts);
         return def;
     }

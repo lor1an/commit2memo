@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.oxm.xstream.XStreamMarshaller;
 
+import com.com2mem.dto.Entry;
 import com.thoughtworks.xstream.XStream;
 
 public class C2MXStreamMarshaller extends XStreamMarshaller{
@@ -17,6 +18,7 @@ public class C2MXStreamMarshaller extends XStreamMarshaller{
         for (Class<?> clazz : classesToUnmarshall) {
             xstream.processAnnotations(clazz);
         }
+        xstream.aliasAttribute(Entry.class, "id", "id");
         
     }
 

@@ -20,13 +20,22 @@ public class Deck {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long deckId;
 	private String name;
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "deck")
-	private List<Card> cards;
 	@ManyToOne
 	@JoinColumn(name = "userId")
 	private User user;
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "deck")
+	private List<Card> cards;
 
-	public Long getDeckId() {
+	public Deck(){
+	    
+	}
+	
+	public Deck(String name) {
+        super();
+        this.name = name;
+    }
+
+    public Long getDeckId() {
 		return deckId;
 	}
 

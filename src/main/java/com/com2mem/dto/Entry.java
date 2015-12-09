@@ -4,6 +4,8 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 @XStreamAlias("entry")
 public class Entry {
+	
+	private String id;
     @XStreamAlias("ew")
     private String entryWord;
     private Sound sound;
@@ -13,7 +15,15 @@ public class Entry {
     private String funcLabel;
     private Definition def;
     
-    public String getEntryWord() {
+    public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getEntryWord() {
         return entryWord;
     }
 

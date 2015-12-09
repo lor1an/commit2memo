@@ -35,15 +35,13 @@ $('.logout').click(function(e) {
 });
 $('.register').click(function(e) {
     e.preventDefault();
-    var inUser = $('#inputUsername').val();
-    var inPass = $('#inputPassword').val();
     $.ajax({
-        url : 'http://localhost:10080/commit2memo/user/',
+        url : 'http://localhost:10080/commit2memo/user',
         type : 'POST',
         contentType : "application/json",
         data : JSON.stringify({
-            "username" : inUser,
-            "password" : inPass
+            "username" : $('#inputUsername').val(),
+            "password" : $('#inputPassword').val()
         }),
         success : function(data) {
             window.location = "http://localhost:10080/commit2memo/login";
