@@ -24,7 +24,7 @@ public class AjaxAuthenticationSuccessHandler extends
 
         if ("true".equals(request.getHeader("X-Ajax-call"))) {
             try {
-                response.getWriter().print("ok");// return "ok" string
+                response.getWriter().print("ok");
                 response.getWriter().flush();
             } catch (IOException e) {
             }

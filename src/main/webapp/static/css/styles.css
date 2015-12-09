@@ -21,8 +21,9 @@ body {
 	bottom: 5px;
 	margin-left: 44px;
 	top: 50px;
-	left: 560px/* 274px */;
+	left: 560px /* 274px */;
 }
+
 .error {
 	padding: 15px;
 	margin-bottom: 20px;
@@ -63,6 +64,7 @@ body {
 	-webkit-box-shadow: none;
 	box-shadow: none;
 }
+
 .fstN {
 	color: #D9534F
 }
@@ -76,11 +78,11 @@ body {
 }
 
 tr:hover {
-	background: #F0F0F0;
+	background: #B1A0A0;
 }
 
 .picked {
-	background: #F0F0F0;
+	background: #7F7272;
 }
 
 .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td,
@@ -93,6 +95,7 @@ tr:hover {
 	text-align: right;
 	font-size: smaller;
 }
+
 .word {
 	border: solid;
 }
@@ -169,4 +172,19 @@ audio[src=""] {
 	color: black;
 	cursor: pointer;
 	border: solid;
+}
+
+.deck-modal {
+	padding-top: 35px;
+	padding-bottom: 19px;
+	padding-left: 20px;
+}
+
+.decl-lbl {
+	padding-top: 7px;
+	padding-right: 10px;
+}
+
+.addCrd {
+	left: 34%;
 }

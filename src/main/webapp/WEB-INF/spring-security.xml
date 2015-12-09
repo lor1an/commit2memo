@@ -7,8 +7,8 @@
 
 	<http auto-config="true">
 		<intercept-url pattern="/" access="ROLE_USER" />
-		<intercept-url pattern="/card" access="ROLE_USER" />
-		<form-login login-page="/login" default-target-url="/card"
+		<intercept-url pattern="/cardPage" access="ROLE_USER" />
+		<form-login login-page="/login" default-target-url="/cardPage"
 			authentication-failure-url="/login?error" username-parameter="username"
 			password-parameter="password" authentication-success-handler-ref="ajaxAuthenticationSuccessHandler" />
 		<logout logout-success-url="/login?logout" />

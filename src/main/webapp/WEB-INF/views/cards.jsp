@@ -31,8 +31,8 @@
 			<div id="leftCol" class="col-md-3 sidebar">
 				<ul class="nav nav-pills nav-stacked">
 					<li role="presentation"><a href="trainings">Trainings</a></li>
-					<li role="presentation"><a href="decks">Decks</a></li>
-					<li role="presentation"><a href="card">Add card</a></li>
+					<li role="presentation"><a href="decksPage">Decks</a></li>
+					<li role="presentation"><a href="cardPage">Add card</a></li>
 					<li role="presentation" class="active"><a href="cards">All
 							cards</a></li>
 				</ul>
@@ -93,6 +93,7 @@
 		</ul>
 	</div>
 	<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	<script src="static/js/jquery.json2html.js"></script>
 	<script src="static/js/json2html.js"></script>
 	<script src="static/js/auth.js"></script>

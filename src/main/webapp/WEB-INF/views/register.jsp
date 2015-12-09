@@ -42,15 +42,11 @@
 					</div>
 					<div class="panel-body">
 						<form id="signupform" class="form-horizontal" role="form">
-
 							<div id="signupalert" style="display: none"
 								class="alert alert-danger">
 								<p>Error:</p>
 								<span></span>
 							</div>
-
-
-
 							<div class="form-group">
 								<label for="email" class="col-md-3 control-label">Email</label>
 								<div class="col-md-9">
@@ -58,7 +54,6 @@
 										placeholder="Email Address">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label for="username" class="col-md-3 control-label">Username</label>
 								<div class="col-md-9">
@@ -66,7 +61,6 @@
 										name="username" placeholder="Username">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label for="password" class="col-md-3 control-label">Password</label>
 								<div class="col-md-9">
@@ -74,14 +68,12 @@
 										name="password" placeholder="Password">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<div class="col-md-offset-3 col-md-9">
 									<button id="btn-signup" type="button"
 										class="btn btn-info register">Sign Up</button>
 								</div>
 							</div>
-
 						</form>
 					</div>
 				</div>

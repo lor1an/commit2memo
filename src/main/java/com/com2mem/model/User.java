@@ -26,9 +26,9 @@ public class User {
     @Column(name = "password", nullable = false, length = 60)
     private String password;
     private boolean enabled;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.PERSIST)
-    private Set<UserRole> userRole = new HashSet<UserRole>(0);
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.PERSIST)
+    private Set<UserRole> userRole = new HashSet<UserRole>(0);
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Deck> decks;
 
     public User() {

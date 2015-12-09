@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.com2mem.model.User;
 import com.com2mem.model.UserRole;
@@ -15,6 +16,7 @@ import com.google.common.collect.Sets;
 import static com.com2mem.model.Role.ROLE_USER;
 
 @Service(value = "userService")
+@Transactional
 public class UserServiceImpl implements UserService {
 
 	@Autowired

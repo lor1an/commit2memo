@@ -1,19 +1,17 @@
 $('.login').click(function(e) {
 	e.preventDefault();
-	var inUser = $('#inputUsername').val();
-	var inPass = $('#inputPassword').val();
 	$.ajax({
 		url : 'http://localhost:10080/commit2memo/j_spring_security_check',
 		type : 'POST',
 		data : {
-			"username" : inUser,
-			"password" : inPass
+			"username" : $('#inputUsername').val(),
+			"password" : $('#inputPassword').val()
 		},
 		beforeSend : function(xhr) {
 			xhr.setRequestHeader("X-Ajax-call", "true");
 		},
 		success : function(data) {
-			window.location = "http://localhost:10080/commit2memo/card";
+			window.location = "http://localhost:10080/commit2memo/cardPage";
 		},
 		error : function(data) {
 			console.log(data);
