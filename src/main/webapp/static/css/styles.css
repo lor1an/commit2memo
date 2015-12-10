@@ -5,23 +5,47 @@ body {
 .sidebar {
 	position: fixed;
 	width: 205px;
+	padding-top: 10px;
 }
 
 .navbar-default .navbar-nav>li>a {
-	color: #428BCA;
+	color: black;
 }
 
-.navbar-brand {
+.navbar-default .navbar-nav>li>a:hover {
+	color: white;
+}
+
+.navbar-default .navbar-brand {
 	font-family: fantasy;
+	color: black;
+}
+
+.navbar-default .navbar-toggle {
+	border-color: #000000;
+}
+
+.navbar-default .navbar-toggle:hover {
+	border-color: black;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover
+	{
+	background-color: white;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+	border-color: #000000;
 }
 
 .worker {
+	padding-top: 10px;
 	position: fixed;
 	right: 1px;
 	bottom: 5px;
 	margin-left: 44px;
 	top: 50px;
-	left: 560px /* 274px */;
+	left: 25%;
 }
 
 .error {
@@ -102,7 +126,7 @@ tr:hover {
 
 .list {
 	overflow-y: scroll;
-	height: 550px;
+	height: 80%;
 }
 
 .senseNumber {
@@ -187,4 +211,9 @@ audio[src=""] {
 
 .addCrd {
 	left: 34%;
+}
+
+.navbar-default {
+	background-color: #36ACDB;
+	border-color: #080808;
 }

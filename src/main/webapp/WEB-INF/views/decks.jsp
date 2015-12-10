@@ -37,7 +37,7 @@
 						<span class='glyphicon glyphicon-arrow-left' aria-hidden='true'></span>
 						Back
 					</button>
-					<button id="add" type="button" class="btn btn-success add-deck"
+					<button id="add" type="button" class="btn btn-primary add-deck"
 						data-toggle="modal">
 						<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>
 						Add
@@ -46,20 +46,28 @@
 			</div>
 		</div>
 	</div>
-	<nav class="navbar navbar-default navbar-fixed-top" role="banner">
-		<div class="container">
-			<div class="navbar-header">
-				<a href="/" class="navbar-brand">commit2memo</a>
+	<div class="navbar-wrapper">
+		<div class="container"></div>
+		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button class="navbar-toggle" data-toggle="collapse" type="button" data-target=".navbar-collapse">
+									<span class='glyphicon glyphicon-menu-hamburger' aria-hidden='true'></span>
+									<span class="sr-only">Toggle navigation</span> 
+								</button>
+					<a href="/" class="navbar-brand">commit2memo</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="profile">My profile</a> <span
+							class="icon-envelope"></span></li>
+						<li><a href="">About</a></li>
+						<li><a href class="logout">Logout</a></li>
+					</ul>
+				</div>
 			</div>
-			<nav class="collapse navbar-collapse" role="navigation">
-				<ul class="nav navbar-nav">
-					<li><a href="profile">My profile</a></li>
-					<li><a href="about">About</a></li>
-					<li><a href class="logout">Logout</a></li>
-				</ul>
-			</nav>
 		</div>
-	</nav>
+	</div>
 	<div class="container">
 		<div class="row">
 			<div id="leftCol" class="col-md-3 sidebar">
@@ -85,14 +93,14 @@
 							</button>
 						</div>
 						<div class="btn-group" role="group">
-							<button type="button" class="btn btn-success" data-toggle="modal"
+							<button type="button" class="btn btn-primary" data-toggle="modal"
 								data-target="#addDeckModal">
 								<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>
 								Add Deck
 							</button>
 						</div>
 						<div class="btn-group" role="group">
-							<button type="button" class="btn btn-primary disabled switch">
+							<button type="button" class="btn btn-success disabled switch">
 								<span class='glyphicon glyphicon-play' aria-hidden='true'></span>
 								Start traning
 							</button>
