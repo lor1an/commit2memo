@@ -2,6 +2,7 @@ package com.com2mem.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,11 +27,10 @@ public class Deck {
     @JoinColumn(name = "userId")
     @JsonIgnore
     private User user;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "deck")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "deck", cascade = CascadeType.PERSIST)
     private List<Card> cards;
 
     public Deck() {
-
     }
 
     public Deck(String name) {

@@ -50,10 +50,12 @@
 		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
-					<button class="navbar-toggle" data-toggle="collapse" type="button" data-target=".navbar-collapse">
-									<span class='glyphicon glyphicon-menu-hamburger' aria-hidden='true'></span>
-									<span class="sr-only">Toggle navigation</span> 
-								</button>
+					<button class="navbar-toggle" data-toggle="collapse" type="button"
+						data-target=".navbar-collapse">
+						<span class='glyphicon glyphicon-menu-hamburger'
+							aria-hidden='true'></span> <span class="sr-only">Toggle
+							navigation</span>
+					</button>
 					<a href="/" class="navbar-brand">commit2memo</a>
 				</div>
 				<div class="collapse navbar-collapse">
@@ -120,167 +122,146 @@
 	<script src="static/js/auth.js"></script>
 
 	<script>
-		var decksUrl = "http://localhost:10080/commit2memo/decks";
-		$('.search')
-				.click(
-						function() {
-							var checkbox = "<span class='input-group-addon'><input type='checkbox' aria-label='...'></span>";
-							var i = 0;
-							function incr() {
-								i += 1;
-								return i;
-							}
-							var inc = incr();
-							var transform = {
-								"tag" : "div",
-								"id" : "\${id}",
-								"class" : "word",
-								"children" : [
-										{
-											"tag" : "div",
-											"class" : "entryWord",
-											"html" : "<span style='font-weight: bold;' >\${entryWord}</span><span>  /\${pronunciation}/ </span>"
-										},
-										{
-											"tag" : "div",
-											"html" : "<audio controls src='\${sound.wav}' type='audio/mpeg'></audio>"
-										},
-										{
-											"tag" : "div",
-											"class" : "def",
-											"id" : "def" + inc,
-											"html" : "<span style='font-style: italic;' >	\${funcLabel}</span>"
-										} ]
-							};
+        var decksUrl = "http://localhost:10080/commit2memo/decks";
+        $('.search').click(function() {
+            var checkbox = "<span class='input-group-addon'><input type='checkbox' aria-label='...'></span>";
+            var i = 0;
+            function incr() {
+                i += 1;
+                return i;
+            }
+            var inc = incr();
+            var transform = {
+                "tag" : "div",
+                "id" : "\${id}",
+                "class" : "word",
+                "children" : [ {
+                    "tag" : "div",
+                    "class" : "entryWord",
+                    "html" : "<span style='font-weight: bold;' >\${entryWord}</span><span>  /\${pronunciation}/ </span>"
+                }, {
+                    "tag" : "div",
+                    "html" : "<audio controls src='\${sound.wav}' type='audio/mpeg'></audio>"
+                }, {
+                    "tag" : "div",
+                    "class" : "def",
+                    "id" : "def" + inc,
+                    "html" : "<span style='font-style: italic;' >	\${funcLabel}</span>"
+                } ]
+            };
 
-							var transform2 = {
-								"tag" : "div",
-								"class" : "sndf",
-								"id" : "sndf" + inc,
-								"children" : [
-										{
-											"tag" : "div",
-											"class" : "senseNumber input-group",
-											"html" : "<span style='font-weight: bold;' >(\${senseNumber})</span> \${value} \${synonymous} \${verbalIllustration}"
-										}, {
-											"tag" : "div",
-											"class" : "usageNote",
-											"html" : "\${usageNote}"
-										} ]
-							};
+            var transform2 = {
+                "tag" : "div",
+                "class" : "sndf",
+                "id" : "sndf" + inc,
+                "children" : [ {
+                    "tag" : "div",
+                    "class" : "senseNumber input-group",
+                    "html" : "<span style='font-weight: bold;' >(\${senseNumber})</span> \${value} \${synonymous} \${verbalIllustration}"
+                }, {
+                    "tag" : "div",
+                    "class" : "usageNote",
+                    "html" : "\${usageNote}"
+                } ]
+            };
 
-							var word = $('#search_field').val();
-							var url = "http://localhost:10080/commit2memo/entryList/";
-							$
-									.get(
-											url + word,
-											function(data) {
-												var json = data.entryList;
+            var word = $('#search_field').val();
+            var url = "http://localhost:10080/commit2memo/entryList/";
+            $.get(url + word, function(data) {
+                var json = data.entryList;
 
-												if (!$('#list').is(':empty')) {
-													$('#list').empty();
-												}
+                if (!$('#list').is(':empty')) {
+                    $('#list').empty();
+                }
 
-												for (var j = 0; j < json.length; j++) {
-													$('#list').json2html(
-															json[j], transform);
-													var inc = incr();
-													transform.children[2].id = "def"
-															+ inc;
-												}
-												i = 0;
-												for (var j = 0; j < json.length; j++) {
-													var inc = incr();
-													var k_inc = 0;
-													for (var k = 0; k < json[j].def.sndf.length; k++) {
-														transform2.id = "sndf"
-																+ inc
-																		.toString()
-																+ k_inc;
-														$('#def' + inc)
-																.json2html(
-																		json[j].def.sndf[k],
-																		transform2);
-														k_inc++;
-													}
-												}
-												$("span:contains('//')").css(
-														"display", "none");
-												$("span:contains('()')").css(
-														"display", "none");
-												$
-														.get(
-																'static/pages/buttons.html',
-																function(data) {
-																	$(data)
-																			.find(
-																					".brut, .btn-group-justified")
-																			.appendTo(
-																					".word");
-																});
-												$('.senseNumber').append(
-														checkbox);
+                for (var j = 0; j < json.length; j++) {
+                    $('#list').json2html(json[j], transform);
+                    var inc = incr();
+                    transform.children[2].id = "def" + inc;
+                }
+                i = 0;
+                for (var j = 0; j < json.length; j++) {
+                    var inc = incr();
+                    var k_inc = 0;
+                    for (var k = 0; k < json[j].def.sndf.length; k++) {
+                        transform2.id = "sndf" + inc.toString() + k_inc;
+                        $('#def' + inc).json2html(json[j].def.sndf[k], transform2);
+                        k_inc++;
+                    }
+                }
+                $("span:contains('//')").css("display", "none");
+                $("span:contains('()')").css("display", "none");
+                $.get('static/pages/buttons.html', function(data) {
+                    $(data).find(".brut, .btn-group-justified").appendTo(".word");
+                });
+                $('.senseNumber').append(checkbox);
 
-											}).fail(function() {
-										console.log("error");
-									});
+            }).fail(function() {
+                console.log("error");
+            });
 
-						});
-		function getButtons() {
-			return $.ajax({
-				url : "http://localhost:10080/commit2memo/buttons",
-				type : 'GET',
-				async : false,
-				error : function(data) {
-					console.log(data);
-				}
-			}).responseText;
-		};
-		$(document).on("click", ".btn-group-justified", function() {
-			console.log("i am here");
-			var id = $("#selectDeck").children(":selected").attr("id");
-			console.log(id);
-		});
+        });
 
-		$(document).ready(function() {
-			addDecks();
-		});
+        $(document).on("click", ".btn-group-justified", function(e) {
+            var deckId = $("#selectDeck").children(":selected").attr("id");
+            var wordId = $(this).parent('.word').attr("id");
+            console.log(wordId)
+            e.preventDefault();
+            $.ajax({
+                url : decksUrl + "/" + deckId,
+                type : 'PUT',
+                contentType : "application/json",
+                data : JSON.stringify({
+                    "entryId" : wordId,
+                }),
+                success : function(data) {
+                    console.log("success");
+                },
+                error : function(data) {
+                    console.log(data);
+                }
+            });
+        });
 
-		function addDecks() {
-			var url = decksUrl;
-			$.get(url, function(data) {
-				var transform = {
-					"tag" : "option",
-					"id" : "\${deckId}",
-					"html" : "\${name}"
-				};
+        $(document).ready(function() {
+            addDecks();
+        });
 
-				$('#selectDeck').empty();
-				$('#selectDeck').json2html(data, transform);
+        function addDecks() {
+            var url = decksUrl;
+            $.get(url, function(data) {
+                var transform = {
+                    "tag" : "option",
+                    "id" : "\${deckId}",
+                    "html" : "\${name}"
+                };
 
-			}).fail(function() {
-				console.log("error");
-			});
-		};
+                $('#selectDeck').empty();
+                $('#selectDeck').json2html(data, transform);
 
-		$('#add').click(function(e) {
-			e.preventDefault();
-			$.ajax({
-				url : decksUrl,
-				type : 'POST',
-				contentType : "application/json",
-				data : JSON.stringify({
-					"name" : $('#name').val(),
-				}),
-				success : function(data) {
-					$('#addDeckModal').modal('hide');
-					addDecks();
-				},
-				error : function(data) {
-					console.log(data);
-				}
-			});
-		});
-	</script>
+            }).fail(function() {
+                console.log("error");
+            });
+        };
+
+        $('#add').click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url : decksUrl,
+                type : 'POST',
+                contentType : "application/json",
+                data : JSON.stringify({
+                    "name" : $('#name').val(),
+                }),
+                success : function(data) {
+                    $('#addDeckModal').modal('hide');
+                    addDecks();
+                },
+                error : function(data) {
+                    console.log(data);
+                }
+            });
+        });
+    </script>
 </body>
 </html>

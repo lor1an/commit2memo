@@ -18,7 +18,7 @@ public class AjaxAuthenticationSuccessHandler extends
     }
 
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest request,
+    public void onAuthenticationSuccess(final HttpServletRequest request,
             HttpServletResponse response, Authentication authentication)
             throws IOException, ServletException {
 

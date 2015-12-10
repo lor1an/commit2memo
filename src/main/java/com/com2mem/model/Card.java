@@ -8,40 +8,43 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table(name="card")
+@Table(name = "card")
 public class Card {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long cardId;
-	private String entryWord;
-	@ManyToOne
-	@JoinColumn(name="deckId")
-	private Deck deck;
 
-	public Long getCardId() {
-		return cardId;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long cardId;
+    private String entryId;
+    @ManyToOne
+    @JoinColumn(name = "deckId")
+    @JsonIgnore
+    private Deck deck;
 
-	public void setCardId(Long cardId) {
-		this.cardId = cardId;
-	}
+    public Long getCardId() {
+        return cardId;
+    }
 
-	public String getEntryWord() {
-		return entryWord;
-	}
+    public void setCardId(Long cardId) {
+        this.cardId = cardId;
+    }
 
-	public void setEntryWord(String entryWord) {
-		this.entryWord = entryWord;
-	}
+    public String getEntryId() {
+        return entryId;
+    }
 
-	public Deck getDeck() {
-		return deck;
-	}
+    public void setEntryId(String entryId) {
+        this.entryId = entryId;
+    }
 
-	public void setDeck(Deck deck) {
-		this.deck = deck;
-	}
-	
+    public Deck getDeck() {
+        return deck;
+    }
+
+    public void setDeck(Deck deck) {
+        this.deck = deck;
+    }
+
 }

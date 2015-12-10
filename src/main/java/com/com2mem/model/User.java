@@ -28,7 +28,7 @@ public class User {
     private boolean enabled;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.PERSIST)
     private Set<UserRole> userRole = new HashSet<UserRole>(0);
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.REMOVE)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.PERSIST)
     private List<Deck> decks;
 
     public User() {

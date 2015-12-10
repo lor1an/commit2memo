@@ -27,7 +27,7 @@ public class DictionaryServiceImpl implements DictionaryService {
 
     private static final String API_URL = "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/%s?key=%s";
 
-    public EntryList getEntryListFromDictionary(String word)
+    public EntryList getEntryListFromDictionary(final String word)
             throws XmlMappingException, IOException {
         URL url = new URL(String.format(API_URL, word, dictionaryKey));
 

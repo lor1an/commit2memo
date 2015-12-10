@@ -16,7 +16,7 @@ public class DeckServiceImpl implements DeckService {
     DeckRepository deckRepository;
     
     @Override
-    public void updateDeck(Deck deck) {
+    public void updateDeck(final Deck deck) {
         // TODO Auto-generated method stub
         
     }
@@ -28,19 +28,24 @@ public class DeckServiceImpl implements DeckService {
     }
 
     @Override
-    public boolean isDeckExist(Deck deck) {
+    public boolean isDeckExist(final Deck deck) {
         // TODO Auto-generated method stub
         return false;
     }
 
     @Override
-    public void saveDeck(Deck deck) {
+    public void saveDeck(final Deck deck) {
         deckRepository.save(deck);
     }
 
     @Override
-    public void deleteDeckById(Long id) {
+    public void deleteDeckById(final Long id) {
         deckRepository.delete(id);
+    }
+    
+    @Override
+    public void deleteDeck(final Deck deck) {
+        deckRepository.delete(deck);
     }
 
     @Override
@@ -49,7 +54,7 @@ public class DeckServiceImpl implements DeckService {
     }
 
     @Override
-    public Deck getDeckById(Long deckId) {
+    public Deck getDeckById(final Long deckId) {
         return deckRepository.findOne(deckId);
     }
     

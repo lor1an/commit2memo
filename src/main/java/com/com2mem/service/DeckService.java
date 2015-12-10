@@ -17,6 +17,8 @@ public interface DeckService {
     void saveDeck(Deck deck);
 
     void deleteDeckById(Long id);
-
+    
+    void deleteDeck(Deck deck);
+    
     void deleteAllDecks();
 }

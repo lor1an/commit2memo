@@ -51,10 +51,12 @@
 		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
-					<button class="navbar-toggle" data-toggle="collapse" type="button" data-target=".navbar-collapse">
-									<span class='glyphicon glyphicon-menu-hamburger' aria-hidden='true'></span>
-									<span class="sr-only">Toggle navigation</span> 
-								</button>
+					<button class="navbar-toggle" data-toggle="collapse" type="button"
+						data-target=".navbar-collapse">
+						<span class='glyphicon glyphicon-menu-hamburger'
+							aria-hidden='true'></span> <span class="sr-only">Toggle
+							navigation</span>
+					</button>
 					<a href="/" class="navbar-brand">commit2memo</a>
 				</div>
 				<div class="collapse navbar-collapse">
@@ -80,10 +82,6 @@
 			</div>
 			<div class="col-sm-6 worker">
 				<div class="thumbnail">
-					<table class="table ">
-						<tbody id="decksList">
-						</tbody>
-					</table>
 					<div class="btn-group btn-group-justified" role="group">
 						<div class="btn-group" role="group">
 							<button id="deleteButton" type="button"
@@ -107,6 +105,10 @@
 						</div>
 
 					</div>
+					<table class="table ">
+						<tbody id="decksList">
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
@@ -118,7 +120,7 @@
 	<script src="static/js/jquery.json2html.js"></script>
 	<script src="static/js/json2html.js"></script>
 	<script>
-	var decksUrl = "http://localhost:10080/commit2memo/decks";
+        var decksUrl = "http://localhost:10080/commit2memo/decks";
         $('tbody').on("click", "tr.t", function() {
             if (!$(this).hasClass('picked')) {
                 $(".picked").removeClass('picked');

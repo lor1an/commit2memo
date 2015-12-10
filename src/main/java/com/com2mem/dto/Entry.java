@@ -1,10 +1,12 @@
 package com.com2mem.dto;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 @XStreamAlias("entry")
 public class Entry {
-	
+    
+    @XStreamAsAttribute
 	private String id;
     @XStreamAlias("ew")
     private String entryWord;

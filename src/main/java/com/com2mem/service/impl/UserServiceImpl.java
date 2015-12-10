@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void updateUser(User user) {
+	public void updateUser(final User user) {
 		userRepository.save(user);
 	}
 
@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean isUserExist(User user) {
+	public boolean isUserExist(final User user) {
 		// if (user.getUsrId() != null) {
 		// return getUserById(user.getUsrId()) != null;
 		// }
@@ -65,12 +65,12 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void saveUser(User user) {
+	public void saveUser(final User user) {
 		userRepository.save(user);
 	}
 
 	@Override
-	public void deleteUserById(Long id) {
+	public void deleteUserById(final Long id) {
 		userRepository.delete(id);
 	}
 
