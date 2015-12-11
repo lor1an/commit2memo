@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.com2mem.model.Card;
 import com.com2mem.model.Deck;
 import com.com2mem.model.User;
+import com.com2mem.resolver.UserResolver;
 import com.com2mem.service.CardService;
 import com.com2mem.service.DeckService;
 import com.com2mem.service.UserService;
-import com.com2mem.util.UserResolver;
 import com.google.common.collect.Lists;
 
 @RestController
@@ -57,8 +57,7 @@ public class DeckController {
 
     @RequestMapping(value = "/decks/{id}", method = RequestMethod.GET)
     public ResponseEntity<Deck> getDeck(@PathVariable("id") Long id) {
-        User curUser = userResolver.curentUser();
-        List<Deck> decks = curUser.getDecks();
+        List<Deck> decks = userResolver.curentUser().getDecks();
         for (int i = 0; i < decks.size(); i++) {
             if (decks.get(i).getDeckId().equals(id)) {
                 return new ResponseEntity<Deck>(decks.get(i), HttpStatus.OK);
@@ -70,8 +69,7 @@ public class DeckController {
     @RequestMapping(value = "/decks/{id}", method = RequestMethod.PUT)
     public ResponseEntity<HttpStatus> addCard(@PathVariable("id") Long id,
             @RequestBody Card card) {
-        User curUser = userResolver.curentUser();
-        List<Deck> decks = curUser.getDecks();
+        List<Deck> decks = userResolver.curentUser().getDecks();
         for (int i = 0; i < decks.size(); i++) {
             if (decks.get(i).getDeckId().equals(id)) {
                 Deck deck = decks.get(i);
@@ -83,10 +81,10 @@ public class DeckController {
                     deck.setCards(Lists.newArrayList(card));
                 }
                 deckService.saveDeck(deck);
-                break;
+                return new ResponseEntity<HttpStatus>(HttpStatus.OK);
             }
         }
-        return new ResponseEntity<HttpStatus>(HttpStatus.OK);
+        return new ResponseEntity<HttpStatus>(HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(value = "/decks/{id}", method = RequestMethod.DELETE)

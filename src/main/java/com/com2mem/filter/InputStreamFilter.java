@@ -1,4 +1,4 @@
-package com.com2mem.util;
+package com.com2mem.filter;
 
 import java.io.IOException;
 import java.io.InputStream;

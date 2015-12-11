@@ -64,7 +64,7 @@
 						<li><a href="profile">My profile</a> <span
 							class="icon-envelope"></span></li>
 						<li><a href="">About</a></li>
-						<li><a href class="logout">Logout</a></li>
+						<li><a href="" class="logout">Logout</a></li>
 					</ul>
 				</div>
 			</div>
@@ -81,35 +81,34 @@
 				</ul>
 			</div>
 			<div class="col-sm-6 worker">
+				<div class="btn-group btn-group-justified" role="group">
+					<div class="btn-group" role="group">
+						<button id="deleteButton" type="button"
+							class="btn btn-danger disabled switch">
+							<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+							Delete Deck
+						</button>
+					</div>
+					<div class="btn-group" role="group">
+						<button type="button" class="btn btn-primary" data-toggle="modal"
+							data-target="#addDeckModal">
+							<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>
+							Add Deck
+						</button>
+					</div>
+					<div class="btn-group" role="group">
+						<button type="button" class="btn btn-success disabled switch">
+							<span class='glyphicon glyphicon-play' aria-hidden='true'></span>
+							Start traning
+						</button>
+					</div>
+				</div>
 				<div class="thumbnail">
 					<div class="list">
 						<table class="table ">
 							<tbody id="decksList">
 							</tbody>
 						</table>
-					</div>
-					<div class="btn-group btn-group-justified" role="group">
-						<div class="btn-group" role="group">
-							<button id="deleteButton" type="button"
-								class="btn btn-danger disabled switch">
-								<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-								Delete Deck
-							</button>
-						</div>
-						<div class="btn-group" role="group">
-							<button type="button" class="btn btn-primary" data-toggle="modal"
-								data-target="#addDeckModal">
-								<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>
-								Add Deck
-							</button>
-						</div>
-						<div class="btn-group" role="group">
-							<button type="button" class="btn btn-success disabled switch">
-								<span class='glyphicon glyphicon-play' aria-hidden='true'></span>
-								Start traning
-							</button>
-						</div>
-
 					</div>
 				</div>
 			</div>

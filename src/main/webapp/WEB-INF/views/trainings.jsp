@@ -30,7 +30,7 @@
 						<li><a href="profile">My profile</a> <span
 							class="icon-envelope"></span></li>
 						<li><a href="">About</a></li>
-						<li><a href class="logout">Logout</a></li>
+						<li><a href="" class="logout">Logout</a></li>
 					</ul>
 				</div>
 			</div>
@@ -55,9 +55,9 @@
 								<div>
 									<span> /food/ </span>
 								</div>
-								<audio controls=""
+							<!-- 	<audio controls=""
 									src="http://media.merriam-webster.com/soundc11/f/food0001.wav"
-									type="audio/mpeg"></audio>
+									type="audio/mpeg"></audio> -->
 								<div>
 									<span style="font-style: italic;">noun</span>
 								</div>

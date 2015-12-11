@@ -9,8 +9,8 @@ import org.springframework.oxm.XmlMappingException;
 import org.springframework.oxm.xstream.XStreamMarshaller;
 
 import com.com2mem.dto.EntryList;
+import com.com2mem.filter.InputStreamFilter;
 import com.com2mem.service.DictionaryService;
-import com.com2mem.util.InputStreamFilter;
 
 public class DictionaryServiceImpl implements DictionaryService {
 

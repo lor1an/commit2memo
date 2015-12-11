@@ -63,7 +63,7 @@
 						<li><a href="profile">My profile</a> <span
 							class="icon-envelope"></span></li>
 						<li><a href="">About</a></li>
-						<li><a href class="logout">Logout</a></li>
+						<li><a href="" class="logout">Logout</a></li>
 					</ul>
 				</div>
 			</div>
@@ -133,19 +133,22 @@
                                 "tag" : "div",
                                 "id" : "word",
                                 "class" : "word",
-                                "children" : [ {
-                                    "tag" : "div",
-                                    "class" : "entryWord",
-                                    "html" : "<span style='font-weight: bold;' >\${entryWord}</span><span>  /\${pronunciation}/ </span>"
-                                }, {
-                                    "tag" : "div",
-                                    "html" : "<audio controls src='\${sound.wav}' type='audio/mpeg'></audio>"
-                                }, {
-                                    "tag" : "div",
-                                    "id" : "def",
-                                    "class" : "def",
-                                    "html" : "<span style='font-style: italic;' >	\${funcLabel}</span>"
-                                } ]
+                                "children" : [
+                                        {
+                                            "tag" : "div",
+                                            "class" : "entryWord",
+                                            "html" : "<span style='font-weight: bold;' >\${entryWord}</span><span>  /\${pronunciation}/ </span>"
+                                        },
+                                        {
+                                            "tag" : "div",
+                                            "html" : "<audio controls src='\${sound.wav}' type='audio/mpeg'></audio>"
+                                        },
+                                        {
+                                            "tag" : "div",
+                                            "id" : "def",
+                                            "class" : "def",
+                                            "html" : "<span style='font-style: italic;' >	\${funcLabel}</span>"
+                                        } ]
                             };
 
                             var transform2 = {
@@ -194,43 +197,41 @@
                         });
 
         $(document).on("click", ".btn-group-justified", function(e) {
-            var deckId = $("#selectDeck").children(":selected").attr("id").substring(4);
-            var wordId = $(this).parent('.word').attr("id").substring(4);
+            var deckId = parseInt($("#selectDeck").children(":selected").attr("id").substring(4));
+            var wordId = parseInt($(this).parent('.word').attr("id").substring(4));
             var defId = $(this).prev().attr("id");
             var checked = $('#' + defId + ' .checkb:checked');
             var sndfIds = [];
             if (checked.length == 0) {
                 $('#' + defId + ' .checkb').each(function() {
-                    sndfIds.push($(this).closest('.sndf').attr("id").substring(4));
+                    sndfIds.push(parseInt($(this).closest('.sndf').attr("id").substring(4)));
                 });
             } else {
                 checked.each(function() {
                     sndfIds.push($(this).closest('.sndf').attr("id").substring(4));
                 });
             }
-			var card = {
-			        "searchWord": searchWord,
-			        "deckId": deckId,
-			        "wordId": wordId, 
-			        "sndfIds": sndfIds 
-			};
-			console.log(card);
-			console.log(JSON.stringify(card));
+            var card = {
+                "searchWord" : searchWord,
+                "wordId" : wordId,
+                "sensesId" : sndfIds,
+                "deckId" : deckId
+            };
+            console.log(card);
+            console.log(JSON.stringify(card));
             e.preventDefault();
-            /*   $.ajax({
-                  url : decksUrl + "/" + deckId,
-                  type : 'PUT',
-                  contentType : "application/json",
-                  data : JSON.stringify({
-                      "entryId" : wordId,
-                  }),
-                  success : function(data) {
-                      console.log("success");
-                  },
-                  error : function(data) {
-                      console.log(data);
-                  }
-              }); */
+            $.ajax({
+                url : decksUrl + "/" + deckId,
+                type : 'PUT',
+                contentType : "application/json",
+                data : JSON.stringify(card),
+                success : function(data) {
+                    console.log("success");
+                },
+                error : function(data) {
+                    console.log(data);
+                }
+            });
         });
 
         $(document).ready(function() {

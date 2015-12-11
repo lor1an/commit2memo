@@ -17,10 +17,12 @@
 		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
-					<button class="navbar-toggle" data-toggle="collapse" type="button" data-target=".navbar-collapse">
-									<span class='glyphicon glyphicon-menu-hamburger' aria-hidden='true'></span>
-									<span class="sr-only">Toggle navigation</span> 
-								</button>
+					<button class="navbar-toggle" data-toggle="collapse" type="button"
+						data-target=".navbar-collapse">
+						<span class='glyphicon glyphicon-menu-hamburger'
+							aria-hidden='true'></span> <span class="sr-only">Toggle
+							navigation</span>
+					</button>
 					<a href="/" class="navbar-brand">commit2memo</a>
 				</div>
 				<div class="collapse navbar-collapse">
@@ -28,7 +30,7 @@
 						<li><a href="profile">My profile</a> <span
 							class="icon-envelope"></span></li>
 						<li><a href="">About</a></li>
-						<li><a href class="logout">Logout</a></li>
+						<li><a href="" class="logout">Logout</a></li>
 					</ul>
 				</div>
 			</div>
@@ -101,20 +103,21 @@
 		</ul>
 	</div>
 	<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<script
+		src="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	<script src="static/js/jquery.json2html.js"></script>
 	<script src="static/js/json2html.js"></script>
 	<script src="static/js/auth.js"></script>
 	<script>
-		$('tr').click(function() {
-			$(this).toggleClass('picked');
-			if ($(".picked")[0]) {
-				$("#btn_s").removeClass('disabled');
-			} else {
-				$("#btn_s").addClass('disabled');
-			}
+        $('tr').click(function() {
+            $(this).toggleClass('picked');
+            if ($(".picked")[0]) {
+                $("#btn_s").removeClass('disabled');
+            } else {
+                $("#btn_s").addClass('disabled');
+            }
 
-		});
-	</script>
+        });
+    </script>
 </body>
 </html>

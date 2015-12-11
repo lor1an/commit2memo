@@ -28,6 +28,7 @@ public class Deck {
     @JsonIgnore
     private User user;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "deck", cascade = CascadeType.PERSIST)
+    @JsonIgnore
     private List<Card> cards;
 
     public Deck() {
