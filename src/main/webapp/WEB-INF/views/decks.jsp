@@ -82,6 +82,12 @@
 			</div>
 			<div class="col-sm-6 worker">
 				<div class="thumbnail">
+					<div class="list">
+						<table class="table ">
+							<tbody id="decksList">
+							</tbody>
+						</table>
+					</div>
 					<div class="btn-group btn-group-justified" role="group">
 						<div class="btn-group" role="group">
 							<button id="deleteButton" type="button"
@@ -105,10 +111,6 @@
 						</div>
 
 					</div>
-					<table class="table ">
-						<tbody id="decksList">
-						</tbody>
-					</table>
 				</div>
 			</div>
 		</div>
@@ -144,7 +146,7 @@
             $.get(url, function(data) {
                 var transform = {
                     "tag" : "tr",
-                    "id" : "\${deckId}",
+                    "id" : "deck\${deckId}",
                     "class" : "t",
                     "html" : "<td>\${name}</td>" + test
                 };
@@ -178,8 +180,9 @@
 
         $('#deleteButton').click(function(e) {
             var id = $(".picked").attr("id");
+            console.log(id);
             $.ajax({
-                url : decksUrl + "/" + id,
+                url : decksUrl + "/" + id.substring(4),
                 type : 'DELETE',
                 success : function(data) {
                     addDecks();

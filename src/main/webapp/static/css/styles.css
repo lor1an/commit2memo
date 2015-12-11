@@ -138,7 +138,8 @@ tr:hover {
 }
 
 .senseNumber:hover {
-	background: #DCDCDC;
+	background: #E4E4E4;
+	color: #000000;
 }
 
 div:empty {
@@ -216,4 +217,7 @@ audio[src=""] {
 .navbar-default {
 	background-color: #36ACDB;
 	border-color: #080808;
+}
+.disabledSndf{
+	color: #ccc;
 }
