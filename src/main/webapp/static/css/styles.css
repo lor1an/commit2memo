@@ -121,7 +121,15 @@ tr:hover {
 }
 
 .word {
-	border: solid;
+	border-top-color: initial;
+	border-top-style: solid;
+	border-top-width: initial;
+	border-right-color: initial;
+	border-right-style: solid;
+	border-right-width: initial;
+	border-left-color: initial;
+	border-left-style: solid;
+	border-left-width: initial;
 }
 
 .list {
@@ -130,7 +138,27 @@ tr:hover {
 }
 
 .senseNumber {
-	border: 1px solid #ccc;
+	border-top-color: rgb(204, 204, 204);
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-right-color: rgb(204, 204, 204);
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-left-color: rgb(204, 204, 204);
+	border-left-style: solid;
+	border-left-width: 1px;
+}
+
+.cardSenseNumber {
+	border-top-color: rgb(204, 204, 204);
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-right-color: rgb(204, 204, 204);
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-left-color: rgb(204, 204, 204);
+	border-left-style: solid;
+	border-left-width: 1px;
 }
 
 .input-group-addon {
@@ -152,8 +180,7 @@ audio[src=""] {
 
 .flip {
 	-webkit-perspective: 800;
-	width: 400px;
-	height: 200px;
+	height: 400px;
 	position: relative;
 	margin: 12px auto;
 }
@@ -188,7 +215,7 @@ audio[src=""] {
 	border: solid;
 	font-size: 3em;
 	text-align: center;
-	line-height: 200px;
+	line-height: 400px;
 }
 
 .flip .card .back {
@@ -218,6 +245,26 @@ audio[src=""] {
 	background-color: #36ACDB;
 	border-color: #080808;
 }
-.disabledSndf{
+
+.disabledSndf {
 	color: #ccc;
+}
+
+.pronunc {
+	font-size: xx-large;
+	text-align: center;
+}
+
+.congrats {
+	display: table;
+	height: 400px;
+	width: 100%;
+	text-align: center;
+	border: solid;
+	font-size: 3em;
+}
+
+.congrats>span {
+	display: table-cell;
+	vertical-align: middle;
 }

@@ -1,10 +1,14 @@
 package com.com2mem.model;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CollectionTable;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +16,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.com2mem.dto.Entry;
 
 @Entity
 @Table(name = "card")
@@ -25,6 +32,12 @@ public class Card {
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name ="card_senses")
     private List<Integer> sensesId;
+    @Transient
+    private Entry entry;
+    @Enumerated(EnumType.STRING)
+    private Wave wave;
+    @Column
+    private LocalDate repeatDate; 
     @ManyToOne
     @JoinColumn(name = "deckId")
     private Deck deck;
@@ -59,6 +72,30 @@ public class Card {
 
     public void setSensesId(List<Integer> sensesId) {
         this.sensesId = sensesId;
+    }
+    
+    public Entry getEntry() {
+        return entry;
+    }
+
+    public void setEntry(Entry entry) {
+        this.entry = entry;
+    }
+
+    public Wave getWave() {
+        return wave;
+    }
+
+    public void setWave(Wave wave) {
+        this.wave = wave;
+    }
+
+    public LocalDate getRepeatDate() {
+        return repeatDate;
+    }
+
+    public void setRepeatDate(LocalDate repeatDate) {
+        this.repeatDate = repeatDate;
     }
 
     public Deck getDeck() {

@@ -1,5 +1,6 @@
 package com.com2mem.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.com2mem.model.Card;
 import com.com2mem.model.Deck;
 import com.com2mem.model.User;
+import com.com2mem.model.Wave;
 import com.com2mem.resolver.UserResolver;
 import com.com2mem.service.CardService;
 import com.com2mem.service.DeckService;
@@ -74,6 +76,8 @@ public class DeckController {
             if (decks.get(i).getDeckId().equals(id)) {
                 Deck deck = decks.get(i);
                 card.setDeck(deck);
+                card.setRepeatDate(LocalDate.now());
+                card.setWave(Wave.WAVE_0);
                 cardService.saveCard(card);
                 if (deck.getCards() != null) {
                     deck.getCards().add(card);

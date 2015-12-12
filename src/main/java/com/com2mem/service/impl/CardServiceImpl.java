@@ -32,37 +32,39 @@ public class CardServiceImpl implements CardService {
     private DictionaryService dictionaryService;
 
     @Override
-    public EntryList getCardsByDeckId(final Long deckId) throws XmlMappingException, IOException {
+    public List<Card> getCardsByDeckId(final Long deckId) {
         User curUser = userResolver.curentUser();
         List<Deck> decks = curUser.getDecks();
         for (int i = 0; i < decks.size(); i++) {
             if (decks.get(i).getDeckId().equals(deckId)) {
                 List<Card> cards = cardRepository.findByDeck(decks.get(i));
-                EntryList entryList = new EntryList();
-                List<Entry> entries = new ArrayList<Entry>();
                 for (Card card : cards) {
-                    EntryList eList = dictionaryService.getEntryListFromDictionary(card
-                            .getSearchWord());
-                    entries.add(findEntryByCard(eList, card));
+                    card.setEntry(findEntryForCard(card));
                 }
-                entryList.setEntryList(entries);
-                return entryList;
+                return cards;
             }
         }
         return null;
     }
 
-    private Entry findEntryByCard(final EntryList entryList, final Card card) {
-        Entry e = entryList.getEntryList().get(card.getWordId());
-        List<DefText> allSenses = e.getDef().getSndf();
-        if (allSenses.size() != card.getSensesId().size()) {
-            List<DefText> senses = new ArrayList<>();
-            for (Integer i : card.getSensesId()) {
-                senses.add(allSenses.get(i));
+    private Entry findEntryForCard(final Card card) {
+        try {
+            EntryList eList = dictionaryService.getEntryListFromDictionary(card.getSearchWord());
+            Entry e = eList.getEntryList().get(card.getWordId());
+            List<DefText> allSenses = e.getDef().getSndf();
+            if (allSenses.size() != card.getSensesId().size()) {
+                List<DefText> senses = new ArrayList<>();
+                for (Integer i : card.getSensesId()) {
+                    senses.add(allSenses.get(i));
+                }
+                e.getDef().setSndf(senses);
             }
-            e.getDef().setSndf(senses);
+            return e;
+        } catch (XmlMappingException | IOException e1) {
+            e1.printStackTrace();
+            return null;
         }
-        return e;
+
     }
 
     @Override

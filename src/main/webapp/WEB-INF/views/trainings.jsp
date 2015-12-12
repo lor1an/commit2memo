@@ -62,28 +62,18 @@
 						</div>
 					</div>
 					<div class="flip">
-						<div id="a" class="card">
-							<div class="face front">food</div>
-							<div id="flash" class="face back"></div>
-						</div>
 					</div>
 					<div class="btn-group btn-group-justified" role="group">
 						<div class="btn-group" role="group">
-							<button type="button" class="btn btn-danger">
+							<button id="again" type="button" class="training btn btn-danger">
 								<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-								Bad
+								Again
 							</button>
 						</div>
 						<div class="btn-group" role="group">
-							<button type="button" class="btn btn-success">
+							<button id="know" type="button" class="training btn btn-success">
 								<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
-								Good
-							</button>
-						</div>
-						<div class="btn-group" role="group">
-							<button type="button" class="btn btn-primary">
-								<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-								Easy
+								Know
 							</button>
 						</div>
 					</div>
@@ -96,56 +86,95 @@
 	<script src="static/js/jquery.json2html.js"></script>
 	<script src="static/js/json2html.js"></script>
 	<script type="text/javascript">
-        var test = {
-            "entryList" : [
-                    {
-                        "id" : "food",
-                        "entryWord" : "food",
-                        "sound" : {
-                            "wav" : "http://media.merriam-webster.com/soundc11/f/food0001.wav"
-                        },
-                        "pronunciation" : "ˈfüd",
-                        "funcLabel" : "noun",
+        var cards = [
+                {
+                    "cardId" : 1,
+                    "searchWord" : "cat",
+                    "wordId" : 4,
+                    "sensesId" : [ 1 ],
+                    "entry" : {
+                        "id" : "cat[3]",
+                        "entryWord" : "cat",
+                        "sound" : null,
+                        "pronunciation" : null,
+                        "funcLabel" : "abbreviation",
                         "def" : {
-                            "sndf" : [
-                                    {
-                                        "senseNumber" : "1 a",
-                                        "value" : ":material consisting essentially of protein, carbohydrate, and fat used in the body of an organism to sustain growth, repair, and vital processes and to furnish energy",
-                                        "synonymous" : null,
-                                        "usageNote" : null,
-                                        "verbalIllustration" : null
-                                    },
-                                    {
-                                        "senseNumber" : "1 a",
-                                        "value" : ":such food together with supplementary substances (as minerals, vitamins, and condiments)",
-                                        "synonymous" : null,
-                                        "usageNote" : null,
-                                        "verbalIllustration" : null
-                                    },
-                                    {
-                                        "senseNumber" : "b",
-                                        "value" : ":inorganic substances absorbed by plants in gaseous form or in water solution",
-                                        "synonymous" : null,
-                                        "usageNote" : null,
-                                        "verbalIllustration" : null
-                                    },
-                                    {
-                                        "senseNumber" : "2",
-                                        "value" : ":nutriment in solid form",
-                                        "synonymous" : null,
-                                        "usageNote" : null,
-                                        "verbalIllustration" : null
-                                    },
-                                    {
-                                        "senseNumber" : "3",
-                                        "value" : ":something that nourishes, sustains, or supplies ",
-                                        "synonymous" : null,
-                                        "usageNote" : null,
-                                        "verbalIllustration" : "(f. e.:food for thought)"
-                                    } ]
+                            "sndf" : [ {
+                                "senseNumber" : "2",
+                                "value" : "catalyst",
+                                "synonymous" : null,
+                                "usageNote" : null,
+                                "verbalIllustration" : null
+                            } ]
                         }
                     },
-                    {
+                    "wave" : "WAVE_0",
+                    "repeatDate" : {
+                        "year" : 2015,
+                        "month" : "DECEMBER",
+                        "dayOfMonth" : 12,
+                        "dayOfWeek" : "SATURDAY",
+                        "era" : "CE",
+                        "dayOfYear" : 346,
+                        "leapYear" : false,
+                        "chronology" : {
+                            "calendarType" : "iso8601",
+                            "id" : "ISO"
+                        },
+                        "monthValue" : 12
+                    },
+                    "deck" : {
+                        "deckId" : 1,
+                        "name" : "cats"
+                    }
+                },
+                {
+                    "cardId" : 2,
+                    "searchWord" : "cat",
+                    "wordId" : 1,
+                    "sensesId" : [ 0 ],
+                    "entry" : {
+                        "id" : "cat[2]",
+                        "entryWord" : "cat",
+                        "sound" : null,
+                        "pronunciation" : null,
+                        "funcLabel" : "verb",
+                        "def" : {
+                            "sndf" : [ {
+                                "senseNumber" : "intransitive verb",
+                                "value" : ":to search for a sexual mate ",
+                                "synonymous" : null,
+                                "usageNote" : "(often used with around)",
+                                "verbalIllustration" : null
+                            } ]
+                        }
+                    },
+                    "wave" : "WAVE_0",
+                    "repeatDate" : {
+                        "year" : 2015,
+                        "month" : "DECEMBER",
+                        "dayOfMonth" : 12,
+                        "dayOfWeek" : "SATURDAY",
+                        "era" : "CE",
+                        "dayOfYear" : 346,
+                        "leapYear" : false,
+                        "chronology" : {
+                            "calendarType" : "iso8601",
+                            "id" : "ISO"
+                        },
+                        "monthValue" : 12
+                    },
+                    "deck" : {
+                        "deckId" : 1,
+                        "name" : "cats"
+                    }
+                },
+                {
+                    "cardId" : 3,
+                    "searchWord" : "cat",
+                    "wordId" : 0,
+                    "sensesId" : [ 1, 6 ],
+                    "entry" : {
                         "id" : "cat[1]",
                         "entryWord" : "cat",
                         "sound" : {
@@ -154,76 +183,160 @@
                         "pronunciation" : "ˈkat",
                         "funcLabel" : "noun",
                         "def" : {
-                            "sndf" : [ {
-                                "senseNumber" : "4 a",
-                                "value" : ":",
-                                "synonymous" : "syn. to:catboat",
-                                "usageNote" : null,
-                                "verbalIllustration" : null
-                            } ]
+                            "sndf" : [
+                                    {
+                                        "senseNumber" : "b",
+                                        "value" : ":any of a family (Felidae) of carnivorous usually solitary and nocturnal mammals (as the domestic cat, lion, tiger, leopard, jaguar, cougar, wildcat, lynx, and cheetah)",
+                                        "synonymous" : null,
+                                        "usageNote" : null,
+                                        "verbalIllustration" : null
+                                    }, {
+                                        "senseNumber" : "5",
+                                        "value" : ":",
+                                        "synonymous" : "syn. to:cat-o'-nine-tails",
+                                        "usageNote" : null,
+                                        "verbalIllustration" : null
+                                    } ]
                         }
                     },
-                    {
-                        "id" : "wood[2]",
-                        "entryWord" : "wood",
-                        "sound" : {
-                            "wav" : "http://media.merriam-webster.com/soundc11/w/wood0001.wav"
+                    "wave" : "WAVE_0",
+                    "repeatDate" : {
+                        "year" : 2015,
+                        "month" : "DECEMBER",
+                        "dayOfMonth" : 12,
+                        "dayOfWeek" : "SATURDAY",
+                        "era" : "CE",
+                        "dayOfYear" : 346,
+                        "leapYear" : false,
+                        "chronology" : {
+                            "calendarType" : "iso8601",
+                            "id" : "ISO"
                         },
-                        "pronunciation" : "ˈwu̇d",
+                        "monthValue" : 12
+                    },
+                    "deck" : {
+                        "deckId" : 1,
+                        "name" : "cats"
+                    }
+                },
+                {
+                    "cardId" : 4,
+                    "searchWord" : "cat",
+                    "wordId" : 0,
+                    "sensesId" : [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ],
+                    "entry" : {
+                        "id" : "cat[1]",
+                        "entryWord" : "cat",
+                        "sound" : {
+                            "wav" : "http://media.merriam-webster.com/soundc11/c/cat00001.wav"
+                        },
+                        "pronunciation" : "ˈkat",
                         "funcLabel" : "noun",
                         "def" : {
                             "sndf" : [
                                     {
                                         "senseNumber" : "1 a",
-                                        "value" : ":a dense growth of trees usually greater in extent than a grove and smaller than a forest ",
-                                        "synonymous" : null,
-                                        "usageNote" : "(often used in plural but singular or plural in construction)",
-                                        "verbalIllustration" : null
-                                    },
-                                    {
-                                        "senseNumber" : "2 a",
-                                        "value" : ":the hard fibrous substance consisting basically of xylem that makes up the greater part of the stems, branches, and roots of trees or shrubs beneath the bark and is found to a limited extent in herbaceous plants",
-                                        "synonymous" : null,
-                                        "usageNote" : null,
-                                        "verbalIllustration" : null
-                                    },
-                                    {
-                                        "senseNumber" : "3 a",
-                                        "value" : ":something made of wood",
+                                        "value" : ":a carnivorous mammal (Felis catus) long domesticated as a pet and for catching rats and mice",
                                         "synonymous" : null,
                                         "usageNote" : null,
                                         "verbalIllustration" : null
                                     },
                                     {
                                         "senseNumber" : "b",
-                                        "value" : ":a golf club having a similar head made of metal",
+                                        "value" : ":any of a family (Felidae) of carnivorous usually solitary and nocturnal mammals (as the domestic cat, lion, tiger, leopard, jaguar, cougar, wildcat, lynx, and cheetah)",
                                         "synonymous" : null,
+                                        "usageNote" : null,
+                                        "verbalIllustration" : null
+                                    },
+                                    {
+                                        "senseNumber" : "2",
+                                        "value" : ":a malicious woman",
+                                        "synonymous" : null,
+                                        "usageNote" : null,
+                                        "verbalIllustration" : null
+                                    },
+                                    {
+                                        "senseNumber" : "3",
+                                        "value" : ":a strong tackle used to hoist an anchor to the cathead of a ship",
+                                        "synonymous" : null,
+                                        "usageNote" : null,
+                                        "verbalIllustration" : null
+                                    }, {
+                                        "senseNumber" : "4 a",
+                                        "value" : ":",
+                                        "synonymous" : "syn. to:catboat",
+                                        "usageNote" : null,
+                                        "verbalIllustration" : null
+                                    }, {
+                                        "senseNumber" : "b",
+                                        "value" : ":",
+                                        "synonymous" : "syn. to:catamaran",
+                                        "usageNote" : null,
+                                        "verbalIllustration" : null
+                                    }, {
+                                        "senseNumber" : "5",
+                                        "value" : ":",
+                                        "synonymous" : "syn. to:cat-o'-nine-tails",
+                                        "usageNote" : null,
+                                        "verbalIllustration" : null
+                                    }, {
+                                        "senseNumber" : "6",
+                                        "value" : ":",
+                                        "synonymous" : "syn. to:catfish",
+                                        "usageNote" : null,
+                                        "verbalIllustration" : null
+                                    }, {
+                                        "senseNumber" : "7 a",
+                                        "value" : ":a player or devotee of jazz",
+                                        "synonymous" : null,
+                                        "usageNote" : null,
+                                        "verbalIllustration" : null
+                                    }, {
+                                        "senseNumber" : "b",
+                                        "value" : ":",
+                                        "synonymous" : "syn. to:guy",
                                         "usageNote" : null,
                                         "verbalIllustration" : null
                                     } ]
                         }
-                    } ]
-        };
-        var decksUrl = "http://localhost:10080/commit2memo/decks";
-        $('.flip').click(function() {
-            $(this).find('.card').toggleClass('flipped');
-            return false;
-        });
+                    },
+                    "wave" : "WAVE_0",
+                    "repeatDate" : {
+                        "year" : 2015,
+                        "month" : "DECEMBER",
+                        "dayOfMonth" : 12,
+                        "dayOfWeek" : "SATURDAY",
+                        "era" : "CE",
+                        "dayOfYear" : 346,
+                        "leapYear" : false,
+                        "chronology" : {
+                            "calendarType" : "iso8601",
+                            "id" : "ISO"
+                        },
+                        "monthValue" : 12
+                    },
+                    "deck" : {
+                        "deckId" : 1,
+                        "name" : "cats"
+                    }
+                } ];
         var transform = {
             "tag" : "div",
-            "id" : "word",
-            "class" : "word",
+            "id" : "cardWord",
+            "class" : "cardWord",
             "children" : [ {
                 "tag" : "div",
+                "class" : "pronunc",
                 "html" : "\${pronunciation}"
             }, {
                 "tag" : "div",
+                "style" : "text-align: center",
                 "html" : "<audio controls src='\${sound.wav}' type='audio/mpeg'></audio>"
             }, {
                 "tag" : "div",
                 "id" : "def",
                 "class" : "def",
-                "html" : "<span style='font-style: italic;' >	\${funcLabel}</span>"
+                "html" : "<div style='font-weight: bold; text-align: center' >	\${funcLabel}</div>"
             } ]
         };
 
@@ -233,20 +346,41 @@
             "class" : "sndf",
             "children" : [ {
                 "tag" : "div",
-                "style" : "style='display: block;'",
-                "class" : "senseNumber input-group",
-                "html" : "<div class='senseValue'><span style='font-weight: bold;' >(\${senseNumber})</span> \${value} \${synonymous} \${verbalIllustration} \${usageNote}</div>"
+                "style" : "display: inherit;",
+                "class" : "cardSenseNumber input-group",
+                "html" : "<span style='font-weight: bold;' >(\${senseNumber})</span> \${value} \${synonymous} \${verbalIllustration} \${usageNote}"
             } ]
         };
 
+        var decksUrl = "http://localhost:10080/commit2memo/decks";
+        var curIndex = 0;
+        
+        $(document).on("click", ".flip", function(e) {
+            $(this).find('.card').toggleClass('flipped');
+        });
+
         $(document).ready(function() {
             addDecks();
-            $('#flash').json2html(test.entryList[0], transform);
-            for (var i = 0; i < test.entryList[0].def.sndf.length; i++) {
-                $('#def').json2html(test.entryList[0].def.sndf[i], transform2);
+            $.get('static/pages/flip.html', function(data) {
+                $(".flip").append(data);
+            }).done(function() {
+                nextCard(curIndex);
+            });
+            for (var i = 0; i < cards.length; i++) {
+                cards[i].know = 1;
             }
         });
 
+        function nextCard(index) {
+            $('#front').empty();
+            $('#front').text(cards[index].entry.entryWord);
+            $('#back').empty();
+            $('#back').json2html(cards[index].entry, transform);
+            $('#def').empty();
+            for (var i = 0; i < cards[index].entry.def.sndf.length; i++) {
+                $('#def').json2html(cards[index].entry.def.sndf[i], transform2);
+            }
+        }
         function addDecks() {
             var url = decksUrl;
             $.get(url, function(data) {
@@ -263,6 +397,38 @@
                 console.log("error");
             });
         };
+
+        $(document).on("click", ".training", function(e) {
+            var shift = 1;
+            var card = cards[curIndex];
+            if (removeCard(card.know)) {
+                shift = 0;
+            } else {
+                if ($(this).attr("id") == "know") {
+                    card.know = card.know - 1;
+                    console.log(card.know);
+                } else {
+                    card.know = card.know + 1;
+                    console.log(card.know);
+                }
+            }
+            if (cards.length > 0) {
+                curIndex = (curIndex + shift) % (cards.length);
+                nextCard(curIndex);
+                $('.flip').find('.card').removeClass('flipped');
+            } else {
+                $('.flip').html(" <span>Congradulations! You have finished your training :)</span>");
+                $('.flip').addClass("congrats");
+            }
+        });
+
+        function removeCard(know) {
+            if (know === 0 || know === 3) {
+                cards.splice(curIndex, 1);
+                return true;
+            }
+            return false;
+        }
     </script>
 </body>
 </html>
