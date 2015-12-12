@@ -150,15 +150,7 @@ tr:hover {
 }
 
 .cardSenseNumber {
-	border-top-color: rgb(204, 204, 204);
-	border-top-style: solid;
-	border-top-width: 1px;
-	border-right-color: rgb(204, 204, 204);
-	border-right-style: solid;
-	border-right-width: 1px;
-	border-left-color: rgb(204, 204, 204);
-	border-left-style: solid;
-	border-left-width: 1px;
+	
 }
 
 .input-group-addon {
@@ -225,7 +217,6 @@ audio[src=""] {
 	cursor: pointer;
 	border: solid;
 }
-
 .deck-modal {
 	padding-top: 35px;
 	padding-bottom: 19px;
@@ -257,14 +248,27 @@ audio[src=""] {
 
 .congrats {
 	display: table;
+	border:solid;
 	height: 400px;
 	width: 100%;
 	text-align: center;
-	border: solid;
-	font-size: 3em;
+ 	font-size: 3em; 
 }
 
-.congrats>span {
+.conb {
+	display: table;
+	border:solid;
+	height: 400px;
+	width: 100%;
+	text-align: center;
+}
+
+.cng_nst {
 	display: table-cell;
 	vertical-align: middle;
+}
+.cardWord{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: left;
 }

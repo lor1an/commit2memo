@@ -40,5 +40,15 @@ public class CardController {
             return new ResponseEntity<List<Card>>(cards, HttpStatus.OK);
         }
     }
+    
+    @RequestMapping(value = "/decks/{id}/cards/training", method = RequestMethod.GET)
+    public ResponseEntity<List<Card>> getCardsForTraining(@PathVariable("id") Long id){
+        List<Card> cards = cardService.getCardsByDeckId(id);
+        if (cards == null) {
+            return new ResponseEntity<List<Card>>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<List<Card>>(cards, HttpStatus.OK);
+        }
+    }
 
 }

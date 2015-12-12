@@ -19,6 +19,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.com2mem.dto.Entry;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "card")
@@ -27,16 +28,21 @@ public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cardId;
+    @JsonIgnore
     private String searchWord;
+    @JsonIgnore
     private Integer wordId;
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name ="card_senses")
+    @JsonIgnore
     private List<Integer> sensesId;
     @Transient
     private Entry entry;
     @Enumerated(EnumType.STRING)
+    @JsonIgnore
     private Wave wave;
     @Column
+    @JsonIgnore
     private LocalDate repeatDate; 
     @ManyToOne
     @JoinColumn(name = "deckId")
