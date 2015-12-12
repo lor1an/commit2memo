@@ -19,10 +19,12 @@
 		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
-					<button class="navbar-toggle" data-toggle="collapse" type="button" data-target=".navbar-collapse">
-									<span class='glyphicon glyphicon-menu-hamburger' aria-hidden='true'></span>
-									<span class="sr-only">Toggle navigation</span> 
-								</button>
+					<button class="navbar-toggle" data-toggle="collapse" type="button"
+						data-target=".navbar-collapse">
+						<span class='glyphicon glyphicon-menu-hamburger'
+							aria-hidden='true'></span> <span class="sr-only">Toggle
+							navigation</span>
+					</button>
 					<a href="/" class="navbar-brand">commit2memo</a>
 				</div>
 				<div class="collapse navbar-collapse">
@@ -48,26 +50,21 @@
 			</div>
 			<div class="col-sm-6 worker">
 				<div class="thumbnail">
+					<div class="" style="display: flex; padding-top: 5px;">
+						<div>
+							<p
+								style="font-weight: 700; font-size: 17px; padding-top: 7px; padding-right: 4px;">Current
+								deck</p>
+						</div>
+						<div style="width: 80%;">
+							<select id="selectDeck" class="form-control">
+							</select>
+						</div>
+					</div>
 					<div class="flip">
 						<div id="a" class="card">
 							<div class="face front">food</div>
-							<div class="face back">
-								<div>
-									<span> /food/ </span>
-								</div>
-							<!-- 	<audio controls=""
-									src="http://media.merriam-webster.com/soundc11/f/food0001.wav"
-									type="audio/mpeg"></audio> -->
-								<div>
-									<span style="font-style: italic;">noun</span>
-								</div>
-								<div class="senseNumber">
-									<span style="font-weight: bold;">(1 a)</span> :material
-									consisting essentially of protein, carbohydrate, and fat used
-									in the body of an organism to sustain growth, repair, and vital
-									processes and to furnish energy
-								</div>
-							</div>
+							<div id="flash" class="face back"></div>
 						</div>
 					</div>
 					<div class="btn-group btn-group-justified" role="group">
@@ -95,11 +92,177 @@
 		</div>
 	</div>
 	<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="static/js/auth.js"></script>
+	<script src="static/js/jquery.json2html.js"></script>
+	<script src="static/js/json2html.js"></script>
 	<script type="text/javascript">
-		$('.flip').click(function() {
-			$(this).find('.card').toggleClass('flipped');
-			return false;
-		});
-	</script>
+        var test = {
+            "entryList" : [
+                    {
+                        "id" : "food",
+                        "entryWord" : "food",
+                        "sound" : {
+                            "wav" : "http://media.merriam-webster.com/soundc11/f/food0001.wav"
+                        },
+                        "pronunciation" : "ˈfüd",
+                        "funcLabel" : "noun",
+                        "def" : {
+                            "sndf" : [
+                                    {
+                                        "senseNumber" : "1 a",
+                                        "value" : ":material consisting essentially of protein, carbohydrate, and fat used in the body of an organism to sustain growth, repair, and vital processes and to furnish energy",
+                                        "synonymous" : null,
+                                        "usageNote" : null,
+                                        "verbalIllustration" : null
+                                    },
+                                    {
+                                        "senseNumber" : "1 a",
+                                        "value" : ":such food together with supplementary substances (as minerals, vitamins, and condiments)",
+                                        "synonymous" : null,
+                                        "usageNote" : null,
+                                        "verbalIllustration" : null
+                                    },
+                                    {
+                                        "senseNumber" : "b",
+                                        "value" : ":inorganic substances absorbed by plants in gaseous form or in water solution",
+                                        "synonymous" : null,
+                                        "usageNote" : null,
+                                        "verbalIllustration" : null
+                                    },
+                                    {
+                                        "senseNumber" : "2",
+                                        "value" : ":nutriment in solid form",
+                                        "synonymous" : null,
+                                        "usageNote" : null,
+                                        "verbalIllustration" : null
+                                    },
+                                    {
+                                        "senseNumber" : "3",
+                                        "value" : ":something that nourishes, sustains, or supplies ",
+                                        "synonymous" : null,
+                                        "usageNote" : null,
+                                        "verbalIllustration" : "(f. e.:food for thought)"
+                                    } ]
+                        }
+                    },
+                    {
+                        "id" : "cat[1]",
+                        "entryWord" : "cat",
+                        "sound" : {
+                            "wav" : "http://media.merriam-webster.com/soundc11/c/cat00001.wav"
+                        },
+                        "pronunciation" : "ˈkat",
+                        "funcLabel" : "noun",
+                        "def" : {
+                            "sndf" : [ {
+                                "senseNumber" : "4 a",
+                                "value" : ":",
+                                "synonymous" : "syn. to:catboat",
+                                "usageNote" : null,
+                                "verbalIllustration" : null
+                            } ]
+                        }
+                    },
+                    {
+                        "id" : "wood[2]",
+                        "entryWord" : "wood",
+                        "sound" : {
+                            "wav" : "http://media.merriam-webster.com/soundc11/w/wood0001.wav"
+                        },
+                        "pronunciation" : "ˈwu̇d",
+                        "funcLabel" : "noun",
+                        "def" : {
+                            "sndf" : [
+                                    {
+                                        "senseNumber" : "1 a",
+                                        "value" : ":a dense growth of trees usually greater in extent than a grove and smaller than a forest ",
+                                        "synonymous" : null,
+                                        "usageNote" : "(often used in plural but singular or plural in construction)",
+                                        "verbalIllustration" : null
+                                    },
+                                    {
+                                        "senseNumber" : "2 a",
+                                        "value" : ":the hard fibrous substance consisting basically of xylem that makes up the greater part of the stems, branches, and roots of trees or shrubs beneath the bark and is found to a limited extent in herbaceous plants",
+                                        "synonymous" : null,
+                                        "usageNote" : null,
+                                        "verbalIllustration" : null
+                                    },
+                                    {
+                                        "senseNumber" : "3 a",
+                                        "value" : ":something made of wood",
+                                        "synonymous" : null,
+                                        "usageNote" : null,
+                                        "verbalIllustration" : null
+                                    },
+                                    {
+                                        "senseNumber" : "b",
+                                        "value" : ":a golf club having a similar head made of metal",
+                                        "synonymous" : null,
+                                        "usageNote" : null,
+                                        "verbalIllustration" : null
+                                    } ]
+                        }
+                    } ]
+        };
+        var decksUrl = "http://localhost:10080/commit2memo/decks";
+        $('.flip').click(function() {
+            $(this).find('.card').toggleClass('flipped');
+            return false;
+        });
+        var transform = {
+            "tag" : "div",
+            "id" : "word",
+            "class" : "word",
+            "children" : [ {
+                "tag" : "div",
+                "html" : "\${pronunciation}"
+            }, {
+                "tag" : "div",
+                "html" : "<audio controls src='\${sound.wav}' type='audio/mpeg'></audio>"
+            }, {
+                "tag" : "div",
+                "id" : "def",
+                "class" : "def",
+                "html" : "<span style='font-style: italic;' >	\${funcLabel}</span>"
+            } ]
+        };
+
+        var transform2 = {
+            "tag" : "div",
+            "id" : "",
+            "class" : "sndf",
+            "children" : [ {
+                "tag" : "div",
+                "style" : "style='display: block;'",
+                "class" : "senseNumber input-group",
+                "html" : "<div class='senseValue'><span style='font-weight: bold;' >(\${senseNumber})</span> \${value} \${synonymous} \${verbalIllustration} \${usageNote}</div>"
+            } ]
+        };
+
+        $(document).ready(function() {
+            addDecks();
+            $('#flash').json2html(test.entryList[0], transform);
+            for (var i = 0; i < test.entryList[0].def.sndf.length; i++) {
+                $('#def').json2html(test.entryList[0].def.sndf[i], transform2);
+            }
+        });
+
+        function addDecks() {
+            var url = decksUrl;
+            $.get(url, function(data) {
+                var transform = {
+                    "tag" : "option",
+                    "id" : "deck\${deckId}",
+                    "html" : "\${name}"
+                };
+
+                $('#selectDeck').empty();
+                $('#selectDeck').json2html(data, transform);
+
+            }).fail(function() {
+                console.log("error");
+            });
+        };
+    </script>
 </body>
 </html>
