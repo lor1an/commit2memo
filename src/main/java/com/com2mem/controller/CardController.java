@@ -51,8 +51,8 @@ public class CardController {
     }
 
     @RequestMapping(value = "/decks/{id}/cards/training", method = RequestMethod.PUT)
-    public ResponseEntity<HttpStatus> updateCardsAfterTraining(@PathVariable("id") Long id,
-            @RequestBody Card card, @RequestBody boolean memorize) {
+    public ResponseEntity<HttpStatus> updateCardsAfterTraining(@PathVariable("id") Long id, @RequestBody Card card,
+            @RequestBody boolean memorize) {
         if (cardService.updateCard(id, card, memorize)) {
             return new ResponseEntity<HttpStatus>(HttpStatus.OK);
         } else {
@@ -61,12 +61,22 @@ public class CardController {
     }
 
     @RequestMapping(value = "/cards/new", method = RequestMethod.GET)
-    public ResponseEntity<Integer> getCountNewCardsOfDeck() {
-        return new ResponseEntity<Integer>(cardService.countNewCards(), HttpStatus.OK);
+    public ResponseEntity<Integer> getCountNewCardsOfUser() {
+        return new ResponseEntity<Integer>(cardService.countNewCardsOfUser(), HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/cards/repeat", method = RequestMethod.GET)
-    public ResponseEntity<Integer> getCountRepeatCardsOfDeck() {
-        return new ResponseEntity<Integer>(cardService.countRepeatCards(), HttpStatus.OK);
+    public ResponseEntity<Integer> getCountRepeatCardsOfUser() {
+        return new ResponseEntity<Integer>(cardService.countRepeatCardsOfUser(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/cards/new/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Integer> getCountNewCardsOfDeck(@PathVariable("id") Long deckId) {
+        return new ResponseEntity<Integer>(cardService.countNewCardsOfDeck(deckId), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/cards/repeat/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Integer> getCountRepeatCardsOfDeck(@PathVariable("id") Long deckId) {
+        return new ResponseEntity<Integer>(cardService.countRepeatCardsOfDeck(deckId), HttpStatus.OK);
     }
 }

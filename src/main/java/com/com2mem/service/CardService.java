@@ -20,9 +20,13 @@ public interface CardService {
 
     List<Card> getAllCards();
     
-    Integer countNewCards();
+    Integer countNewCardsOfUser();
     
-    Integer countRepeatCards();
+    Integer countRepeatCardsOfUser();
+    
+    Integer countNewCardsOfDeck(Long deckId);
+    
+    Integer countRepeatCardsOfDeck(Long deckId);
 
     boolean isCardExist(Card card);
 

@@ -55,8 +55,7 @@ public class CardServiceImpl implements CardService {
         if (deck == null) {
             return null;
         } else {
-            List<Card> cards = cardRepository.findByDeckAndRepeatDateLessThanEqual(deck,
-                    LocalDate.now());
+            List<Card> cards = cardRepository.findByDeckAndRepeatDateLessThanEqual(deck, LocalDate.now());
             for (Card card : cards) {
                 card.setEntry(findEntryForCard(card));
             }
@@ -119,16 +118,6 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public Integer countNewCards() {
-        return cardRepository.countByNewCardAndUser(true, userResolver.curentUser());
-    }
-    
-    @Override
-    public Integer countRepeatCards() {
-        return cardRepository.countByRepeatDateAndUser(LocalDate.now(), userResolver.curentUser());
-    }
-
-    @Override
     public Card getCardById(final Long cardId) {
         // TODO Auto-generated method stub
         return null;
@@ -173,6 +162,36 @@ public class CardServiceImpl implements CardService {
     public void deleteAllCards() {
         // TODO Auto-generated method stub
 
+    }
+
+    @Override
+    public Integer countNewCardsOfUser() {
+        return cardRepository.countByNewCardAndUser(true, userResolver.curentUser());
+    }
+
+    @Override
+    public Integer countRepeatCardsOfUser() {
+        return cardRepository.countByRepeatDateAndUser(LocalDate.now(), userResolver.curentUser());
+    }
+
+    @Override
+    public Integer countNewCardsOfDeck(Long deckId) {
+        Deck deck = deckService.getDeckById(deckId);
+        if (deck == null) {
+            return null;
+        } else {
+            return cardRepository.countByNewCardAndDeck(true, deck);
+        }
+    }
+
+    @Override
+    public Integer countRepeatCardsOfDeck(Long deckId) {
+        Deck deck = deckService.getDeckById(deckId);
+        if (deck == null) {
+            return null;
+        } else {
+            return cardRepository.countByRepeatDateAndDeck(LocalDate.now(), deck);
+        }
     }
 
 }
