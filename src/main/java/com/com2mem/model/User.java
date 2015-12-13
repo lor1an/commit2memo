@@ -28,15 +28,14 @@ public class User {
     private boolean enabled;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.PERSIST)
     private Set<UserRole> userRole = new HashSet<UserRole>(0);
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Deck> decks;
 
     public User() {
 
     }
 
-    public User(String username, String password, boolean enabled,
-            Set<UserRole> userRole) {
+    public User(String username, String password, boolean enabled, Set<UserRole> userRole) {
         this.username = username;
         this.password = password;
         this.enabled = enabled;
@@ -92,10 +91,34 @@ public class User {
     }
 
     @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((decks == null) ? 0 : decks.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        User other = (User) obj;
+        if (decks == null) {
+            if (other.decks != null)
+                return false;
+        } else if (!decks.equals(other.decks))
+            return false;
+        return true;
+    }
+
+    @Override
     public String toString() {
-        return "User [userId=" + userId + ", username=" + username
-                + ", password=" + password + ", enabled=" + enabled
-                + ", userRole=" + userRole + ", decks=" + decks + "]";
+        return "User [userId=" + userId + ", username=" + username + ", password=" + password
+                + ", enabled=" + enabled + ", userRole=" + userRole + ", decks=" + decks + "]";
     }
 
 }

@@ -40,7 +40,10 @@ public class Card {
     private Wave wave;
     @Column
     @JsonIgnore
-    private LocalDate repeatDate; 
+    private LocalDate repeatDate;
+    @Column
+    @JsonIgnore
+    private boolean newCard;
     @ManyToOne
     @JoinColumn(name = "deckId")
     private Deck deck;
@@ -99,6 +102,14 @@ public class Card {
 
     public void setRepeatDate(LocalDate repeatDate) {
         this.repeatDate = repeatDate;
+    }
+
+    public boolean isNewCard() {
+        return newCard;
+    }
+
+    public void setNewCard(boolean newCard) {
+        this.newCard = newCard;
     }
 
     public Deck getDeck() {

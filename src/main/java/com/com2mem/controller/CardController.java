@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,7 +33,7 @@ public class CardController {
     private CardService cardService;
 
     @RequestMapping(value = "/decks/{id}/cards", method = RequestMethod.GET)
-    public ResponseEntity<List<Card>> getCardByIds(@PathVariable("id") Long id){
+    public ResponseEntity<List<Card>> getCardByIds(@PathVariable("id") Long id) {
         List<Card> cards = cardService.getCardsByDeckId(id);
         if (cards == null) {
             return new ResponseEntity<List<Card>>(HttpStatus.NOT_FOUND);
@@ -40,15 +41,22 @@ public class CardController {
             return new ResponseEntity<List<Card>>(cards, HttpStatus.OK);
         }
     }
-    
+
     @RequestMapping(value = "/decks/{id}/cards/training", method = RequestMethod.GET)
-    public ResponseEntity<List<Card>> getCardsForTraining(@PathVariable("id") Long id){
+    public ResponseEntity<List<Card>> getCardsForTraining(@PathVariable("id") Long id) {
         List<Card> cards = cardService.getCardsForTraining(id);
         if (cards == null) {
             return new ResponseEntity<List<Card>>(HttpStatus.NOT_FOUND);
         } else {
             return new ResponseEntity<List<Card>>(cards, HttpStatus.OK);
         }
+    }
+
+    @RequestMapping(value = "/decks/{id}/cards/training", method = RequestMethod.PUT)
+    public ResponseEntity<HttpStatus> updateCardsAfterTraining(@PathVariable("id") Long id,
+            @RequestBody Card card, @RequestBody boolean memorize) {
+        cardService.updateCard(id, card, memorize);
+        return new ResponseEntity<HttpStatus>(HttpStatus.OK);
     }
 
 }

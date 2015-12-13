@@ -14,8 +14,8 @@ import com.com2mem.dto.Entry;
 import com.com2mem.dto.EntryList;
 import com.com2mem.model.Card;
 import com.com2mem.model.Deck;
-import com.com2mem.model.User;
 import com.com2mem.repository.CardRepository;
+import com.com2mem.repository.DeckRepository;
 import com.com2mem.resolver.UserResolver;
 import com.com2mem.service.CardService;
 import com.com2mem.service.DictionaryService;
@@ -30,36 +30,36 @@ public class CardServiceImpl implements CardService {
     private CardRepository cardRepository;
 
     @Autowired
+    private DeckRepository deckRepository;
+
+    @Autowired
     private DictionaryService dictionaryService;
 
     @Override
     public List<Card> getCardsByDeckId(final Long deckId) {
-        User curUser = userResolver.curentUser();
-        List<Deck> decks = curUser.getDecks();
-        for (int i = 0; i < decks.size(); i++) {
-            if (decks.get(i).getDeckId().equals(deckId)) {
-                List<Card> cards = cardRepository.findByDeck(decks.get(i));
-                for (Card card : cards) {
-                    card.setEntry(findEntryForCard(card));
-                }
-                return cards;
-            }
+        Deck deck = deckRepository.findOne(deckId);
+        if (userResolver.checkUserDeck(deck)) {
+            return null;
         }
-        return null;
+        List<Card> cards = deck.getCards();
+        for (Card card : cards) {
+            card.setEntry(findEntryForCard(card));
+        }
+        return cards;
     }
 
     @Override
     public List<Card> getCardsForTraining(final Long deckId) {
-        User curUser = userResolver.curentUser();
-        List<Deck> decks = curUser.getDecks();
-        for (int i = 0; i < decks.size(); i++) {
-            if (decks.get(i).getDeckId().equals(deckId)) {
-                List<Card> cards = cardRepository.findByDeckAndRepeatDateLessThanEqual(
-                        decks.get(i), LocalDate.now());
-                return cards;
-            }
+        Deck deck = deckRepository.findOne(deckId);
+        if (userResolver.checkUserDeck(deck)) {
+            return null;
         }
-        return null;
+        List<Card> cards = cardRepository.findByDeckAndRepeatDateLessThanEqual(deck,
+                LocalDate.now());
+        for (Card card : cards) {
+            card.setEntry(findEntryForCard(card));
+        }
+        return cards;
     }
 
     private Entry findEntryForCard(final Card card) {
@@ -80,6 +80,24 @@ public class CardServiceImpl implements CardService {
             return null;
         }
 
+    }
+
+    @Override
+    public void updateCard(Long deckId, Card card, boolean memorize) {
+        Deck deck = deckRepository.findOne(deckId);
+        if (userResolver.checkUserDeck(deck)) {
+            return;
+        }
+        if(card.isNewCard()){
+            card.setRepeatDate(LocalDate.now());
+        }
+        if (memorize) {
+            card.setWave(card.getWave().next());
+            card.getRepeatDate().plusDays(card.getWave().getWaveSpace());
+        }else{
+            card.getRepeatDate().plusDays(card.getWave().getWaveSpace());
+        }
+        saveCard(card);
     }
 
     @Override
@@ -128,4 +146,6 @@ public class CardServiceImpl implements CardService {
         // TODO Auto-generated method stub
 
     }
+
+
 }

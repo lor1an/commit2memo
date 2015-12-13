@@ -2,16 +2,22 @@ package com.com2mem.model;
 
 public enum Wave {
 
-    WAVE_0(0), WAVE_1(1), WAVE_2(2), WAVE_7(7), WAVE_14(14), WAVE_28(28), WAVE_56(56), WAVE_168(168), WAVE_365(
-            365);
+    WAVE_0(0L), WAVE_1(1L), WAVE_2(2L), WAVE_7(7L), WAVE_14(14L), WAVE_28(28L), WAVE_56(56L), WAVE_168(
+            168L), WAVE_365(365L);
 
-    private final Integer waveNumber;
+    private final Long waveSpace;
 
-    private Wave(Integer waveNumber) {
-        this.waveNumber = waveNumber;
+    private Wave(Long waveSpace) {
+        this.waveSpace = waveSpace;
     }
 
-    public Integer getWaveNumber() {
-        return waveNumber;
+    public Long getWaveSpace() {
+        return waveSpace;
+    }
+
+    private static Wave[] vals = values();
+
+    public Wave next() {
+        return vals[(this.ordinal() + 1) % vals.length];
     }
 }

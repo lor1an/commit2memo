@@ -1,6 +1,5 @@
 package com.com2mem.controller;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.com2mem.model.Card;
 import com.com2mem.model.Deck;
-import com.com2mem.model.User;
-import com.com2mem.model.Wave;
 import com.com2mem.resolver.UserResolver;
 import com.com2mem.service.CardService;
 import com.com2mem.service.DeckService;
 import com.com2mem.service.UserService;
-import com.google.common.collect.Lists;
 
 @RestController
 public class DeckController {
@@ -39,73 +35,41 @@ public class DeckController {
 
     @RequestMapping(value = "/decks", method = RequestMethod.GET)
     public ResponseEntity<List<Deck>> listAllDecks() {
-        return new ResponseEntity<List<Deck>>(userResolver.curentUser()
-                .getDecks(), HttpStatus.OK);
+        return new ResponseEntity<List<Deck>>(userResolver.curentUser().getDecks(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/decks", method = RequestMethod.POST)
     public ResponseEntity<HttpStatus> addDeck(@RequestBody Deck deck) {
-        User curUser = userResolver.curentUser();
-        deck.setUser(curUser);
-        deckService.saveDeck(deck);
-        if (curUser.getDecks() != null) {
-            curUser.getDecks().add(deck);
-        } else {
-            curUser.setDecks(Lists.newArrayList(deck));
-        }
-        userService.saveUser(curUser);
+        deckService.addDeck(deck);
         return new ResponseEntity<HttpStatus>(HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/decks/{id}", method = RequestMethod.GET)
     public ResponseEntity<Deck> getDeck(@PathVariable("id") Long id) {
-        List<Deck> decks = userResolver.curentUser().getDecks();
-        for (int i = 0; i < decks.size(); i++) {
-            if (decks.get(i).getDeckId().equals(id)) {
-                return new ResponseEntity<Deck>(decks.get(i), HttpStatus.OK);
-            }
+        Deck deck = deckService.getDeckById(id);
+        if (deck != null) {
+            return new ResponseEntity<Deck>(deck, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<Deck>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<Deck>(HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(value = "/decks/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<HttpStatus> addCard(@PathVariable("id") Long id,
-            @RequestBody Card card) {
-        List<Deck> decks = userResolver.curentUser().getDecks();
-        for (int i = 0; i < decks.size(); i++) {
-            if (decks.get(i).getDeckId().equals(id)) {
-                Deck deck = decks.get(i);
-                card.setDeck(deck);
-                card.setRepeatDate(LocalDate.now());
-                card.setWave(Wave.WAVE_0);
-                cardService.saveCard(card);
-                if (deck.getCards() != null) {
-                    deck.getCards().add(card);
-                } else {
-                    deck.setCards(Lists.newArrayList(card));
-                }
-                deckService.saveDeck(deck);
-                return new ResponseEntity<HttpStatus>(HttpStatus.OK);
-            }
+    public ResponseEntity<HttpStatus> addCard(@PathVariable("id") Long id, @RequestBody Card card) {
+        if (deckService.addCard(id, card)) {
+            return new ResponseEntity<HttpStatus>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<HttpStatus>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<HttpStatus>(HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(value = "/decks/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<HttpStatus> deleteDeck(@PathVariable("id") Long id) {
-        User curUser = userResolver.curentUser();
-        List<Deck> decks = curUser.getDecks();
-        for (int i = 0; i < decks.size(); i++) {
-            if (decks.get(i).getDeckId().equals(id)) {
-                Deck deck = decks.get(i);
-                deck.setUser(null);
-                curUser.getDecks().remove(i);
-                userService.saveUser(curUser);
-                deckService.deleteDeck(deck);
-                break;
-            }
+        if (deckService.deleteDeckById(id)) {
+            return new ResponseEntity<HttpStatus>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<HttpStatus>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<HttpStatus>(HttpStatus.OK);
     }
 
 }

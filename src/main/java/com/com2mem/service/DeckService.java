@@ -2,10 +2,13 @@ package com.com2mem.service;
 
 import java.util.List;
 
+import com.com2mem.model.Card;
 import com.com2mem.model.Deck;
 
 public interface DeckService {
-
+    
+    void addDeck(Deck deck);
+    
     Deck getDeckById(final Long deckId);
     
     void updateDeck(final Deck deck);
@@ -16,9 +19,11 @@ public interface DeckService {
 
     void saveDeck(Deck deck);
 
-    void deleteDeckById(Long id);
+    boolean deleteDeckById(Long id);
     
     void deleteDeck(Deck deck);
     
     void deleteAllDecks();
+    
+    boolean addCard(Long deckId, Card card);
 }

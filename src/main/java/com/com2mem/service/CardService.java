@@ -9,6 +9,8 @@ public interface CardService {
     Card getCardById(final Long cardId);
 
     void updateCard(final Card card);
+    
+    void updateCard(Long deckId, Card card, boolean memorize);
 
     List<Card> getCardsByDeckId(Long deckId);
 
