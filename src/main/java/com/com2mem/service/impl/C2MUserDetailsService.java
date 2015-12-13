@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.com2mem.dto.C2MUser;
 import com.com2mem.model.User;
 import com.com2mem.model.UserRole;
 import com.com2mem.repository.UserRepository;
@@ -35,11 +36,11 @@ public class C2MUserDetailsService implements UserDetailsService {
         return buildUserForAuthentication(user, authorities);
     }
 
-    private org.springframework.security.core.userdetails.User buildUserForAuthentication(
+    private C2MUser buildUserForAuthentication(
             User user, List<GrantedAuthority> authorities) {
-        return new org.springframework.security.core.userdetails.User(
+        return new C2MUser(
                 user.getUsername(), user.getPassword(), user.isEnabled(), true,
-                true, true, authorities);
+                true, true, authorities, user.getUserId());
     }
 
     private List<GrantedAuthority> buildUserAuthority(Set<UserRole> userRoles) {

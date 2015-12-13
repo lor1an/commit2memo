@@ -5,6 +5,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
+import com.com2mem.dto.C2MUser;
 import com.com2mem.model.Deck;
 import com.com2mem.service.UserService;
 
@@ -20,14 +21,15 @@ public class UserResolver {
     }
 
     public Long curentUserId() {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return userService.getUserByUsername(user.getUsername()).getUserId();
+        C2MUser user = (C2MUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return user.getUserId();
     }
 
     public boolean checkUserDeck(Deck deck) {
-        if (deck == null || !deck.getUser().equals(curentUser())) {
+        if (deck == null || !deck.getUser().getUserId().equals(curentUserId())) {
             return true;
         }
         return false;
     }
+    
 }
