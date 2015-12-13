@@ -64,6 +64,20 @@ public class CardServiceImpl implements CardService {
         }
     }
 
+    @Override
+    public List<Card> getNewCards(Long deckId) {
+        Deck deck = deckService.getDeckById(deckId);
+        if (deck == null) {
+            return null;
+        } else {
+            List<Card> cards = cardRepository.findByDeckAndNewCard(deck, true);
+            for (Card card : cards) {
+                card.setEntry(findEntryForCard(card));
+            }
+            return cards;
+        }
+    }
+
     private Entry findEntryForCard(final Card card) {
         try {
             EntryList eList = dictionaryService.getEntryListFromDictionary(card.getSearchWord());
@@ -91,6 +105,7 @@ public class CardServiceImpl implements CardService {
         } else {
             if (card.isNewCard()) {
                 card.setRepeatDate(LocalDate.now());
+                card.setNewCard(false);
             }
             if (memorize) {
                 card.setWave(card.getWave().next());
@@ -101,6 +116,16 @@ public class CardServiceImpl implements CardService {
             saveCard(card);
             return true;
         }
+    }
+
+    @Override
+    public Integer countNewCards() {
+        return cardRepository.countByNewCardAndUser(true, userResolver.curentUser());
+    }
+    
+    @Override
+    public Integer countRepeatCards() {
+        return cardRepository.countByRepeatDateAndUser(LocalDate.now(), userResolver.curentUser());
     }
 
     @Override

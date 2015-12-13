@@ -15,8 +15,14 @@ public interface CardService {
     List<Card> getCardsByDeckId(Long deckId);
 
     List<Card> getCardsForTraining(Long deckId);
+    
+    List<Card> getNewCards(Long deckId);
 
     List<Card> getAllCards();
+    
+    Integer countNewCards();
+    
+    Integer countRepeatCards();
 
     boolean isCardExist(Card card);
 
