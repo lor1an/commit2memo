@@ -255,7 +255,6 @@
                             cards[i].know = 2;
                         }
                     });
-                    
                 },
                 error : function(data) {
                     console.log(data);
@@ -267,7 +266,6 @@
             addDecks();
             $.get('static/pages/flip.html', function(data) {
                 $(data).find(".training, #startNew").appendTo(".flip");
-
             }).done(function() {
                 $("#wordCount").html(cards.length);
             });

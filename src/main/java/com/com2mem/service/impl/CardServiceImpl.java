@@ -1,6 +1,7 @@
 package com.com2mem.service.impl;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +42,20 @@ public class CardServiceImpl implements CardService {
                 for (Card card : cards) {
                     card.setEntry(findEntryForCard(card));
                 }
+                return cards;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Card> getCardsForTraining(final Long deckId) {
+        User curUser = userResolver.curentUser();
+        List<Deck> decks = curUser.getDecks();
+        for (int i = 0; i < decks.size(); i++) {
+            if (decks.get(i).getDeckId().equals(deckId)) {
+                List<Card> cards = cardRepository.findByDeckAndRepeatDateLessThanEqual(
+                        decks.get(i), LocalDate.now());
                 return cards;
             }
         }

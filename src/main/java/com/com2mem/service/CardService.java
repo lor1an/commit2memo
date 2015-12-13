@@ -12,6 +12,8 @@ public interface CardService {
 
     List<Card> getCardsByDeckId(Long deckId);
 
+    List<Card> getCardsForTraining(Long deckId);
+
     List<Card> getAllCards();
 
     boolean isCardExist(Card card);
