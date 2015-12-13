@@ -14,6 +14,10 @@ public interface DeckService {
     void updateDeck(final Deck deck);
 
     List<Deck> getAllDecks();
+    
+    List<Deck> getDecksWithNewCards();
+
+    List<Deck> getDecksWithRepeatCards();
 
     boolean isDeckExist(Deck deck);
 
@@ -26,4 +30,5 @@ public interface DeckService {
     void deleteAllDecks();
     
     boolean addCard(Long deckId, Card card);
+    
 }

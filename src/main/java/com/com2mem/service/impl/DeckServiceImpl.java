@@ -1,5 +1,6 @@
 package com.com2mem.service.impl;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,6 +83,16 @@ public class DeckServiceImpl implements DeckService {
     @Override
     public List<Deck> getAllDecks() {
         return userResolver.curentUser().getDecks();
+    }
+
+    @Override
+    public List<Deck> getDecksWithNewCards() {
+        return deckRepository.findDecksWithNewCards(true, userResolver.curentUser());
+    }
+
+    @Override
+    public List<Deck> getDecksWithRepeatCards() {
+        return deckRepository.findDecksWithRepeatCards(LocalDate.now(), userResolver.curentUser());
     }
 
     @Override

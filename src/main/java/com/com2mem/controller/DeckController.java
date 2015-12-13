@@ -59,5 +59,15 @@ public class DeckController {
             return new ResponseEntity<HttpStatus>(HttpStatus.NOT_FOUND);
         }
     }
+    
+    @RequestMapping(value = "/deck/new", method = RequestMethod.GET)
+    public ResponseEntity<List<Deck>> listDecksWithNewCards() {
+        return new ResponseEntity<List<Deck>>(deckService.getDecksWithNewCards(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/deck/repeat", method = RequestMethod.GET)
+    public ResponseEntity<List<Deck>> listDecksWithRepeatCards() {
+        return new ResponseEntity<List<Deck>>(deckService.getDecksWithRepeatCards(), HttpStatus.OK);
+    }
 
 }

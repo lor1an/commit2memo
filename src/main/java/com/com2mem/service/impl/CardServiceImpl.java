@@ -193,5 +193,4 @@ public class CardServiceImpl implements CardService {
             return cardRepository.countByRepeatDateAndDeck(LocalDate.now(), deck);
         }
     }
-
 }
