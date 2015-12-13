@@ -25,11 +25,11 @@ public class UserResolver {
         return user.getUserId();
     }
 
-    public boolean checkUserDeck(Deck deck) {
+    public boolean isUserDeck(Deck deck) {
         if (deck == null || !deck.getUser().getUserId().equals(curentUserId())) {
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
     
 }

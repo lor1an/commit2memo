@@ -47,17 +47,17 @@ public class DeckServiceImpl implements DeckService {
     @Override
     public Deck getDeckById(final Long deckId) {
         Deck deck = deckRepository.findOne(deckId);
-        if (userResolver.checkUserDeck(deck)) {
-            return null;
-        } else {
+        if (userResolver.isUserDeck(deck)) {
             return deck;
+        } else {
+            return null;
         }
     }
 
     @Override
     public boolean addCard(Long deckId, Card card) {
         Deck deck = deckRepository.findOne(deckId);
-        if (userResolver.checkUserDeck(deck)) {
+        if (userResolver.isUserDeck(deck)) {
             card.setDeck(deck);
             card.setWave(Wave.WAVE_0);
             card.setNewCard(true);
@@ -103,7 +103,7 @@ public class DeckServiceImpl implements DeckService {
     @Override
     public boolean deleteDeckById(Long id) {
         Deck deck = deckRepository.findOne(id);
-        if (userResolver.checkUserDeck(deck)) {
+        if (userResolver.isUserDeck(deck)) {
             deck.setUser(null);
             deleteDeck(deck);
             return true;
