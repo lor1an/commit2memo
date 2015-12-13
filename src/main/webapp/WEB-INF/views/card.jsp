@@ -60,6 +60,7 @@
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
+						<li class="activeTab"><a href="">Memorizing</a></li>
 						<li><a href="profile">My profile</a> <span
 							class="icon-envelope"></span></li>
 						<li><a href="">About</a></li>
@@ -73,7 +74,8 @@
 		<div class="row">
 			<div id="leftCol" class="col-md-3 sidebar">
 				<ul class="nav nav-pills nav-stacked">
-					<li role="presentation"><a href="trainings">Trainings <span class="badge">42</span></a></li>
+					<li role="presentation"><a href="trainings">Trainings <span
+							class="badge">42</span></a></li>
 					<li role="presentation"><a href="decksPage">Decks</a></li>
 					<li role="presentation" class="active"><a href="">Add card</a></li>
 					<li role="presentation"><a href="cardsPage">All cards</a></li>

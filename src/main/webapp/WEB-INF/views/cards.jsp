@@ -27,6 +27,7 @@
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
+						<li class="activeTab"><a href="">Memorizing</a></li>
 						<li><a href="profile">My profile</a> <span
 							class="icon-envelope"></span></li>
 						<li><a href="">About</a></li>

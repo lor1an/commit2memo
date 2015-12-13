@@ -14,6 +14,9 @@ body {
 
 .navbar-default .navbar-nav>li>a:hover {
 	color: white;
+	background-color: rgba(43, 43, 43, 0.1);
+	border-radius: 4px;
+	opacity: 1;
 }
 
 .navbar-default .navbar-brand {
@@ -217,6 +220,7 @@ audio[src=""] {
 	cursor: pointer;
 	border: solid;
 }
+
 .deck-modal {
 	padding-top: 35px;
 	padding-bottom: 19px;
@@ -248,16 +252,16 @@ audio[src=""] {
 
 .congrats {
 	display: table;
-	border:solid;
+	border: solid;
 	height: 400px;
 	width: 100%;
 	text-align: center;
- 	font-size: 3em; 
+	font-size: 3em;
 }
 
 .conb {
 	display: table;
-	border:solid;
+	border: solid;
 	height: 400px;
 	width: 100%;
 	text-align: center;
@@ -267,8 +271,24 @@ audio[src=""] {
 	display: table-cell;
 	vertical-align: middle;
 }
-.cardWord{
+
+.cardWord {
 	display: table-cell;
 	vertical-align: middle;
 	text-align: left;
 }
+.navbar-default .navbar-nav>.activeTab>a {
+	color: white;
+	background-color: rgba(43, 43, 43, 0.1);
+	border-radius: 4px;
+	opacity: 1;
+}
+
+.activeTab>a{
+	color: white;
+}
+
+/* background-color: rgba(43, 43, 43, 0.1);
+    border-radius: 4px;
+    color: #555555;
+    opacity: 1; */

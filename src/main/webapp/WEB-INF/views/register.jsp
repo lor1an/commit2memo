@@ -26,7 +26,8 @@
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="login">Sign in</a></li>
+						<li ><a href="login">Sign in</a></li>
+						<li class="activeTab"><a href="login">Sign up</a></li>
 						<li><a href="about">About</a></li>
 					</ul>
 				</div>
