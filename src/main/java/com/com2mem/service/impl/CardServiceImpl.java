@@ -97,7 +97,7 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public boolean updateCard(Long deckId, Card card, boolean memorize) {
+    public boolean updateCard(Long deckId, Card card) {
         Deck deck = deckService.getDeckById(deckId);
         if (deck == null) {
             return false;
@@ -106,12 +106,11 @@ public class CardServiceImpl implements CardService {
                 card.setRepeatDate(LocalDate.now());
                 card.setNewCard(false);
             }
-            if (memorize) {
+            if (card.isMemorize()) {
                 card.setWave(card.getWave().next());
-                card.getRepeatDate().plusDays(card.getWave().getWaveSpace());
-            } else {
-                card.getRepeatDate().plusDays(card.getWave().getWaveSpace());
             }
+            LocalDate newRepeatDate = card.getRepeatDate().plusDays(card.getWave().getWaveSpace());
+            card.setRepeatDate(newRepeatDate);
             saveCard(card);
             return true;
         }

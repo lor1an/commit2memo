@@ -19,7 +19,11 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.com2mem.dto.Entry;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.com2mem.json.RepeatDateDeserializer;
+import com.com2mem.json.RepeatDateSerializer;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name = "card")
@@ -36,14 +40,16 @@ public class Card {
     @Transient
     private Entry entry;
     @Enumerated(EnumType.STRING)
-    @JsonIgnore
     private Wave wave;
     @Column
-    @JsonIgnore
+    @JsonSerialize(using = RepeatDateSerializer.class)
+    @JsonDeserialize(using = RepeatDateDeserializer.class)
+    @JsonProperty
     private LocalDate repeatDate;
     @Column
-    @JsonIgnore
     private boolean newCard;
+    @Column
+    private boolean memorize;
     @ManyToOne
     @JoinColumn(name = "deckId")
     private Deck deck;
@@ -110,6 +116,14 @@ public class Card {
 
     public void setNewCard(boolean newCard) {
         this.newCard = newCard;
+    }
+    
+    public boolean isMemorize() {
+        return memorize;
+    }
+
+    public void setMemorize(boolean memorize) {
+        this.memorize = memorize;
     }
 
     public Deck getDeck() {

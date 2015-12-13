@@ -1,76 +1,106 @@
-var cards;
-var transform = {
-    "tag" : "div",
-    "id" : "cardWord",
-    "class" : "cardWord",
-    "children" : [ {
-        "tag" : "div",
-        "class" : "pronunc",
-        "html" : "\${pronunciation}"
-    }, {
-        "tag" : "div",
-        "style" : "text-align: center",
-        "html" : "<audio controls src='\${sound.wav}' type='audio/mpeg'></audio>"
-    }, {
-        "tag" : "div",
-        "id" : "def",
-        "class" : "def",
-        "html" : "<div style='font-weight: bold; text-align: center' >  \${funcLabel}</div>"
-    } ]
-};
-
-var transform2 = {
-    "tag" : "div",
-    "id" : "",
-    "class" : "sndf",
-    "children" : [ {
-        "tag" : "div",
-        "style" : "display: inherit;",
-        "class" : "cardSenseNumber input-group",
-        "html" : "<span style='font-weight: bold;' >(\${senseNumber})</span> \${value} \${synonymous} \${verbalIllustration} \${usageNote}"
-    } ]
-};
-
 var decksUrl = "http://localhost:10080/commit2memo/decks";
+var cardsUrl = "http://localhost:10080/commit2memo/cards/";
+var cards;
 var curIndex = 0;
+var curDeckId;
 var percent;
 var initLength;
 var succbarW = 0;
 var failbarW = 0;
-$(document).on("click", ".flip", function(e) {
-    $(this).find('.card').toggleClass('flipped');
-});
 
 $(document).ready(function() {
-    initRepeatTab();
+    initTab("repeat");
 });
+
+$(document).on("click", ".trtab", function(e) {
+    if (!($(this).hasClass("disabled") || $(this).hasClass("active"))) {
+        $(".flip").empty();
+        $("#again_know").empty();
+        $('.trtab').toggleClass("active");
+        initTab($(this).attr("id").substring(4));
+    }
+});
+
+function initTab(value) {
+    addDecks("/" + value).done(function() {
+        $.get('static/pages/flip.html', function(data) {
+            $(data).find(".training, #start_" + value).appendTo(".flip");
+        }).done(function() {
+            addCardCounter(value + "Count/");
+        });
+    });
+};
+
+function addDecks(value) {
+    var url = decksUrl + value;
+    return $.get(url, function(data) {
+        var transform = {
+            "tag" : "option",
+            "id" : "deck\${deckId}",
+            "html" : "\${name}"
+        };
+        $('#selectDeck').empty();
+        $('#selectDeck').json2html(data, transform);
+        curDeckId = parseInt($("#selectDeck").children(":selected").attr("id").substring(4));
+    }).fail(function() {
+        console.log("error");
+    });
+};
+
+function addCardCounter(value) {
+    var url = cardsUrl + value + curDeckId;
+    $.get(url, function(data) {
+        $("#wordCount").text(data)
+    })
+};
+
+$(document).on("click", ".start", function(e) {
+    $(".flip").empty();
+    initTraining($(this).attr("id") + "/");
+});
+
+function initTraining(value) {
+    var url = cardsUrl + value + curDeckId;
+    $.ajax({
+        url : url,
+        type : 'GET',
+        success : function(data) {
+            cards = data;
+            console.log(data);
+            percent = 100 / cards.length;
+            initLength = cards.length;
+            $.get('static/pages/flip.html', function(data) {
+                $(data).find(".training, .card").appendTo(".flip");
+                $(data).find(".training, .btn-group-justified").appendTo("#again_know");
+                $(data).find(".training, #memo_stat").appendTo("#memo_stat");
+                $('#infobar').css('width', '100%');
+                $('#counter').text("1 of " + cards.length);
+            }).done(function() {
+                nextCard(curIndex);
+                $(".trtab").toggleClass("disabled");
+                $(".trtab .active").toggleClass("disabled");
+                for (var i = 0; i < cards.length; i++) {
+                    cards[i].know = 2;
+                }
+            });
+        },
+        error : function(data) {
+            console.log(data);
+        }
+    });
+};
 
 function nextCard(index) {
     $('#front').empty();
     $('#front').text(cards[index].entry.entryWord);
     $('#back').empty();
+    console.log()
     $('#back').json2html(cards[index].entry, transform);
     $('#def').empty();
     for (var i = 0; i < cards[index].entry.def.sndf.length; i++) {
         $('#def').json2html(cards[index].entry.def.sndf[i], transform2);
     }
 }
-function addDecks() {
-    var url = decksUrl;
-    $.get(url, function(data) {
-        var transform = {
-            "tag" : "option",
-            "id" : "deck\${deckId}",
-            "html" : "\${name}"
-        };
-
-        $('#selectDeck').empty();
-        $('#selectDeck').json2html(data, transform);
-
-    }).fail(function() {
-        console.log("error");
-    });
-};
 
 $(document).on("click", ".mem_button", function(e) {
     var shift = 1;
@@ -95,7 +125,7 @@ $(document).on("click", ".mem_button", function(e) {
             $('.flip').empty();
             $('#counter').empty();
             $("#again_know").empty();
-            $("#neww").removeClass("disabled");
+            $(".trtab").removeClass("disabled");
             $.get('static/pages/flip.html', function(data) {
                 $(data).find(".training, #fin_msg").appendTo(".flip");
             })
@@ -105,12 +135,20 @@ $(document).on("click", ".mem_button", function(e) {
 
 function removeCard(know) {
     if (know <= 0) {
+        var card = cards[curIndex];
+        delete card.know;
+        card.memorize = true;
         cards.splice(curIndex, 1);
+        sendCard(card);
         succbarW += percent;
         $('#succbar').css('width', succbarW + '%').attr('aria-valuenow', succbarW);
         return true;
     } else if (know >= 4) {
+        var card = cards[curIndex];
+        card.memorize = false;
+        delete card.know;
         cards.splice(curIndex, 1);
+        sendCard(card);
         failbarW += percent;
         $('#failbar').css('width', failbarW + '%').attr('aria-valuenow', failbarW);
         return true;
@@ -118,67 +156,53 @@ function removeCard(know) {
     return false;
 }
 
-$(document).on("click", ".trtab", function(e) {
-    if (!$(this).hasClass("disabled")) {
-        if ($(this).attr("id") === "repeat" && !$(this).hasClass("active")) {
-            $(".flip").empty();
-            $("#again_know").empty();
-            $('.trtab').toggleClass("active");
-            initRepeatTab();
-        } else if ($(this).attr("id") === "neww" && !$(this).hasClass("active")) {
-            $(".flip").empty();
-            $("#again_know").empty();
-            $("#memo_stat").empty();
-            $('.trtab').toggleClass("active");
-            initNewWordTab();
-        }
-    }
-});
-
-function initRepeatTab() {
-    addDecks();
-    $.get('static/pages/flip.html', function(data) {
-        $(data).find(".training, #startLes").appendTo(".flip");
-    }).done(function() {
-        // $("#wordCount").html(cards.length);
-    });
-};
-
-$(document).on("click", "#startTraining", function(e) {
-    $(".flip").empty();
+function sendCard(card) {
+    var url = cardsUrl + curDeckId;
     $.ajax({
-        url : 'http://localhost:10080/commit2memo/decks/1/cards',
-        type : 'GET',
+        url : url,
+        type : 'PUT',
+        contentType : "application/json",
+        data : JSON.stringify(card),
         success : function(data) {
-            cards = data;
-            percent = 100 / cards.length;
-            initLength = cards.length;
-            $.get('static/pages/flip.html', function(data) {
-                $(data).find(".training, .card").appendTo(".flip");
-                $(data).find(".training, .btn-group-justified").appendTo("#again_know");
-                $(data).find(".training, #memo_stat").appendTo("#memo_stat");
-                $('#infobar').css('width', '100%');
-                $('#counter').text("1 of " + cards.length);
-            }).done(function() {
-                $("#wordCount").html(cards.length);
-                nextCard(curIndex);
-                $("#neww").addClass("disabled");
-                for (var i = 0; i < cards.length; i++) {
-                    cards[i].know = 2;
-                }
-            });
+            console.log("success");
         },
         error : function(data) {
             console.log(data);
         }
     });
+};
+
+$(document).on("click", ".flip", function(e) {
+    $(this).find('.card').toggleClass('flipped');
 });
 
-function initNewWordTab() {
-    addDecks();
-    $.get('static/pages/flip.html', function(data) {
-        $(data).find(".training, #startNew").appendTo(".flip");
-    }).done(function() {
-        $("#wordCount").html(cards.length);
-    });
+var transform = {
+    "tag" : "div",
+    "id" : "cardWord",
+    "class" : "cardWord",
+    "children" : [ {
+        "tag" : "div",
+        "class" : "pronunc",
+        "html" : "\${pronunciation}"
+    }, {
+        "tag" : "div",
+        "style" : "text-align: center",
+        "html" : "<audio controls src='\${sound.wav}' type='audio/mpeg'></audio>"
+    }, {
+        "tag" : "div",
+        "id" : "def",
+        "class" : "def",
+        "html" : "<div style='font-weight: bold; text-align: center' >  \${funcLabel}</div>"
+    } ]
+};
+var transform2 = {
+    "tag" : "div",
+    "id" : "",
+    "class" : "sndf",
+    "children" : [ {
+        "tag" : "div",
+        "style" : "display: inherit;",
+        "class" : "cardSenseNumber input-group",
+        "html" : "<span style='font-weight: bold;' >(\${senseNumber})</span> \${value} \${synonymous} \${verbalIllustration} \${usageNote}"
+    } ]
 };

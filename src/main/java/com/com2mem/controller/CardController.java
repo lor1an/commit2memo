@@ -20,8 +20,8 @@ public class CardController {
     @Autowired
     private CardService cardService;
 
-    @RequestMapping(value = "/decks/{id}/cards", method = RequestMethod.GET)
-    public ResponseEntity<List<Card>> getCardByIds(@PathVariable("id") Long id) {
+    @RequestMapping(value = "/cards/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<Card>> getCardByDeckId(@PathVariable("id") Long id) {
         List<Card> cards = cardService.getCardsByDeckId(id);
         if (cards == null) {
             return new ResponseEntity<List<Card>>(HttpStatus.NOT_FOUND);
@@ -30,17 +30,7 @@ public class CardController {
         }
     }
 
-    @RequestMapping(value = "/decks/{id}/cards/training", method = RequestMethod.GET)
-    public ResponseEntity<List<Card>> getCardsForTraining(@PathVariable("id") Long id) {
-        List<Card> cards = cardService.getCardsForTraining(id);
-        if (cards == null) {
-            return new ResponseEntity<List<Card>>(HttpStatus.NOT_FOUND);
-        } else {
-            return new ResponseEntity<List<Card>>(cards, HttpStatus.OK);
-        }
-    }
-
-    @RequestMapping(value = "/decks/{id}/cards/new", method = RequestMethod.GET)
+    @RequestMapping(value = "/cards/new/{id}", method = RequestMethod.GET)
     public ResponseEntity<List<Card>> getNewCardsOfDeck(@PathVariable("id") Long id) {
         List<Card> cards = cardService.getNewCards(id);
         if (cards == null) {
@@ -49,14 +39,14 @@ public class CardController {
             return new ResponseEntity<List<Card>>(cards, HttpStatus.OK);
         }
     }
-
-    @RequestMapping(value = "/decks/{id}/cards/training", method = RequestMethod.PUT)
-    public ResponseEntity<HttpStatus> updateCardsAfterTraining(@PathVariable("id") Long id, @RequestBody Card card,
-            @RequestBody boolean memorize) {
-        if (cardService.updateCard(id, card, memorize)) {
-            return new ResponseEntity<HttpStatus>(HttpStatus.OK);
+    
+    @RequestMapping(value = "/cards/repeat/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<Card>> getCardsForTraining(@PathVariable("id") Long id) {
+        List<Card> cards = cardService.getCardsForTraining(id);
+        if (cards == null) {
+            return new ResponseEntity<List<Card>>(HttpStatus.NOT_FOUND);
         } else {
-            return new ResponseEntity<HttpStatus>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<List<Card>>(cards, HttpStatus.OK);
         }
     }
 
@@ -78,5 +68,14 @@ public class CardController {
     @RequestMapping(value = "/cards/repeatCount/{id}", method = RequestMethod.GET)
     public ResponseEntity<Integer> getCountRepeatCardsOfDeck(@PathVariable("id") Long deckId) {
         return new ResponseEntity<Integer>(cardService.countRepeatCardsOfDeck(deckId), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/cards/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<HttpStatus> updateCards(@PathVariable("id") Long id, @RequestBody Card card) {
+        if (cardService.updateCard(id, card)) {
+            return new ResponseEntity<HttpStatus>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<HttpStatus>(HttpStatus.NOT_FOUND);
+        }
     }
 }

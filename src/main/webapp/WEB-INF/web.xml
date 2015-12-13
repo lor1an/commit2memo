@@ -42,7 +42,7 @@
 	</filter-mapping>
 
 	<!-- Add this to your web.xml to enable "CORS" -->
-	<filter>
+	<!-- <filter>
 		<filter-name>cors</filter-name>
 		<filter-class> com.com2mem.filter.CORSFilter</filter-class>
 	</filter>
@@ -50,7 +50,7 @@
 	<filter-mapping>
 		<filter-name>cors</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+	</filter-mapping> --> 
 	
 	<mime-mapping>
 		<extension>ico</extension>
