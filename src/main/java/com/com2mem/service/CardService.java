@@ -10,7 +10,7 @@ public interface CardService {
 
     void updateCard(final Card card);
     
-    void updateCard(Long deckId, Card card, boolean memorize);
+    boolean updateCard(Long deckId, Card card, boolean memorize);
 
     List<Card> getCardsByDeckId(Long deckId);
 

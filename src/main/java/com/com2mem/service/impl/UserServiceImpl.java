@@ -30,7 +30,6 @@ public class UserServiceImpl implements UserService {
 		user.setPassword(encoder.encode(user.getPassword()));
 		user.setUserRole(Sets.newHashSet(new UserRole(user, ROLE_USER)));
 		user.setEnabled(true);
-		System.out.println("Creating User " + user);
 		return userRepository.save(user);
 	}
 

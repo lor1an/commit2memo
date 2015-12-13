@@ -12,22 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.com2mem.model.Card;
-import com.com2mem.resolver.UserResolver;
 import com.com2mem.service.CardService;
-import com.com2mem.service.DeckService;
-import com.com2mem.service.UserService;
 
 @RestController
 public class CardController {
-
-    @Autowired
-    private UserResolver userResolver;
-
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private DeckService deckService;
 
     @Autowired
     private CardService cardService;

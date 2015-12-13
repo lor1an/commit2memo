@@ -15,9 +15,9 @@ import com.com2mem.dto.EntryList;
 import com.com2mem.model.Card;
 import com.com2mem.model.Deck;
 import com.com2mem.repository.CardRepository;
-import com.com2mem.repository.DeckRepository;
 import com.com2mem.resolver.UserResolver;
 import com.com2mem.service.CardService;
+import com.com2mem.service.DeckService;
 import com.com2mem.service.DictionaryService;
 
 @Service(value = "cardService")
@@ -30,36 +30,38 @@ public class CardServiceImpl implements CardService {
     private CardRepository cardRepository;
 
     @Autowired
-    private DeckRepository deckRepository;
+    private DeckService deckService;
 
     @Autowired
     private DictionaryService dictionaryService;
 
     @Override
     public List<Card> getCardsByDeckId(final Long deckId) {
-        Deck deck = deckRepository.findOne(deckId);
-        if (userResolver.checkUserDeck(deck)) {
+        Deck deck = deckService.getDeckById(deckId);
+        if (deck == null) {
             return null;
+        } else {
+            List<Card> cards = deck.getCards();
+            for (Card card : cards) {
+                card.setEntry(findEntryForCard(card));
+            }
+            return cards;
         }
-        List<Card> cards = deck.getCards();
-        for (Card card : cards) {
-            card.setEntry(findEntryForCard(card));
-        }
-        return cards;
     }
 
     @Override
     public List<Card> getCardsForTraining(final Long deckId) {
-        Deck deck = deckRepository.findOne(deckId);
-        if (userResolver.checkUserDeck(deck)) {
+        Deck deck = deckService.getDeckById(deckId);
+        if (deck == null) {
             return null;
+        } else {
+            List<Card> cards = cardRepository.findByDeckAndRepeatDateLessThanEqual(deck,
+                    LocalDate.now());
+            for (Card card : cards) {
+                card.setEntry(findEntryForCard(card));
+            }
+            return cards;
         }
-        List<Card> cards = cardRepository.findByDeckAndRepeatDateLessThanEqual(deck,
-                LocalDate.now());
-        for (Card card : cards) {
-            card.setEntry(findEntryForCard(card));
-        }
-        return cards;
     }
 
     private Entry findEntryForCard(final Card card) {
@@ -79,25 +81,26 @@ public class CardServiceImpl implements CardService {
             e1.printStackTrace();
             return null;
         }
-
     }
 
     @Override
-    public void updateCard(Long deckId, Card card, boolean memorize) {
-        Deck deck = deckRepository.findOne(deckId);
-        if (userResolver.checkUserDeck(deck)) {
-            return;
+    public boolean updateCard(Long deckId, Card card, boolean memorize) {
+        Deck deck = deckService.getDeckById(deckId);
+        if (deck == null) {
+            return false;
+        } else {
+            if (card.isNewCard()) {
+                card.setRepeatDate(LocalDate.now());
+            }
+            if (memorize) {
+                card.setWave(card.getWave().next());
+                card.getRepeatDate().plusDays(card.getWave().getWaveSpace());
+            } else {
+                card.getRepeatDate().plusDays(card.getWave().getWaveSpace());
+            }
+            saveCard(card);
+            return true;
         }
-        if(card.isNewCard()){
-            card.setRepeatDate(LocalDate.now());
-        }
-        if (memorize) {
-            card.setWave(card.getWave().next());
-            card.getRepeatDate().plusDays(card.getWave().getWaveSpace());
-        }else{
-            card.getRepeatDate().plusDays(card.getWave().getWaveSpace());
-        }
-        saveCard(card);
     }
 
     @Override
@@ -146,6 +149,5 @@ public class CardServiceImpl implements CardService {
         // TODO Auto-generated method stub
 
     }
-
 
 }

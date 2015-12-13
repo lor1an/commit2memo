@@ -13,29 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.com2mem.model.Card;
 import com.com2mem.model.Deck;
-import com.com2mem.resolver.UserResolver;
-import com.com2mem.service.CardService;
 import com.com2mem.service.DeckService;
-import com.com2mem.service.UserService;
 
 @RestController
 public class DeckController {
 
     @Autowired
-    private UserResolver userResolver;
-
-    @Autowired
-    private UserService userService;
-
-    @Autowired
     private DeckService deckService;
-
-    @Autowired
-    private CardService cardService;
 
     @RequestMapping(value = "/decks", method = RequestMethod.GET)
     public ResponseEntity<List<Deck>> listAllDecks() {
-        return new ResponseEntity<List<Deck>>(userResolver.curentUser().getDecks(), HttpStatus.OK);
+        return new ResponseEntity<List<Deck>>(deckService.getAllDecks(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/decks", method = RequestMethod.POST)
