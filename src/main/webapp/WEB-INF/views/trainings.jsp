@@ -40,9 +40,7 @@
 		<div class="row">
 			<div id="leftCol" class="col-md-3 sidebar">
 				<ul class="nav nav-pills nav-stacked">
-					<li role="presentation" class="active"><a href="trainings">Trainings
-							<span class="badge">42</span>
-					</a></li>
+					<li role="presentation" class="active"><a href="trainings">Trainings<span class="badge repeatCount">0</span></a></li>
 					<li role="presentation"><a href="decksPage">Decks</a></li>
 					<li role="presentation"><a href="cardPage">Add card</a></li>
 					<li role="presentation"><a href="cardsPage">All cards</a></li>
@@ -53,7 +51,7 @@
 				<div class="thumbnail">
 					<ul class="nav nav-tabs">
 						<li id="repeat" role="presentation" class="trtab active"><a>Repeat
-								<span class="badge">42</span>
+								<span class="badge repeatCount">0</span>
 						</a></li>
 						<li id="neww" role="presentation" class="trtab"><a>New
 								words</a></li>
@@ -84,5 +82,6 @@
 	<script src="static/js/json2html.js"></script>
 	<script src="static/js/auth.js"></script>
 	<script src="static/js/trainings.js"></script>
+	<script src="static/js/scripts.js"></script>
 </body>
 </html>

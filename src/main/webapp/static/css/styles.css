@@ -17,6 +17,14 @@ body {
 	background-color: rgba(43, 43, 43, 0.1);
 	border-radius: 4px;
 	opacity: 1;
+	border: solid;
+	border-bottom: 1px;
+	border-left-width: thin;
+	border-left-color: black;
+	border-top-width: thin;
+	border-top-color: black;
+	border-right-width: thin;
+	border-right-color: black;
 }
 
 .navbar-default .navbar-brand {
@@ -277,18 +285,22 @@ audio[src=""] {
 	vertical-align: middle;
 	text-align: left;
 }
+
 .navbar-default .navbar-nav>.activeTab>a {
 	color: white;
 	background-color: rgba(43, 43, 43, 0.1);
 	border-radius: 4px;
 	opacity: 1;
+	border: solid;
+	border-bottom: 1px;
+	border-left-width: thin;
+	border-left-color: black;
+	border-top-width: thin;
+	border-top-color: black;
+	border-right-width: thin;
+	border-right-color: black;
 }
 
-.activeTab>a{
-	color: white;
+.badge{
+	background-color: #337AB7;
 }
-
-/* background-color: rgba(43, 43, 43, 0.1);
-    border-radius: 4px;
-    color: #555555;
-    opacity: 1; */

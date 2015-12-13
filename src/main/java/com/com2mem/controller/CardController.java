@@ -60,22 +60,22 @@ public class CardController {
         }
     }
 
-    @RequestMapping(value = "/cards/new", method = RequestMethod.GET)
+    @RequestMapping(value = "/cards/newCount", method = RequestMethod.GET)
     public ResponseEntity<Integer> getCountNewCardsOfUser() {
         return new ResponseEntity<Integer>(cardService.countNewCardsOfUser(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/cards/repeat", method = RequestMethod.GET)
+    @RequestMapping(value = "/cards/repeatCount", method = RequestMethod.GET)
     public ResponseEntity<Integer> getCountRepeatCardsOfUser() {
         return new ResponseEntity<Integer>(cardService.countRepeatCardsOfUser(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/cards/new/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/cards/newCount/{id}", method = RequestMethod.GET)
     public ResponseEntity<Integer> getCountNewCardsOfDeck(@PathVariable("id") Long deckId) {
         return new ResponseEntity<Integer>(cardService.countNewCardsOfDeck(deckId), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/cards/repeat/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/cards/repeatCount/{id}", method = RequestMethod.GET)
     public ResponseEntity<Integer> getCountRepeatCardsOfDeck(@PathVariable("id") Long deckId) {
         return new ResponseEntity<Integer>(cardService.countRepeatCardsOfDeck(deckId), HttpStatus.OK);
     }

@@ -75,7 +75,7 @@
 		<div class="row">
 			<div id="leftCol" class="col-md-3 sidebar">
 				<ul class="nav nav-pills nav-stacked">
-					<li role="presentation"><a href="trainings">Trainings</a></li>
+					<li role="presentation"><a href="trainings">Trainings<span class="badge repeatCount">0</span></a></li>
 					<li role="presentation" class="active"><a href="decks">Decks</a></li>
 					<li role="presentation"><a href="cardPage">Add card</a></li>
 					<li role="presentation"><a href="cardsPage">All cards</a></li>
@@ -121,6 +121,7 @@
 	<script src="static/js/auth.js"></script>
 	<script src="static/js/jquery.json2html.js"></script>
 	<script src="static/js/json2html.js"></script>
+	<script src="static/js/scripts.js"></script>
 	<script>
         var decksUrl = "http://localhost:10080/commit2memo/decks";
         $('tbody').on("click", "tr.t", function() {
