@@ -28,13 +28,10 @@ public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cardId;
-    @JsonIgnore
     private String searchWord;
-    @JsonIgnore
     private Integer wordId;
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name ="card_senses")
-    @JsonIgnore
     private List<Integer> sensesId;
     @Transient
     private Entry entry;

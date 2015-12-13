@@ -6,8 +6,11 @@
 
 	<div id="startLes" class="congrats">
 		<div class="cng_nst">
-			<p>20 words to memorize</p>
-			<button type='button' class='btn btn-primary btn-lg'>
+			<p>
+				<span id="wordCount">20</span> words to memorize
+			</p>
+			<button id="startTraining" type='button'
+				class=' btn btn-primary btn-lg'>
 				<span class="glyphicon glyphicon-play"></span> Start training
 			</button>
 		</div>
@@ -29,8 +32,39 @@
 	</div>
 
 	<div id="fin_msg" class="congrats">
+		<span class="cng_nst">Well done! You have finished this deck
+			for today :)</span>
+	</div>
 
-		<span class="cng_nst">Congradulations! You have finished your
-			training :)</span>
+	<div id="memo_stat">
+		<div id="counter" style="text-align: center;font-size: x-small;">
+		</div>
+		<div class="progress">
+			<div id="failbar" class="progress-bar progress-bar-danger"
+				role="progressbar" aria-valuenow="0" aria-valuemin="0"
+				aria-valuemax="100" style="width: 0%">
+				<span class="sr-only">Fail</span>
+			</div>
+			<div id="succbar" class="progress-bar progress-bar-success"
+				role="progressbar" aria-valuenow="0" aria-valuemin="0"
+				aria-valuemax="100" style="width: 0%">
+				<span class="sr-only">Success</span>
+			</div>
+
+			</div>
+		</div>
+
+	</div>
+
+	<div id="startNew" class="congrats">
+		<div class="cng_nst">
+			<p>
+				You have <span id="wordCount"></span> new words
+			</p>
+			<button id="startTraining" type='button'
+				class=' btn btn-primary btn-lg'>
+				<span class="glyphicon glyphicon-play"></span> Start memorizing
+			</button>
+		</div>
 	</div>
 </div>

@@ -42,7 +42,9 @@
 		<div class="row">
 			<div id="leftCol" class="col-md-3 sidebar">
 				<ul class="nav nav-pills nav-stacked">
-					<li role="presentation" class="active"><a href="trainings">Trainings</a></li>
+					<li role="presentation" class="active"><a href="trainings">Trainings
+							<span class="badge">42</span>
+					</a></li>
 					<li role="presentation"><a href="decksPage">Decks</a></li>
 					<li role="presentation"><a href="cardPage">Add card</a></li>
 					<li role="presentation"><a href="cardsPage">All cards</a></li>
@@ -70,20 +72,7 @@
 							</select>
 						</div>
 					</div>
-					<div id="memo_stat">
-						<div class="progress">
-							<div id="failbar" class="progress-bar progress-bar-danger"
-								role="progressbar" aria-valuenow="0" aria-valuemin="0"
-								aria-valuemax="100" style="width: 0%">
-								<span class="sr-only">Fail</span>
-							</div>
-							<div id="succbar" class="progress-bar progress-bar-success"
-								role="progressbar" aria-valuenow="0" aria-valuemin="0"
-								aria-valuemax="100" style="width: 0%">
-								<span class="sr-only">Success</span>
-							</div>
-						</div>
-					</div>
+					<div id="memo_stat"></div>
 					<div class="flip"></div>
 					<div id="again_know"></div>
 				</div>
@@ -91,195 +80,13 @@
 		</div>
 	</div>
 	<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script
+		src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script src="static/js/auth.js"></script>
 	<script src="static/js/jquery.json2html.js"></script>
 	<script src="static/js/json2html.js"></script>
 	<script type="text/javascript">
-        var cards = [  {
-            "cardId" : 2,
-            "searchWord" : "cat",
-            "wordId" : 1,
-            "sensesId" : [ 0 ],
-            "entry" : {
-                "id" : "cat[2]",
-                "entryWord" : "cat",
-                "sound" : null,
-                "pronunciation" : null,
-                "funcLabel" : "verb",
-                "def" : {
-                    "sndf" : [ {
-                        "senseNumber" : "intransitive verb",
-                        "value" : ":to search for a sexual mate ",
-                        "synonymous" : null,
-                        "usageNote" : "(often used with around)",
-                        "verbalIllustration" : null
-                    } ]
-                }
-            },
-            "wave" : "WAVE_0",
-            "repeatDate" : {
-                "year" : 2015,
-                "month" : "DECEMBER",
-                "dayOfMonth" : 12,
-                "dayOfWeek" : "SATURDAY",
-                "era" : "CE",
-                "dayOfYear" : 346,
-                "leapYear" : false,
-                "chronology" : {
-                    "calendarType" : "iso8601",
-                    "id" : "ISO"
-                },
-                "monthValue" : 12
-            },
-            "deck" : {
-                "deckId" : 1,
-                "name" : "cats"
-            }
-        }, {
-            "cardId" : 3,
-            "searchWord" : "cat",
-            "wordId" : 0,
-            "sensesId" : [ 1, 6 ],
-            "entry" : {
-                "id" : "cat[1]",
-                "entryWord" : "cat",
-                "sound" : {
-                    "wav" : "http://media.merriam-webster.com/soundc11/c/cat00001.wav"
-                },
-                "pronunciation" : "ˈkat",
-                "funcLabel" : "noun",
-                "def" : {
-                    "sndf" : [ {
-                        "senseNumber" : "b",
-                        "value" : ":any of a family (Felidae) of carnivorous usually solitary and nocturnal mammals (as the domestic cat, lion, tiger, leopard, jaguar, cougar, wildcat, lynx, and cheetah)",
-                        "synonymous" : null,
-                        "usageNote" : null,
-                        "verbalIllustration" : null
-                    }, {
-                        "senseNumber" : "5",
-                        "value" : ":",
-                        "synonymous" : "syn. to:cat-o'-nine-tails",
-                        "usageNote" : null,
-                        "verbalIllustration" : null
-                    } ]
-                }
-            },
-            "wave" : "WAVE_0",
-            "repeatDate" : {
-                "year" : 2015,
-                "month" : "DECEMBER",
-                "dayOfMonth" : 12,
-                "dayOfWeek" : "SATURDAY",
-                "era" : "CE",
-                "dayOfYear" : 346,
-                "leapYear" : false,
-                "chronology" : {
-                    "calendarType" : "iso8601",
-                    "id" : "ISO"
-                },
-                "monthValue" : 12
-            },
-            "deck" : {
-                "deckId" : 1,
-                "name" : "cats"
-            }
-        }, {
-            "cardId" : 4,
-            "searchWord" : "cat",
-            "wordId" : 0,
-            "sensesId" : [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ],
-            "entry" : {
-                "id" : "cat[1]",
-                "entryWord" : "cat",
-                "sound" : {
-                    "wav" : "http://media.merriam-webster.com/soundc11/c/cat00001.wav"
-                },
-                "pronunciation" : "ˈkat",
-                "funcLabel" : "noun",
-                "def" : {
-                    "sndf" : [ {
-                        "senseNumber" : "1 a",
-                        "value" : ":a carnivorous mammal (Felis catus) long domesticated as a pet and for catching rats and mice",
-                        "synonymous" : null,
-                        "usageNote" : null,
-                        "verbalIllustration" : null
-                    }, {
-                        "senseNumber" : "b",
-                        "value" : ":any of a family (Felidae) of carnivorous usually solitary and nocturnal mammals (as the domestic cat, lion, tiger, leopard, jaguar, cougar, wildcat, lynx, and cheetah)",
-                        "synonymous" : null,
-                        "usageNote" : null,
-                        "verbalIllustration" : null
-                    }, {
-                        "senseNumber" : "2",
-                        "value" : ":a malicious woman",
-                        "synonymous" : null,
-                        "usageNote" : null,
-                        "verbalIllustration" : null
-                    }, {
-                        "senseNumber" : "3",
-                        "value" : ":a strong tackle used to hoist an anchor to the cathead of a ship",
-                        "synonymous" : null,
-                        "usageNote" : null,
-                        "verbalIllustration" : null
-                    }, {
-                        "senseNumber" : "4 a",
-                        "value" : ":",
-                        "synonymous" : "syn. to:catboat",
-                        "usageNote" : null,
-                        "verbalIllustration" : null
-                    }, {
-                        "senseNumber" : "b",
-                        "value" : ":",
-                        "synonymous" : "syn. to:catamaran",
-                        "usageNote" : null,
-                        "verbalIllustration" : null
-                    }, {
-                        "senseNumber" : "5",
-                        "value" : ":",
-                        "synonymous" : "syn. to:cat-o'-nine-tails",
-                        "usageNote" : null,
-                        "verbalIllustration" : null
-                    }, {
-                        "senseNumber" : "6",
-                        "value" : ":",
-                        "synonymous" : "syn. to:catfish",
-                        "usageNote" : null,
-                        "verbalIllustration" : null
-                    }, {
-                        "senseNumber" : "7 a",
-                        "value" : ":a player or devotee of jazz",
-                        "synonymous" : null,
-                        "usageNote" : null,
-                        "verbalIllustration" : null
-                    }, {
-                        "senseNumber" : "b",
-                        "value" : ":",
-                        "synonymous" : "syn. to:guy",
-                        "usageNote" : null,
-                        "verbalIllustration" : null
-                    } ]
-                }
-            },
-            "wave" : "WAVE_0",
-            "repeatDate" : {
-                "year" : 2015,
-                "month" : "DECEMBER",
-                "dayOfMonth" : 12,
-                "dayOfWeek" : "SATURDAY",
-                "era" : "CE",
-                "dayOfYear" : 346,
-                "leapYear" : false,
-                "chronology" : {
-                    "calendarType" : "iso8601",
-                    "id" : "ISO"
-                },
-                "monthValue" : 12
-            },
-            "deck" : {
-                "deckId" : 1,
-                "name" : "cats"
-            }
-        } ];
+        var cards;
         var transform = {
             "tag" : "div",
             "id" : "cardWord",
@@ -314,8 +121,8 @@
 
         var decksUrl = "http://localhost:10080/commit2memo/decks";
         var curIndex = 0;
-        var percent = 100 / cards.length;
-        var initLength = cards.length;
+        var percent;
+        var initLength;
         var succbarW = 0;
         var failbarW = 0;
         $(document).on("click", ".flip", function(e) {
@@ -369,9 +176,18 @@
                 curIndex = (curIndex + shift) % (cards.length);
                 setTimeout(function() {
                     nextCard(curIndex);
-                }, 500);
+                    $('#counter').text(curIndex + 1 + " of " + cards.length);
+                }, 100);
             } else {
-                $('.flip').html("");
+                setTimeout(function() {
+                    $('.flip').empty();
+                    $('#counter').empty();
+                    $("#again_know").empty();
+                    $("#neww").removeClass("disabled");
+                    $.get('static/pages/flip.html', function(data) {
+                        $(data).find(".training, #fin_msg").appendTo(".flip");
+                    })
+                }, 500);
             }
         });
 
@@ -393,30 +209,68 @@
         $(document).on("click", ".trtab", function(e) {
             if (!$(this).hasClass("disabled")) {
                 if ($(this).attr("id") === "repeat" && !$(this).hasClass("active")) {
-                    initRepeatTab();
-                    $('.trtab').toggleClass("active");
-                } else if ($(this).attr("id") === "neww" && !$(this).hasClass("active")) {
                     $(".flip").empty();
                     $("#again_know").empty();
                     $('.trtab').toggleClass("active");
+                    initRepeatTab();
+                } else if ($(this).attr("id") === "neww" && !$(this).hasClass("active")) {
+                    $(".flip").empty();
+                    $("#again_know").empty();
+                    $("#memo_stat").empty();
+                    $('.trtab').toggleClass("active");
+                    initNewWordTab();
                 }
             }
         });
 
         function initRepeatTab() {
-            //$('#succbar').css('width', 100 + '%').attr('aria-valuenow', 100);
             addDecks();
             $.get('static/pages/flip.html', function(data) {
-                //$(data).find(".training, #fin_msg").appendTo(".flip"); 
-                $(data).find(".training, .card").appendTo(".flip");
-                $(data).find(".training, .btn-group-justified").appendTo("#again_know");
-                //$(data).find(".training, #startLes").appendTo(".flip");
+                $(data).find(".training, #startLes").appendTo(".flip");
             }).done(function() {
-                nextCard(curIndex);
+                //$("#wordCount").html(cards.length);
             });
-            for (var i = 0; i < cards.length; i++) {
-                cards[i].know = 2;
-            }
+        };
+
+        $(document).on("click", "#startTraining", function(e) {
+            $(".flip").empty();
+            $.ajax({
+                url : 'http://localhost:10080/commit2memo/decks/1/cards',
+                type : 'GET',
+                success : function(data) {
+                    cards = data;
+                    percent = 100 / cards.length;
+                    initLength = cards.length;
+                    $.get('static/pages/flip.html', function(data) {
+                        $(data).find(".training, .card").appendTo(".flip");
+                        $(data).find(".training, .btn-group-justified").appendTo("#again_know");
+                        $(data).find(".training, #memo_stat").appendTo("#memo_stat");
+                        $('#infobar').css('width', '100%');
+                        $('#counter').text("1 of " + cards.length);
+                    }).done(function() {
+                        $("#wordCount").html(cards.length);
+                        nextCard(curIndex);
+                        $("#neww").addClass("disabled");
+                        for (var i = 0; i < cards.length; i++) {
+                            cards[i].know = 2;
+                        }
+                    });
+                    
+                },
+                error : function(data) {
+                    console.log(data);
+                }
+            });
+        });
+
+        function initNewWordTab() {
+            addDecks();
+            $.get('static/pages/flip.html', function(data) {
+                $(data).find(".training, #startNew").appendTo(".flip");
+
+            }).done(function() {
+                $("#wordCount").html(cards.length);
+            });
         };
     </script>
 </body>
