@@ -8,6 +8,12 @@
 	<http auto-config="true">
 		<intercept-url pattern="/" access="ROLE_USER" />
 		<intercept-url pattern="/cardPage" access="ROLE_USER" />
+		<intercept-url pattern="/trainings" access="ROLE_USER" />
+		<intercept-url pattern="/decksPage" access="ROLE_USER" />
+		<intercept-url pattern="/cardsPage" access="ROLE_USER" />
+		<intercept-url pattern="/about" access="ROLE_USER" />
+		<intercept-url pattern="/decks/**" access="ROLE_USER" />
+		<intercept-url pattern="/cards/**" access="ROLE_USER" />
 		<form-login login-page="/login" default-target-url="/cardPage"
 			authentication-failure-url="/login?error" username-parameter="username"
 			password-parameter="password" authentication-success-handler-ref="ajaxAuthenticationSuccessHandler" />

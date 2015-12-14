@@ -63,7 +63,7 @@
 						<li class="activeTab"><a href="">Memorizing</a></li>
 						<li><a href="profile">My profile</a> <span
 							class="icon-envelope"></span></li>
-						<li><a href="">About</a></li>
+						<li><a href="about">About</a></li>
 						<li><a href="" class="logout">Logout</a></li>
 					</ul>
 				</div>

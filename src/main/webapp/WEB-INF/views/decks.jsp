@@ -7,8 +7,7 @@
 <link rel="icon" type="image/x-icon" href="static/img/favicon.ico" />
 <link rel="shortcut icon" type="image/x-icon"
 	href="static/img/favicon.ico" />
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="static/css/styles.css">
 </head>
 <body>
@@ -64,7 +63,7 @@
 						<li class="activeTab"><a href="">Memorizing</a></li>
 						<li><a href="profile">My profile</a> <span
 							class="icon-envelope"></span></li>
-						<li><a href="">About</a></li>
+						<li><a href="about">About</a></li>
 						<li><a href="" class="logout">Logout</a></li>
 					</ul>
 				</div>
@@ -116,9 +115,8 @@
 		</div>
 	</div>
 	<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-	<script
-		src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<script src="static/js/auth.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="static/js/auth.js"></script>
 	<script src="static/js/jquery.json2html.js"></script>
 	<script src="static/js/json2html.js"></script>
 	<script src="static/js/scripts.js"></script>

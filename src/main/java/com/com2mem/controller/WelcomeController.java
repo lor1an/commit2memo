@@ -30,15 +30,7 @@ public class WelcomeController {
             @RequestParam(value = "logout", required = false) String logout) {
 
         ModelAndView model = new ModelAndView();
-        if (error != null) {
-            model.addObject("error", "Invalid username and password!");
-        }
-
-        if (logout != null) {
-            model.addObject("msg", "You've been logged out successfully.");
-        }
         model.setViewName("login");
-
         return model;
 
     }
@@ -67,5 +59,9 @@ public class WelcomeController {
     public String cards(ModelMap model) {
         return "cards";
     }
-
+    
+    @RequestMapping(value = "/about", method = RequestMethod.GET)
+    public String about(ModelMap model) {
+        return "about";
+    }
 }

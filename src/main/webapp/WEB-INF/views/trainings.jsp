@@ -5,7 +5,7 @@
 <title>commit2memo</title>
 <link rel="icon" type="image/x-icon" href="static/img/favicon.ico" />
 <link rel="shortcut icon" type="image/x-icon" href="static/img/favicon.ico" />
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="static/css/styles.css">
 </head>
 <body>
@@ -24,7 +24,7 @@
                     <ul class="nav navbar-nav">
                         <li class="activeTab"><a href="">Memorizing</a></li>
                         <li><a href="profile">My profile</a> <span class="icon-envelope"></span></li>
-                        <li><a href="">About</a></li>
+                        <li><a href="about">About</a></li>
                         <li><a href="" class="logout">Logout</a></li>
                     </ul>
                 </div>
