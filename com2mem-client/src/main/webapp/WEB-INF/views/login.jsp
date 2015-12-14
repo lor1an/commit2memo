@@ -37,8 +37,13 @@
             <div id="loginbox" style="margin-top: 50px;"
                 class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                 <div class="panel panel-info">
-                    <div class="panel-heading">
+                    <div id="head" class="panel-heading">
                         <div class="panel-title">Sign In</div>
+                    </div>
+                    <div id="alert" class="alert alert-danger" role="alert"
+                        style="display: none; padding: 10px; margin-bottom: 0; font-size: 16px;">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <span
+                            class="sr-only">Error:</span> The username and password do not match
                     </div>
                     <div style="padding-top: 30px" class="panel-body">
                         <div style="display: none" id="login-alert" class="alert alert-danger col-sm-12"></div>

@@ -16,7 +16,8 @@
 		<intercept-url pattern="/cards/**" access="ROLE_USER" />
 		<form-login login-page="/login" default-target-url="/cardPage"
 			authentication-failure-url="/login?error" username-parameter="username"
-			password-parameter="password" authentication-success-handler-ref="ajaxAuthenticationSuccessHandler" />
+			password-parameter="password" authentication-success-handler-ref="ajaxAuthenticationSuccessHandler"
+			authentication-failure-handler-ref="ajaxAuthenticationFailureHandler" />
 		<logout logout-success-url="/login?logout" />
 	</http>
 

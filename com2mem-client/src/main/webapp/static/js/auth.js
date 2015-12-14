@@ -15,6 +15,9 @@ $('.login').click(function(e) {
 		},
 		error : function(data) {
 			console.log(data);
+			console.log("failure");
+			$('#head').hide();
+			$('#alert').show();
 		}
 	});
 });
