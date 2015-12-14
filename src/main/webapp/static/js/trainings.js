@@ -128,6 +128,8 @@ $(document).on("click", ".mem_button", function(e) {
         }, 100);
     } else {
         setTimeout(function() {
+            succbarW = 0;
+            failbarW = 0;
             $('.flip').empty();
             $('#counter').empty();
             $("#again_know").empty();
@@ -180,6 +182,19 @@ function sendCard(card) {
         }
     });
 };
+
+$(document).on("change", "#selectDeck", function(e) {
+    curDeckId = parseInt($("#selectDeck").children(":selected").attr("id").substring(4));
+    var value = $(".trtab.active").attr("id").substring(4);
+    if ($("#wordCount").length > 0) {
+        addCardCounter(value + "Count/");
+    } else {
+        $(".flip").empty();
+        $("#again_know").empty();
+        $("#memo_stat").empty();
+        initTab(value);
+    }
+});
 
 $(document).on("click", ".flip", function(e) {
     $(this).find('.card').toggleClass('flipped');

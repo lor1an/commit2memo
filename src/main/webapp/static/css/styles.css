@@ -171,6 +171,7 @@ tr:hover {
 .senseNumber:hover {
 	background: #E4E4E4;
 	color: #000000;
+	cursor: pointer;
 }
 
 div:empty {
