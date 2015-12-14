@@ -46,10 +46,10 @@
                 <div class="thumbnail">
                     <ul class="nav nav-tabs">
                         <li id="tab_repeat" role="presentation" class="trtab active"><a>Repeat <span
-                                class="badge repeatCount">0</span>
+                                id="repeatCount" class="badge repeatCount">0</span>
                         </a></li>
-                        <li id="tab_new" role="presentation" class="trtab"><a>New words <span
-                                class="badge newCount">0</span>
+                        <li id="tab_new" role="presentation" class="trtab"><a>New words <span id="newCount"
+                                class="badge newCount na">0</span>
                         </a></li>
                     </ul>
                     <div class="" style="display: flex; padding-top: 5px;">
@@ -73,7 +73,7 @@
     <script src="static/js/jquery.json2html.js"></script>
     <script src="static/js/json2html.js"></script>
     <script src="static/js/auth.js"></script>
-    <script src="static/js/trainings.js"></script>
     <script src="static/js/scripts.js"></script>
+    <script src="static/js/trainings.js"></script>
 </body>
 </html>

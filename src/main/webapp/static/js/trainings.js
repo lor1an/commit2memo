@@ -9,15 +9,21 @@ var succbarW = 0;
 var failbarW = 0;
 
 $(document).ready(function() {
-    initTab("repeat");
+    if ($(".repeatCount").val() > 0) {
+        initTab("repeat");
+    }
 });
 
 $(document).on("click", ".trtab", function(e) {
+
     if (!($(this).hasClass("disabled") || $(this).hasClass("active"))) {
         $(".flip").empty();
         $("#again_know").empty();
         $('.trtab').toggleClass("active");
-        initTab($(this).attr("id").substring(4));
+        if ($('span.na').text() > 0) {
+            initTab($(this).attr("id").substring(4));
+        }
+        $('.trtab .badge').toggleClass("na");
     }
 });
 
@@ -129,6 +135,9 @@ $(document).on("click", ".mem_button", function(e) {
             $.get('static/pages/flip.html', function(data) {
                 $(data).find(".training, #fin_msg").appendTo(".flip");
             })
+            $.get(cardsUrl + $('.trtab.active .badge').attr("id"), function(data) {
+                $('.trtab.active .badge').html(data);
+            });
         }, 500);
     }
 });
