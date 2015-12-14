@@ -12,8 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import com.com2mem.model.Role;
-
 @Entity
 @Table(name = "user_roles", uniqueConstraints = @UniqueConstraint(columnNames = {
         "role", "userId" }))
@@ -35,7 +33,6 @@ public class UserRole {
         this.role = role;
     }
 
-  
     public Long getUserRoleId() {
         return this.userRoleId;
     }
@@ -62,7 +59,7 @@ public class UserRole {
 
     @Override
     public String toString() {
-        return "UserRole [userRoleId=" + userRoleId  + ", role=" + role + "]";
+        return "UserRole [userRoleId=" + userRoleId + ", role=" + role + "]";
     }
 
 }

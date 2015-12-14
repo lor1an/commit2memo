@@ -15,7 +15,7 @@ import com.com2mem.dto.EntryList;
 import com.com2mem.model.Card;
 import com.com2mem.model.Deck;
 import com.com2mem.repository.CardRepository;
-import com.com2mem.resolver.UserResolver;
+import com.com2mem.resolver.ClientResolver;
 import com.com2mem.service.CardService;
 import com.com2mem.service.DeckService;
 import com.com2mem.service.DictionaryService;
@@ -24,7 +24,7 @@ import com.com2mem.service.DictionaryService;
 public class CardServiceImpl implements CardService {
 
     @Autowired
-    private UserResolver userResolver;
+    private ClientResolver clientResolver;
 
     @Autowired
     private CardRepository cardRepository;
@@ -164,13 +164,13 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public Integer countNewCardsOfUser() {
-        return cardRepository.countByNewCardAndUser(true, userResolver.curentUser());
+    public Integer countNewCardsOfClient() {
+        return cardRepository.countByNewCardAndClient(true, clientResolver.curentClient());
     }
 
     @Override
-    public Integer countRepeatCardsOfUser() {
-        return cardRepository.countByRepeatDateAndUser(LocalDate.now(), userResolver.curentUser());
+    public Integer countRepeatCardsOfClient() {
+        return cardRepository.countByRepeatDateAndClient(LocalDate.now(), clientResolver.curentClient());
     }
 
     @Override

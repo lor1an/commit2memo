@@ -51,13 +51,13 @@ public class CardController {
     }
 
     @RequestMapping(value = "/cards/newCount", method = RequestMethod.GET)
-    public ResponseEntity<Integer> getCountNewCardsOfUser() {
-        return new ResponseEntity<Integer>(cardService.countNewCardsOfUser(), HttpStatus.OK);
+    public ResponseEntity<Integer> getCountNewCardsOfClient() {
+        return new ResponseEntity<Integer>(cardService.countNewCardsOfClient(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/cards/repeatCount", method = RequestMethod.GET)
-    public ResponseEntity<Integer> getCountRepeatCardsOfUser() {
-        return new ResponseEntity<Integer>(cardService.countRepeatCardsOfUser(), HttpStatus.OK);
+    public ResponseEntity<Integer> getCountRepeatCardsOfClient() {
+        return new ResponseEntity<Integer>(cardService.countRepeatCardsOfClient(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/cards/newCount/{id}", method = RequestMethod.GET)

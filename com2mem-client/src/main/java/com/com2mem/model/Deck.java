@@ -13,7 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.com2mem.common.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -27,7 +26,7 @@ public class Deck {
     @ManyToOne
     @JoinColumn(name = "userId")
     @JsonIgnore
-    private User user;
+    private Client client;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "deck", cascade = CascadeType.PERSIST)
     @JsonIgnore
     private List<Card> cards;
@@ -64,12 +63,12 @@ public class Deck {
         this.cards = cards;
     }
 
-    public User getUser() {
-        return user;
+    public Client getClient() {
+        return client;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     @Override
@@ -100,7 +99,7 @@ public class Deck {
     @Override
     public String toString() {
         return "Deck [deckId=" + deckId + ", name=" + name + ", cards=" + cards
-                + "User" + user.getUserId() + "]";
+                + "Client" + client.getUserId() + "]";
     }
 
 }

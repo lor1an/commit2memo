@@ -5,19 +5,19 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
-import com.com2mem.common.service.UserService;
 import com.com2mem.model.Deck;
 import com.com2mem.security.C2MUser;
+import com.com2mem.service.ClientService;
 
 @Component
-public class UserResolver {
+public class ClientResolver {
 
     @Autowired
-    UserService userService;
+    ClientService clientService;
 
-    public com.com2mem.common.model.User curentUser() {
+    public com.com2mem.model.Client curentClient() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return userService.getUserByUsername(user.getUsername());
+        return clientService.getUserByUsername(user.getUsername());
     }
 
     public Long curentUserId() {
@@ -25,8 +25,8 @@ public class UserResolver {
         return user.getUserId();
     }
 
-    public boolean isUserDeck(Deck deck) {
-        if (deck == null || !deck.getUser().getUserId().equals(curentUserId())) {
+    public boolean isClientDeck(Deck deck) {
+        if (deck == null || !deck.getClient().getUserId().equals(curentUserId())) {
             return false;
         }
         return true;

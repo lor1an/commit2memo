@@ -6,14 +6,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.com2mem.common.model.User;
-import com.com2mem.common.service.UserService;
 import com.com2mem.model.Card;
+import com.com2mem.model.Client;
 import com.com2mem.model.Deck;
 import com.com2mem.model.Wave;
 import com.com2mem.repository.DeckRepository;
-import com.com2mem.resolver.UserResolver;
+import com.com2mem.resolver.ClientResolver;
 import com.com2mem.service.CardService;
+import com.com2mem.service.ClientService;
 import com.com2mem.service.DeckService;
 import com.google.common.collect.Lists;
 
@@ -21,7 +21,7 @@ import com.google.common.collect.Lists;
 public class DeckServiceImpl implements DeckService {
 
     @Autowired
-    private UserResolver userResolver;
+    private ClientResolver clientResolver;
 
     @Autowired
     private CardService cardService;
@@ -30,25 +30,25 @@ public class DeckServiceImpl implements DeckService {
     private DeckRepository deckRepository;
 
     @Autowired
-    private UserService userService;
+    private ClientService clientService;
 
     @Override
     public void addDeck(Deck deck) {
-        User curUser = userResolver.curentUser();
-        deck.setUser(curUser);
+        Client curClient = clientResolver.curentClient();
+        deck.setClient(curClient);
         deckRepository.save(deck);
-        if (curUser.getDecks() != null) {
-            curUser.getDecks().add(deck);
+        if (curClient.getDecks() != null) {
+            curClient.getDecks().add(deck);
         } else {
-            curUser.setDecks(Lists.newArrayList(deck));
+            curClient.setDecks(Lists.newArrayList(deck));
         }
-        userService.saveUser(curUser);
+        clientService.saveUser(curClient);
     }
 
     @Override
     public Deck getDeckById(final Long deckId) {
         Deck deck = deckRepository.findOne(deckId);
-        if (userResolver.isUserDeck(deck)) {
+        if (clientResolver.isClientDeck(deck)) {
             return deck;
         } else {
             return null;
@@ -58,7 +58,7 @@ public class DeckServiceImpl implements DeckService {
     @Override
     public boolean addCard(Long deckId, Card card) {
         Deck deck = deckRepository.findOne(deckId);
-        if (userResolver.isUserDeck(deck)) {
+        if (clientResolver.isClientDeck(deck)) {
             card.setDeck(deck);
             card.setWave(Wave.WAVE_0);
             card.setNewCard(true);
@@ -82,17 +82,17 @@ public class DeckServiceImpl implements DeckService {
 
     @Override
     public List<Deck> getAllDecks() {
-        return userResolver.curentUser().getDecks();
+        return clientResolver.curentClient().getDecks();
     }
 
     @Override
     public List<Deck> getDecksWithNewCards() {
-        return deckRepository.findDecksWithNewCards(true, userResolver.curentUser());
+        return deckRepository.findDecksWithNewCards(true, clientResolver.curentClient());
     }
 
     @Override
     public List<Deck> getDecksWithRepeatCards() {
-        return deckRepository.findDecksWithRepeatCards(LocalDate.now(), userResolver.curentUser());
+        return deckRepository.findDecksWithRepeatCards(LocalDate.now(), clientResolver.curentClient());
     }
 
     @Override
@@ -114,8 +114,8 @@ public class DeckServiceImpl implements DeckService {
     @Override
     public boolean deleteDeckById(Long id) {
         Deck deck = deckRepository.findOne(id);
-        if (userResolver.isUserDeck(deck)) {
-            deck.setUser(null);
+        if (clientResolver.isClientDeck(deck)) {
+            deck.setClient(null);
             deleteDeck(deck);
             return true;
         } else {

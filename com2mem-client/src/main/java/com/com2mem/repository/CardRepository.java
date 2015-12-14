@@ -8,8 +8,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.com2mem.common.model.User;
 import com.com2mem.model.Card;
+import com.com2mem.model.Client;
 import com.com2mem.model.Deck;
 
 @Transactional
@@ -22,12 +22,12 @@ public interface CardRepository extends CrudRepository<Card, Long> {
     List<Card> findByDeckAndNewCard(Deck deck, boolean newCard);
 
     @Query(value = "SELECT count(c) FROM Card c WHERE c.newCard = :newCard AND c.deck IN "
-            + "(SELECT d FROM Deck d WHERE d.user = :user)")
-    Integer countByNewCardAndUser(@Param("newCard") boolean newCard, @Param("user") User user);
+            + "(SELECT d FROM Deck d WHERE d.client = :client)")
+    Integer countByNewCardAndClient(@Param("newCard") boolean newCard, @Param("client") Client client);
 
     @Query(value = "SELECT count(c) FROM Card c WHERE c.repeatDate <= :repeatDate AND c.deck IN "
-            + "(SELECT d FROM Deck d WHERE d.user = :user)")
-    Integer countByRepeatDateAndUser(@Param("repeatDate") LocalDate repeatDate, @Param("user") User user);
+            + "(SELECT d FROM Deck d WHERE d.client = :client)")
+    Integer countByRepeatDateAndClient(@Param("repeatDate") LocalDate repeatDate, @Param("client") Client client);
 
     @Query(value = "SELECT count(c) FROM Card c WHERE c.newCard = :newCard AND c.deck = :deck")
     Integer countByNewCardAndDeck(@Param("newCard") boolean newCard, @Param("deck") Deck deck);

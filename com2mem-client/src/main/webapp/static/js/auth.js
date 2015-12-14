@@ -34,7 +34,7 @@ $('.logout').click(function(e) {
 $('.register').click(function(e) {
     e.preventDefault();
     $.ajax({
-        url : 'http://localhost:10080/commit2memo/user',
+        url : 'http://localhost:10080/commit2memo/client',
         type : 'POST',
         contentType : "application/json",
         data : JSON.stringify({

@@ -20,9 +20,9 @@ public interface CardService {
 
     List<Card> getAllCards();
     
-    Integer countNewCardsOfUser();
+    Integer countNewCardsOfClient();
     
-    Integer countRepeatCardsOfUser();
+    Integer countRepeatCardsOfClient();
     
     Integer countNewCardsOfDeck(Long deckId);
     

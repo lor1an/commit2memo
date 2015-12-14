@@ -8,19 +8,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.com2mem.common.model.User;
-import com.com2mem.common.service.UserService;
+import com.com2mem.model.Client;
+import com.com2mem.service.ClientService;
 
 @RestController
-public class UserController {
+public class ClientController {
 
     @Autowired
-    UserService userService;
+    ClientService clientService;
 
-    @RequestMapping(value = "/user", method = RequestMethod.POST)
-    public ResponseEntity<HttpStatus> createUser(@RequestBody User user) {
-        userService.addUser(user);
+    @RequestMapping(value = "/client", method = RequestMethod.POST)
+    public ResponseEntity<HttpStatus> createUser(@RequestBody Client client) {
+        clientService.addUser(client);
         return new ResponseEntity<HttpStatus>(HttpStatus.CREATED);
     }
-
 }

@@ -1,24 +1,26 @@
 package com.com2mem.common.model;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.com2mem.model.Deck;
-
 @Entity
+@Inheritance(strategy=InheritanceType.JOINED)
+@DiscriminatorColumn(name="userType")
 @Table(name = "users")
-public class User {
+public abstract class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,8 +32,6 @@ public class User {
     private boolean enabled;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.PERSIST)
     private Set<UserRole> userRole = new HashSet<UserRole>(0);
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Deck> decks;
 
     public User() {
 
@@ -84,43 +84,10 @@ public class User {
         this.userRole = userRole;
     }
 
-    public List<Deck> getDecks() {
-        return decks;
-    }
-
-    public void setDecks(List<Deck> decks) {
-        this.decks = decks;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((decks == null) ? 0 : decks.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        User other = (User) obj;
-        if (decks == null) {
-            if (other.decks != null)
-                return false;
-        } else if (!decks.equals(other.decks))
-            return false;
-        return true;
-    }
-
     @Override
     public String toString() {
         return "User [userId=" + userId + ", username=" + username + ", password=" + password
-                + ", enabled=" + enabled + ", userRole=" + userRole + ", decks=" + decks + "]";
+                + ", enabled=" + enabled + ", userRole=" + userRole + "]";
     }
 
 }

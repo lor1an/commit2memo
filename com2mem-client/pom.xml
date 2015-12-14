@@ -15,6 +15,12 @@
 			<artifactId>com2mem-parser</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.com2mem</groupId>
+			<artifactId>com2mem-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 	
 	<build>

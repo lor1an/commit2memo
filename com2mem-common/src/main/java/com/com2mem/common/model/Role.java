@@ -1,4 +1,4 @@
-package com.com2mem.model;
+package com.com2mem.common.model;
 
 public enum Role {
 	ROLE_USER(new String[] { "ROLE_USER" }), ROLE_ADMIN(new String[] {

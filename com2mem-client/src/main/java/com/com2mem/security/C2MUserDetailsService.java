@@ -16,30 +16,30 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.com2mem.common.model.User;
 import com.com2mem.common.model.UserRole;
-import com.com2mem.common.repository.UserRepository;
+import com.com2mem.repository.ClientRepository;
 
 @Service("userDetailsService")
 public class C2MUserDetailsService implements UserDetailsService {
 
     @Autowired
-    UserRepository userRepository;
+    ClientRepository clientRepository;
 
     @Transactional(readOnly = true)
     @Override
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username).get(0);
+        User user = clientRepository.findByUsername(username).get(0);
         List<GrantedAuthority> authorities = buildUserAuthority(user
                 .getUserRole());
 
         return buildUserForAuthentication(user, authorities);
     }
 
-    private C2MUser buildUserForAuthentication(
-            User user, List<GrantedAuthority> authorities) {
-        return new C2MUser(
-                user.getUsername(), user.getPassword(), user.isEnabled(), true,
-                true, true, authorities, user.getUserId());
+    private C2MUser buildUserForAuthentication(User user,
+            List<GrantedAuthority> authorities) {
+        return new C2MUser(user.getUsername(), user.getPassword(),
+                user.isEnabled(), true, true, true, authorities,
+                user.getUserId());
     }
 
     private List<GrantedAuthority> buildUserAuthority(Set<UserRole> userRoles) {
