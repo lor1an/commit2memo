@@ -14,10 +14,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.com2mem.dto.C2MUser;
 import com.com2mem.model.User;
 import com.com2mem.model.UserRole;
 import com.com2mem.repository.UserRepository;
+import com.com2mem.security.C2MUser;
 
 @Service("userDetailsService")
 public class C2MUserDetailsService implements UserDetailsService {

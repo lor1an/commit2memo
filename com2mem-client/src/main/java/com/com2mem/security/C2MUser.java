@@ -1,4 +1,4 @@
-package com.com2mem.dto;
+package com.com2mem.security;
 
 import java.util.Collection;
 

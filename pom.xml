@@ -1,12 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>com.com2mem</groupId>
 	<artifactId>commit2memo</artifactId>
-	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
-	<name>commit2memo Maven Webapp</name>
-	<url>http://maven.apache.org</url>
+	<version>1.0</version>
+	<packaging>pom</packaging>
 
 	<properties>
 
@@ -57,6 +56,8 @@
 		<guava.version>18.0</guava.version>
 
 		<thymeleaf.version>2.1.2.RELEASE</thymeleaf.version>
+		
+		<xstream.version>1.4.8</xstream.version>
 
 	</properties>
 
@@ -213,7 +214,7 @@
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
 			<artifactId>xstream</artifactId>
-			<version>1.4.8</version>
+			<version>${xstream.version}</version>
 		</dependency>
 
 		<dependency>
@@ -241,7 +242,7 @@
 			<scope>provided</scope>
 		</dependency>
 
-	
+
 	</dependencies>
 	<build>
 		<finalName>commit2memo</finalName>
@@ -280,4 +281,8 @@
 			</plugin>
 		</plugins>
 	</build>
+	<modules>
+		<module>com2mem-parser</module>
+		<module>com2mem-client</module>
+	</modules>
 </project>

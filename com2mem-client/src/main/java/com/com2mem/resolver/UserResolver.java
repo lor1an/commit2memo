@@ -5,8 +5,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
-import com.com2mem.dto.C2MUser;
 import com.com2mem.model.Deck;
+import com.com2mem.security.C2MUser;
 import com.com2mem.service.UserService;
 
 @Component

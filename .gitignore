@@ -3,3 +3,8 @@
 .project
 .settings/**/*
 api_keys.properties
+.externalToolBuilders/
+com2mem-client/.settings/
+com2mem-client/target/
+com2mem-parser/.settings/
+com2mem-parser/target/
