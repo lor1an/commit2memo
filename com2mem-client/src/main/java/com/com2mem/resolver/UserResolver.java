@@ -5,9 +5,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
+import com.com2mem.common.service.UserService;
 import com.com2mem.model.Deck;
 import com.com2mem.security.C2MUser;
-import com.com2mem.service.UserService;
 
 @Component
 public class UserResolver {
@@ -15,7 +15,7 @@ public class UserResolver {
     @Autowired
     UserService userService;
 
-    public com.com2mem.model.User curentUser() {
+    public com.com2mem.common.model.User curentUser() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return userService.getUserByUsername(user.getUsername());
     }

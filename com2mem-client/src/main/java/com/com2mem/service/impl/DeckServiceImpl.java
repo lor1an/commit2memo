@@ -6,15 +6,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.com2mem.common.model.User;
+import com.com2mem.common.service.UserService;
 import com.com2mem.model.Card;
 import com.com2mem.model.Deck;
-import com.com2mem.model.User;
 import com.com2mem.model.Wave;
 import com.com2mem.repository.DeckRepository;
 import com.com2mem.resolver.UserResolver;
 import com.com2mem.service.CardService;
 import com.com2mem.service.DeckService;
-import com.com2mem.service.UserService;
 import com.google.common.collect.Lists;
 
 @Service(value = "deckService")

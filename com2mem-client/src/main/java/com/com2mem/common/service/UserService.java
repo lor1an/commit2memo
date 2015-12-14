@@ -1,8 +1,8 @@
-package com.com2mem.service;
+package com.com2mem.common.service;
 
 import java.util.List;
 
-import com.com2mem.model.User;
+import com.com2mem.common.model.User;
 
 public interface UserService {
 

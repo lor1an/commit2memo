@@ -284,5 +284,6 @@
 	<modules>
 		<module>com2mem-parser</module>
 		<module>com2mem-client</module>
+		<module>com2mem-common</module>
 	</modules>
 </project>

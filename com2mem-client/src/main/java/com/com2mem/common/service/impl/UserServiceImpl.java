@@ -1,4 +1,4 @@
-package com.com2mem.service.impl;
+package com.com2mem.common.service.impl;
 
 import java.util.List;
 
@@ -7,10 +7,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.com2mem.model.User;
-import com.com2mem.model.UserRole;
-import com.com2mem.repository.UserRepository;
-import com.com2mem.service.UserService;
+import com.com2mem.common.model.User;
+import com.com2mem.common.model.UserRole;
+import com.com2mem.common.repository.UserRepository;
+import com.com2mem.common.service.UserService;
 import com.google.common.collect.Sets;
 
 import static com.com2mem.model.Role.ROLE_USER;

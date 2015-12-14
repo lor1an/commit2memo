@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.com2mem.model.User;
-import com.com2mem.service.UserService;
+import com.com2mem.common.model.User;
+import com.com2mem.common.service.UserService;
 
 @RestController
 public class UserController {

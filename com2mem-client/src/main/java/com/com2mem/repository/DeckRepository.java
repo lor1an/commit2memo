@@ -8,8 +8,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.com2mem.common.model.User;
 import com.com2mem.model.Deck;
-import com.com2mem.model.User;
 
 @Transactional
 public interface DeckRepository extends CrudRepository<Deck, Long> {

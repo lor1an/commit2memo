@@ -1,4 +1,4 @@
-package com.com2mem.model;
+package com.com2mem.common.model;
 
 import java.util.HashSet;
 import java.util.List;
@@ -13,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.com2mem.model.Deck;
 
 @Entity
 @Table(name = "users")

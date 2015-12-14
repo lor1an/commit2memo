@@ -1,4 +1,4 @@
-package com.com2mem.service.impl;
+package com.com2mem.security;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -14,10 +14,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.com2mem.model.User;
-import com.com2mem.model.UserRole;
-import com.com2mem.repository.UserRepository;
-import com.com2mem.security.C2MUser;
+import com.com2mem.common.model.User;
+import com.com2mem.common.model.UserRole;
+import com.com2mem.common.repository.UserRepository;
 
 @Service("userDetailsService")
 public class C2MUserDetailsService implements UserDetailsService {
