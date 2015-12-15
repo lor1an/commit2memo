@@ -35,4 +35,7 @@ public interface CardRepository extends CrudRepository<Card, Long> {
     @Query(value = "SELECT count(c) FROM Card c WHERE c.repeatDate <= :repeatDate AND c.deck = :deck")
     Integer countByRepeatDateAndDeck(@Param("repeatDate") LocalDate repeatDate, @Param("deck") Deck deck);
 
+    @Query(value = "SELECT count(c) FROM Card c WHERE c.deck = :deck")
+    Integer getCountDeckById(@Param("deck") Deck deck);
+
 }

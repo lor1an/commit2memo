@@ -187,6 +187,16 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
+    public Integer getCountDeckById(Long id) {
+        Deck deck = deckService.getDeckById(id);
+        if (deck == null) {
+            return null;
+        } else {
+            return cardRepository.getCountDeckById(deck);
+        }
+    }
+    
+    @Override
     public Integer countNewCardsOfDeck(Long deckId) {
         Deck deck = deckService.getDeckById(deckId);
         if (deck == null) {

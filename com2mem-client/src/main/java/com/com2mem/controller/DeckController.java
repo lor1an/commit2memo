@@ -59,7 +59,7 @@ public class DeckController {
             return new ResponseEntity<HttpStatus>(HttpStatus.NOT_FOUND);
         }
     }
-    
+
     @RequestMapping(value = "/decks/new", method = RequestMethod.GET)
     public ResponseEntity<List<Deck>> listDecksWithNewCards() {
         return new ResponseEntity<List<Deck>>(deckService.getDecksWithNewCards(), HttpStatus.OK);

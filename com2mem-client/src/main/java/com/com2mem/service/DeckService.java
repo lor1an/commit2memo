@@ -30,5 +30,5 @@ public interface DeckService {
     void deleteAllDecks();
     
     boolean addCard(Long deckId, Card card);
-    
+
 }

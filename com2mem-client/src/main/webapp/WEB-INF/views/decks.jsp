@@ -116,6 +116,7 @@
 	<script src="static/js/scripts.js"></script>
 	<script>
         var decksUrl = "http://localhost:10080/commit2memo/decks";
+        var cardsUrl = "http://localhost:10080/commit2memo/cards/";
         $('tbody').on("click", "tr.t", function() {
             if (!$(this).hasClass('picked')) {
                 $(".picked").removeClass('picked');
@@ -134,14 +135,14 @@
         });
 
         function addDecks() {
-            var test = "<td class='numb'><span class='fstN'>5 </span><span class='secN'>10 </span><span class='thrN'>15</span></td>";
+            
             var url = decksUrl;
             $.get(url, function(data) {
                 var transform = {
                     "tag" : "tr",
                     "id" : "deck\${deckId}",
                     "class" : "t",
-                    "html" : "<td>\${name}</td>" + test
+                    "html" : "<td>\${name}</td>"
                 };
 
                 $('#decksList').empty();
@@ -151,7 +152,15 @@
                 console.log("error");
             });
         };
-
+		
+        function countCards(value){
+            return $.get(cardsUrl + value, function(data) {
+				return data;
+            }).fail(function() {
+                console.log("error");
+            });
+        }
+        
         $('#add').click(function(e) {
             e.preventDefault();
             $.ajax({

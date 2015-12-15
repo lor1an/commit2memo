@@ -8,30 +8,27 @@
 </head>
 <body>
     <div class="navbar-wrapper">
-		<div class="container"></div>
-		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-			<div class="container">
-				<div class="navbar-header">
-					<button class="navbar-toggle" data-toggle="collapse" type="button"
-						data-target=".navbar-collapse">
-						<span class='glyphicon glyphicon-menu-hamburger'
-							aria-hidden='true'></span> <span class="sr-only">Toggle
-							navigation</span>
-					</button>
-					<a href="/" class="navbar-brand">commit2memo</a>
-				</div>
-				<div class="collapse navbar-collapse">
-					<ul class="nav navbar-nav">
-						<li ><a href="cardPage">Memorizing</a></li>
-						<li><a href="profile">My profile</a> <span
-							class="icon-envelope"></span></li>
-						<li class="activeTab"><a href="about">About</a></li>
-						<li><a href="" class="logout">Logout</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="container"></div>
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" type="button" data-target=".navbar-collapse">
+                        <span class='glyphicon glyphicon-menu-hamburger' aria-hidden='true'></span> <span
+                            class="sr-only">Toggle navigation</span>
+                    </button>
+                    <a href="/" class="navbar-brand">commit2memo</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="cardPage">Memorizing</a></li>
+                        <li><a href="profile">My profile</a> <span class="icon-envelope"></span></li>
+                        <li class="activeTab"><a href="about">About</a></li>
+                        <li><a href="" class="logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div id="leftCol" class="col-md-3 sidebar">
@@ -43,23 +40,17 @@
                 <div class="panel panel-info"
                     style="height: 87%; border-color: #0B0B0B; padding-left: 20px; padding-right: 20px; text-align: justify;">
                     <div>
-                        <h2>Lorem ipsum dolor</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                            sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                            laborum.</p>
-                        <p>uip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-                            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                            sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                            sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                            laborum. uip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <h2>Spaced repetition</h2>
+                        <p>Spaced repetition is a learning technique that incorporates increasing intervals of time
+                            between subsequent review of previously learned material in order to exploit the
+                            psychological spacing effect. Alternative names include spaced rehearsal, expanding
+                            rehearsal, graduated intervals, repetition spacing, repetition scheduling, spaced retrieval
+                            and expanded retrieval</p>
+                        <p>Although the principle is useful in many contexts, spaced repetition is commonly applied
+                            in contexts in which a learner must acquire a large number of items and retain them
+                            indefinitely in memory. It is therefore well suited for the problem of vocabulary
+                            acquisition in the course of second language learning, due to the size of the target
+                            language's inventory of open-class words</p>
                     </div>
                 </div>
             </div>

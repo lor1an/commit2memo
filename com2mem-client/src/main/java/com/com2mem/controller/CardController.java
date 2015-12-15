@@ -60,6 +60,13 @@ public class CardController {
         return new ResponseEntity<Integer>(cardService.countRepeatCardsOfClient(), HttpStatus.OK);
     }
 
+
+    @RequestMapping(value = "/cards/allCount/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Integer> getCountCards(@PathVariable("id") Long id) {
+        Integer count = cardService.getCountDeckById(id);
+        return new ResponseEntity<Integer>(count, HttpStatus.OK);
+    }
+    
     @RequestMapping(value = "/cards/newCount/{id}", method = RequestMethod.GET)
     public ResponseEntity<Integer> getCountNewCardsOfDeck(@PathVariable("id") Long deckId) {
         return new ResponseEntity<Integer>(cardService.countNewCardsOfDeck(deckId), HttpStatus.OK);
