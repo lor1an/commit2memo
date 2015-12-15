@@ -45,28 +45,42 @@
                     </div>
                     <div class="panel-body">
                         <form id="signupform" class="form-horizontal" role="form">
-                            <div id="signupalert" style="display: none" class="alert alert-danger">
-                                <p>Error:</p>
-                                <span></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="email" class="col-md-3 control-label">Email</label>
+                            <div id="eForm" class="form-group">
+                                <label id="alE1" for="email" class="col-md-3 control-label hooded">Please enter
+                                    a valid email address</label> <label id="alE2" for="email"
+                                    class="col-md-3 control-label hooded">Email is already used</label> <label id="alE3"
+                                    for="email" class="col-md-3 control-label">Email</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="email" placeholder="Email Address">
+                                    <input type="text" class="form-control" id="inputEmail" name="email"
+                                        placeholder="Email Address"> <span id="sucE"
+                                        class="glyphicon glyphicon-ok form-control-feedback hooded" aria-hidden="true"></span>
+                                    <span id="failE" class="glyphicon glyphicon-remove form-control-feedback hooded"
+                                        aria-hidden="true"></span>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="username" class="col-md-3 control-label">Username</label>
+                            <div id="uForm" class="form-group">
+                                <label id="alU1" for="username" class="col-md-3 control-label hooded">Please
+                                    enter a valid username</label> <label id="alU2" for="username"
+                                    class="col-md-3 control-label hooded">Username is already taken</label> <label
+                                    id="alU3" for="username" class="col-md-3 control-label">Username</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" id="inputUsername" name="username"
-                                        placeholder="Username">
+                                        placeholder="Username"> <span id="sucU"
+                                        class="glyphicon glyphicon-ok form-control-feedback hooded" aria-hidden="true"></span>
+                                    <span id="failU" class="glyphicon glyphicon-remove form-control-feedback hooded"
+                                        aria-hidden="true"></span>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="password" class="col-md-3 control-label">Password</label>
+                            <div id="pForm" class="form-group">
+                                <label id="alP1" for="password" class="col-md-3 control-label">Password</label> <label
+                                    id="alP2" for="password" class="col-md-3 control-label  hooded">Your
+                                    password must be at least 4 characters</label>
                                 <div class="col-md-9">
                                     <input type="password" class="form-control" id="inputPassword" name="password"
-                                        placeholder="Password">
+                                        placeholder="Password"><span id="sucP"
+                                        class="glyphicon glyphicon-ok form-control-feedback hooded" aria-hidden="true"></span>
+                                    <span id="failP" class="glyphicon glyphicon-remove form-control-feedback hooded"
+                                        aria-hidden="true"></span>
                                 </div>
                             </div>
                             <div class="form-group">

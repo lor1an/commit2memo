@@ -76,4 +76,14 @@ public class ClientServiceImpl implements ClientService {
         clientRepository.deleteAll();
     }
 
+    @Override
+    public boolean checkEmail(String email) {
+        return clientRepository.countByEmail(email) > 0;
+    }
+
+    @Override
+    public boolean checkUsername(String username) {
+        return clientRepository.countByUsername(username) > 0;
+    }
+
 }

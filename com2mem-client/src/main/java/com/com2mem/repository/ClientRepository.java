@@ -8,4 +8,7 @@ import com.com2mem.model.Client;
 @Transactional
 public interface ClientRepository extends UserRepository<Client> {
 
+    public Integer countByEmail(String email);
+    
+    public Integer countByUsername(String username);
 }

@@ -18,6 +18,8 @@ import com.com2mem.common.model.UserRole;
 @Table(name="clients")
 public class Client extends User {
 
+    private String email;
+    
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Deck> decks;
 
@@ -29,6 +31,12 @@ public class Client extends User {
         super(username, password, enabled, userRole);
     }
     
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
     public List<Deck> getDecks() {
         return decks;
     }
