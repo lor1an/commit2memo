@@ -33,6 +33,9 @@ tr:hover {
 	cursor: pointer;
 }
 
+.high{
+    background: #E4E4E4;
+}
 .delButton {
 	padding-left: 10px;
     margin-right: 26px;
@@ -95,7 +98,7 @@ tr:hover {
                 </div>
                 <div class="list">
                     <table class="table ">
-                        <tbody id="cardsList">
+                        <tbody id="cardsList" class="cardsList">
                         </tbody>
                     </table>
                 </div>

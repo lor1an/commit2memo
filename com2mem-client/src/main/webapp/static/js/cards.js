@@ -33,7 +33,7 @@ function getCardsForDeck() {
     var url = cardsUrl + curDeckId;
     return $.get(url, function(data) {
         cards = data;
-        
+
         initLength = cards.length;
 
     }).fail(function() {
@@ -49,35 +49,34 @@ function insertCardsToTable() {
         transform.children[1].id = "def" + i;
         $('#cardsList').json2html(cards[i].entry, transform);
     }
-    for(var i = 0; i < cards.length; i++){
+    for (var i = 0; i < cards.length; i++) {
         for (var j = 0; j < cards[i].entry.def.sndf.length; j++) {
             $('#def' + i).json2html(cards[i].entry.def.sndf[j], transform2);
         }
     }
-    
+
     $('.card').append(checkbox);
-    
+
 }
 
 $(document).on("click", ".checkb", function(e) {
-    var id = $(this).closest('.card').attr("id");
-    var checked = $('#' + id + ' .checkb:checked');
-    var unchecked = $('#' + id + ' .checkb:not(:checked)');
+    $(this).closest('cardsList').attr("id");
+    var checked = $('#cardsList' + ' .checkb:checked');
     if ($(this).is(":checked")) {
-        $(this).closest('.sndf').removeClass("disabledSndf");
-        if (checked.length == 1) {
-            unchecked.each(function() {
-                $(this).closest('.sndf').addClass("disabledSndf");
-            });
-        }
+        $("#deleteButton").removeClass("disabled");
+        $(this).closest('.card').addClass("high");
     } else {
-        $(this).closest('.sndf').addClass("disabledSndf");
         if (checked.length == 0) {
-            unchecked.each(function() {
-                $(this).closest('.sndf').removeClass("disabledSndf");
-            });
+            $("#deleteButton").addClass("disabled");
         }
+        $(this).closest('.card').removeClass("high");
     }
+});
+
+$(document).on("click", ".card", function(e) {
+    var id = $(this).attr("id");
+    var check = $("#" + id + " .checkb");
+    $(check).trigger("click");
 });
 var transform = {
     "tag" : "tr",
