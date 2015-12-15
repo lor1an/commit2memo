@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.oxm.XmlMappingException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.com2mem.dto.DefText;
 import com.com2mem.dto.Entry;
@@ -146,8 +147,20 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
+    @Transactional
     public boolean deleteCardById(final Long id) {
-        cardRepository.delete(id);
+        Card card = cardRepository.findOne(id);
+        card.setDeck(null);
+        cardRepository.delete(card);
+        return true;
+    }
+
+    @Override
+    @Transactional
+    public boolean deleteCardById(List<Long> ids) {
+        for (Long id : ids) {
+            cardRepository.delete(id);
+        }
         return true;
     }
 
@@ -192,4 +205,5 @@ public class CardServiceImpl implements CardService {
             return cardRepository.countByRepeatDateAndDeck(LocalDate.now(), deck);
         }
     }
+
 }

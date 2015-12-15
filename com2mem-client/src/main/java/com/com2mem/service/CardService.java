@@ -37,4 +37,6 @@ public interface CardService {
     void deleteCard(Card card);
 
     void deleteAllCards();
+
+    boolean deleteCardById(List<Long> ids);
 }

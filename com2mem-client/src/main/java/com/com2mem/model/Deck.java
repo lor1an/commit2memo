@@ -27,7 +27,7 @@ public class Deck {
     @JoinColumn(name = "userId")
     @JsonIgnore
     private Client client;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "deck", cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "deck", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Card> cards;
 
@@ -98,8 +98,7 @@ public class Deck {
 
     @Override
     public String toString() {
-        return "Deck [deckId=" + deckId + ", name=" + name + ", cards=" + cards
-                + "Client" + client.getUserId() + "]";
+        return "Deck [deckId=" + deckId + ", name=" + name + ", cards=" + cards + "Client" + client.getUserId() + "]";
     }
 
 }

@@ -5,14 +5,17 @@ var cards;
 var initLength;
 
 $(document).ready(function() {
+    initPage();
+});
+
+function initPage() {
     addDecks().done(function() {
         curDeckId = parseInt($("#selectDeck").children(":selected").attr("id").substring(4));
         getCardsForDeck().done(function() {
             insertCardsToTable();
         });
     });
-});
-
+}
 function addDecks() {
     var url = decksUrl;
     return $.get(url, function(data) {
@@ -73,11 +76,56 @@ $(document).on("click", ".checkb", function(e) {
     }
 });
 
+$(document).on("click", "#deleteButton", function(e) {
+    var ids = []
+    $('#cardsList' + ' .checkb:checked').each(function() {
+        ids.push(parseInt($(this).closest('.card').attr("id").substring(4)));
+    });
+    console.log(ids);
+    if (ids.length > 0) {
+        var res = true;
+        for (var i = 0; i < ids.length; i++) {
+            res = res && removeCard(ids[i])
+        }
+
+        if (res) {
+            initPage();
+        } else {
+            setTimeout(function() {
+                initPage();
+            }, 200);
+        }
+    }
+});
+
+function removeCard(id) {
+    return $.ajax({
+        url : cardsUrl,
+        type : 'DELETE',
+        contentType : "application/json",
+        data : JSON.stringify(id),
+        success : function(data) {
+            return true
+        },
+        error : function(data) {
+            return true
+        }
+    });
+}
+
 $(document).on("click", ".card", function(e) {
     var id = $(this).attr("id");
     var check = $("#" + id + " .checkb");
     $(check).trigger("click");
 });
+
+$(document).on("change", "#selectDeck", function(e) {
+    curDeckId = parseInt($("#selectDeck").children(":selected").attr("id").substring(4));
+    getCardsForDeck().done(function() {
+        insertCardsToTable();
+    });
+});
+
 var transform = {
     "tag" : "tr",
     "id" : "card",

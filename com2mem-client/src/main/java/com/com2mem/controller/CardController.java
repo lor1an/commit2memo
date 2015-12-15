@@ -79,8 +79,8 @@ public class CardController {
         }
     }
 
-    @RequestMapping(value = "/cards/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<HttpStatus> deleteCards(@PathVariable("id") Long id) {
+    @RequestMapping(value = "/cards", method = RequestMethod.DELETE)
+    public ResponseEntity<HttpStatus> deleteCards(@RequestBody Long id) {
         if (cardService.deleteCardById(id)) {
             return new ResponseEntity<HttpStatus>(HttpStatus.OK);
         } else {
