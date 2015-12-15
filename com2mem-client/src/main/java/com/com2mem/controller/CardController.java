@@ -39,7 +39,7 @@ public class CardController {
             return new ResponseEntity<List<Card>>(cards, HttpStatus.OK);
         }
     }
-    
+
     @RequestMapping(value = "/cards/repeat/{id}", method = RequestMethod.GET)
     public ResponseEntity<List<Card>> getCardsForTraining(@PathVariable("id") Long id) {
         List<Card> cards = cardService.getCardsForTraining(id);
@@ -69,10 +69,19 @@ public class CardController {
     public ResponseEntity<Integer> getCountRepeatCardsOfDeck(@PathVariable("id") Long deckId) {
         return new ResponseEntity<Integer>(cardService.countRepeatCardsOfDeck(deckId), HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/cards/{id}", method = RequestMethod.PUT)
     public ResponseEntity<HttpStatus> updateCards(@PathVariable("id") Long id, @RequestBody Card card) {
         if (cardService.updateCard(id, card)) {
+            return new ResponseEntity<HttpStatus>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<HttpStatus>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(value = "/cards/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<HttpStatus> deleteCards(@PathVariable("id") Long id) {
+        if (cardService.deleteCardById(id)) {
             return new ResponseEntity<HttpStatus>(HttpStatus.OK);
         } else {
             return new ResponseEntity<HttpStatus>(HttpStatus.NOT_FOUND);

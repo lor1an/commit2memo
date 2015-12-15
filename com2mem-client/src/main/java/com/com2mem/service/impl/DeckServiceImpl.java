@@ -47,7 +47,7 @@ public class DeckServiceImpl implements DeckService {
 
     @Override
     public Deck getDeckById(final Long deckId) {
-        Deck deck = deckRepository.findOne(deckId);
+        Deck deck = deckRepository.findByDeck(deckId);
         if (clientResolver.isClientDeck(deck)) {
             return deck;
         } else {
@@ -57,7 +57,7 @@ public class DeckServiceImpl implements DeckService {
 
     @Override
     public boolean addCard(Long deckId, Card card) {
-        Deck deck = deckRepository.findOne(deckId);
+        Deck deck = deckRepository.findByDeck(deckId);
         if (clientResolver.isClientDeck(deck)) {
             card.setDeck(deck);
             card.setWave(Wave.WAVE_0);

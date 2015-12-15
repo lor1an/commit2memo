@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.com2mem.model.Client;
+import com.com2mem.resolver.ClientResolver;
 import com.com2mem.service.ClientService;
 
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -21,8 +22,11 @@ public class ClientController {
     @Autowired
     ClientService clientService;
 
+    @Autowired
+    ClientResolver clientResolver;
+
     @RequestMapping(value = "/client", method = RequestMethod.POST)
-    public ResponseEntity<HttpStatus> createUser(@RequestBody Client client) {
+    public ResponseEntity<HttpStatus> createClient(@RequestBody Client client) {
         if (validateClient(client)) {
             clientService.addUser(client);
             return new ResponseEntity<HttpStatus>(HttpStatus.CREATED);
@@ -30,6 +34,11 @@ public class ClientController {
             return new ResponseEntity<HttpStatus>(HttpStatus.NOT_ACCEPTABLE);
         }
 
+    }
+
+    @RequestMapping(value = "/currentClient", method = RequestMethod.GET)
+    public ResponseEntity<Client> getCurrentClient() {
+        return new ResponseEntity<Client>(clientResolver.curentClient(), HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/checkEmail", method = RequestMethod.GET)

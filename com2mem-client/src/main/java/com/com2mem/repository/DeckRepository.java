@@ -16,6 +16,9 @@ public interface DeckRepository extends CrudRepository<Deck, Long> {
 
     Deck findByDeckIdAndClient(Long deckId, Client client);
 
+    @Query(value = "select d from Deck d where d.deckId = :deckId")
+    Deck findByDeck(@Param("deckId") Long deckId);
+
     @Query(value = "SELECT d FROM Deck d WHERE d.client = :client AND d IN "
             + "(SELECT c.deck FROM Card c WHERE c.newCard = :newCard)")
     List<Deck> findDecksWithNewCards(@Param("newCard") boolean newCard, @Param("client") Client client);

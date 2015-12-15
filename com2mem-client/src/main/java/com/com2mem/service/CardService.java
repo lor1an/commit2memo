@@ -32,7 +32,7 @@ public interface CardService {
 
     void saveCard(Card card);
 
-    void deleteCardById(Long id);
+    boolean deleteCardById(Long id);
 
     void deleteCard(Card card);
 

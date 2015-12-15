@@ -41,7 +41,7 @@ public class CardServiceImpl implements CardService {
         if (deck == null) {
             return null;
         } else {
-            List<Card> cards = deck.getCards();
+            List<Card> cards = cardRepository.findByDeck(deck);
             for (Card card : cards) {
                 card.setEntry(findEntryForCard(card));
             }
@@ -146,9 +146,9 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public void deleteCardById(final Long id) {
-        // TODO Auto-generated method stub
-
+    public boolean deleteCardById(final Long id) {
+        cardRepository.delete(id);
+        return true;
     }
 
     @Override

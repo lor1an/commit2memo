@@ -1,8 +1,6 @@
 <html>
 <head>
 <title>commit2memo</title>
-<meta name="_csrf" content="${_csrf.token}" />
-<meta name="_csrf_header" content="${_csrf.headerName}" />
 <link rel="icon" type="image/x-icon" href="static/img/favicon.ico" />
 <link rel="shortcut icon" type="image/x-icon" href="static/img/favicon.ico" />
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">

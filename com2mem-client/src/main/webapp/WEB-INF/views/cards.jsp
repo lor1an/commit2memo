@@ -9,6 +9,43 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="static/css/styles.css">
 </head>
+<style>
+tr:hover {
+	background: white;
+}
+
+.table {
+	margin-top: 10px;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td,
+	.table>tbody>tr>td, .table>tfoot>tr>td {
+	border-top: 1px solid rgb(204, 204, 204);
+	border-bottom: 1px solid rgb(204, 204, 204);
+	border-left: 1px solid rgb(204, 204, 204);
+	border-right: 1px solid rgb(204, 204, 204);
+	vertical-align: middle
+}
+
+.card:hover {
+	background: #E4E4E4;
+	color: #000000;
+	cursor: pointer;
+}
+
+.delButton {
+	padding-left: 10px;
+    margin-right: 26px;
+}
+
+.cb {
+	width: 36px;
+    background-color: rgb(238, 238, 238);
+}
+.input-group-addon:last-child{
+    background-color: rgb(238, 238, 238);
+}
+</style>
 <body>
     <div class="navbar-wrapper">
         <div class="container"></div>
@@ -42,56 +79,31 @@
                     <li role="presentation" class="active"><a href="cards">All cards</a></li>
                 </ul>
             </div>
-            <div class="col-sm-6 worker">
-                <div class="thumbnail">
+        </div>
+        <div class="col-sm-6 worker">
+            <div class="thumbnail">
+                <div class="" style="display: flex; padding-top: 5px;">
+                    <div style="width: 80%;">
+                        <select id="selectDeck" class="form-control">
+                        </select>
+                    </div>
+                    <div class="delButton">
+                        <button id="deleteButton" type="button" class="btn btn-danger disabled switch">
+                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Delete cards
+                        </button>
+                    </div>
+                </div>
+                <div class="list">
                     <table class="table ">
-                        <thead>
-                            <tr>
-                                <th>Front</th>
-                                <th>
-                                    <div class="dropdown">
-                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Dropdown <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                            <li><a href="#">Action</a></li>
-                                            <li><a href="#">Another action</a></li>
-                                            <li><a href="#">Something else here</a></li>
-                                            <li role="separator" class="divider"></li>
-                                            <li><a href="#">Separated link</a></li>
-                                        </ul>
-                                    </div>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Front1</td>
-                                <td>Back1</td>
-                            </tr>
-                            <tr>
-                                <td>Front2</td>
-                                <td>Back2</td>
-                            </tr>
+                        <tbody id="cardsList">
                         </tbody>
                     </table>
                 </div>
+                <div id="memo_stat"></div>
+                <div class="flip"></div>
+                <div id="again_know"></div>
             </div>
         </div>
-    </div>
-    <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="true">
-            Dropdown <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-        </ul>
     </div>
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
@@ -99,16 +111,6 @@
     <script src="static/js/json2html.js"></script>
     <script src="static/js/auth.js"></script>
     <script src="static/js/scripts.js"></script>
-    <script>
-                    $('tr').click(function() {
-                        $(this).toggleClass('picked');
-                        if ($(".picked")[0]) {
-                            $("#btn_s").removeClass('disabled');
-                        } else {
-                            $("#btn_s").addClass('disabled');
-                        }
-
-                    });
-                </script>
+    <script src="static/js/cards.js"></script>
 </body>
 </html>

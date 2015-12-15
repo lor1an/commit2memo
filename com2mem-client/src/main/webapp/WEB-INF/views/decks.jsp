@@ -96,12 +96,6 @@
 							Add Deck
 						</button>
 					</div>
-					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-success disabled switch">
-							<span class='glyphicon glyphicon-play' aria-hidden='true'></span>
-							Start traning
-						</button>
-					</div>
 				</div>
 				<div class="thumbnail">
 					<div class="list">
